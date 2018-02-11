@@ -6,8 +6,9 @@
  */
 
 import {RouteHelper} from './RouteHelper'
-import {route} from './route'
+import {route, newRoute} from './route'
 export {
     route,
+    newRoute,
     RouteHelper,
 }

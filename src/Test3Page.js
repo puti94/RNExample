@@ -28,16 +28,14 @@ export default class Test3Page extends Component {
 
                 <Text>页面3</Text>
                 <Button onPress={() => {
-                    RouteHelper.getBackto('Test1Page')
-                }} title={'返回第一页'}/>
+                    this.props.navigation.popToTop()
+                }} title={'popToTop()'}/>
                 <Button onPress={() => {
-                    RouteHelper.navigate('Test4Page')
-                }} title={'进入第四页'}/>
+                    this.props.navigation.push('Test4Page')
+                }} title={'push(Test4Page)'}/>
                 <Button onPress={() => {
-                    RouteHelper.navigate('Test1Page');
-
-                    // this.props.navigation.navigate('Test1Page')
-                }} title={'进入第1页'}/>
+                    this.props.navigation.replace('Test4Page')
+                }} title={'replace(Test4Page)'}/>
                 <Text>页面3</Text>
             </View>
         );

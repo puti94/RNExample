@@ -11,23 +11,24 @@ import {
     StyleSheet,
     View,
     Text,
-    Button
+    Button, LayoutAnimation
 } from 'react-native';
-import {RouteHelper} from "./base/index";
 
 export default class Test1Page extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this);
     }
 
+
     render() {
+        LayoutAnimation.easeInEaseOut();
         return (
             <View style={styles.container}>
                 <Text>页面1</Text>
+
                 <Button onPress={() => {
-                    RouteHelper.navigate('Test2Page', {params: '参数'})
+                    this.props.navigation.navigate('Test2Page', {params: '参数'})
                 }} title={'跳转下一页'}/>
 
             </View>

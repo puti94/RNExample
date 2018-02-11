@@ -45,3 +45,46 @@ export const route = (Obj) => {
         return _instance
     }
 };
+
+
+export const newRoute = (Obj) => {
+    return (...args) => {
+        let _instance = new Obj(...args);
+        if (!(_instance instanceof Component)) {
+            console.error('此装饰器对非组件无效');
+            return null;
+        }
+        if (!_instance.props.navigation) {
+            console.error('此组件不是StackNavigation的子组件');
+            return null;
+        }
+        if (!_instance.props.navigation.addListener || typeof _instance.props.navigation.addListener !== 'function') {
+            console.error('请更新最新版本的react-navigation');
+            return null;
+        }
+
+
+        _instance.props.navigation.addListener('willBlur', (e) => {
+            if (_instance.componentWillBlur && typeof _instance.componentWillBlur === 'function') {
+                _instance.componentWillBlur.call(_instance, e)
+            }
+        });
+        _instance.props.navigation.addListener('willFocus', (e) => {
+            if (_instance.componentWillFocus && typeof _instance.componentWillFocus === 'function') {
+                _instance.componentWillFocus.call(_instance, e)
+            }
+        });
+        _instance.props.navigation.addListener('didBlur', (e) => {
+            if (_instance.componentDidBlur && typeof _instance.componentDidBlur === 'function') {
+                _instance.componentDidBlur.call(_instance, e)
+            }
+        });
+        _instance.props.navigation.addListener('didFocus', (e) => {
+            if (_instance.componentDidFocus && typeof _instance.componentDidFocus === 'function') {
+                _instance.componentDidFocus.call(_instance, e)
+            }
+        });
+
+        return _instance
+    }
+};

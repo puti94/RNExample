@@ -28,12 +28,11 @@ export default class Test4Page extends Component {
 
                 <Text>页面4</Text>
                 <Button onPress={() => {
-                    RouteHelper.reset('Test1Page')
-                }} title={'重置第1页'}/>
-
+                    this.props.navigation.pop(2)
+                }} title={'返回前两页'}/>
                 <Button onPress={() => {
                     this.props.navigation.goBack()
-                }} title={'放回上一页'}/>
+                }} title={'返回上一页'}/>
                 <Text>页面4</Text>
             </View>
         );
