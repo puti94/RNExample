@@ -6,24 +6,32 @@
 
 import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation'
-import Test1Page from './Test1Page'
-import Test2Page from './Test2Page'
-import Test3Page from './Test3Page'
-import Test4Page from './Test4Page'
-import {route, newRoute} from './base/route'
+import MainPage from './page/MainPage'
+import Test2Page from './page/Test2Page'
+import Test3Page from './page/Test3Page'
+import Test4Page from './page/Test4Page'
+import LoginPage from './page/LoginPage'
+import LaunchPage from './page/LaunchPage'
+import UserPage from './page/UserPage'
+
 export const AppNavigator = StackNavigator(
     {
-        Test1Page: {screen: Test1Page},
-        Test2Page: {screen: newRoute(Test2Page)},
+        LaunchPage: {
+            screen: LaunchPage
+        },
+        MainPage: {screen: MainPage},
+        Test2Page: {screen: Test2Page},
         Test3Page: {screen: Test3Page},
         Test4Page: {screen: Test4Page},
+        LoginPage: {screen: LoginPage},
+        UserPage: {screen: UserPage},
     }
 );
 // export const AppNavigator = StackNavigator(
 //     {
-//         Test1Page: {screen: route(Test1Page)},
-//         Test2Page: {screen: route(Test2Page)},
-//         Test3Page: {screen: route(Test3Page)},
+//         MainPage: {screen: route(MainPage)},
+//         UserPage: {screen: route(UserPage)},
+//         LaunchPage: {screen: route(LaunchPage)},
 //         Test4Page: {screen: route(Test4Page)},
 //     }
 // );

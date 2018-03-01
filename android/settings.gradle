@@ -1,3 +1,5 @@
 rootProject.name = 'RNExample'
+include ':jshare-react-native'
+project(':jshare-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/jshare-react-native/android')
 
 include ':app'

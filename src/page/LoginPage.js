@@ -13,13 +13,25 @@ import {
     Text,
     Button
 } from 'react-native';
-import {RouteHelper, newRoute} from "./base/index";
-import {withNavigation} from 'react-navigation'
-export default class Test2Page extends Component {
+import {routeHelper} from "../utils/index";
+import {inject, observer} from 'mobx-react'
+import {autorun} from 'mobx'
+@inject('userStore')
+@routeHelper
+@observer
+export default class LoginPage extends Component {
+    static navigationOptions = ({navigation}) => ({
+        headerTitle: 'LoginPage',
+    });
 
     constructor(props) {
         super(props);
-        console.log('constructor')
+        console.log('login', this);
+        autorun(() => {
+            if (this.props.userStore.isLogin) {
+                this.props.navigation.replace(this.params.routeName, this.params.params)
+            }
+        })
     }
 
     componentWillMount() {
@@ -50,69 +62,26 @@ export default class Test2Page extends Component {
         console.log('componentDidBlur', e)
     }
 
+    _login = () => {
+        this.props.userStore.login('157xxxxxxxx', '111111')
+    };
 
     render() {
         console.log('render');
         return (
             <View style={styles.container}>
-                <Text>页面2</Text>
-                <Button onPress={() => {
-                    this.props.navigation.navigate('Test3Page')
-                }} title={'跳转下一页'}/>
+                <Text>登录页面</Text>
+                <Button onPress={this._login} title={'登录'}/>
 
                 <Button onPress={() => {
                     this.props.navigation.pop()
                 }} title={'返回上一页'}/>
 
-                <WithButton/>
             </View>
         );
     }
 }
 
-
-class MButton extends Component {
-
-
-    componentWillMount() {
-        console.log('子componentWillMount')
-    }
-
-    componentWillFocus(e) {
-        console.log('子componentWillFocus', e)
-    }
-
-    componentDidFocus = (e) => {
-        console.log('子componentDidFocus', e)
-    };
-
-    componentDidMount() {
-        console.log('子componentDidMount')
-    }
-
-    componentWillBlur(e) {
-        console.log('子componentWillBlur', e)
-    }
-
-    componentWillUnmount() {
-        console.log('子componentWillUnmount')
-    }
-
-    componentDidBlur(e) {
-        console.log('子componentDidBlur', e)
-    }
-
-
-    render() {
-        return <Button onPress={() => {
-            console.log(this);
-            this.props.navigation.push('Test3Page')
-        }} title={'打印并跳转下一页'}/>
-
-    }
-}
-//利用contextAPI传递navigation
-const WithButton = withNavigation(newRoute(MButton));
 
 const styles = StyleSheet.create({
     container: {

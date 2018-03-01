@@ -13,9 +13,14 @@ import {
     Text,
     Button
 } from 'react-native';
-import {RouteHelper} from "./base/RouteHelper";
+import {routeHelper} from '../utils/PageUtils'
 
-export default class Test4Page extends Component {
+@routeHelper
+export default class Test3Page extends Component {
+
+    static navigationOptions = ({navigation}) => ({
+        headerTitle: 'Test3Page',
+    });
 
     constructor(props) {
         super(props);
@@ -26,14 +31,17 @@ export default class Test4Page extends Component {
         return (
             <View style={styles.container}>
 
-                <Text>页面4</Text>
+                <Text>页面3</Text>
                 <Button onPress={() => {
-                    this.props.navigation.pop(2)
-                }} title={'返回前两页'}/>
+                    this.props.navigation.popToTop()
+                }} title={'popToTop()'}/>
                 <Button onPress={() => {
-                    this.props.navigation.goBack()
-                }} title={'返回上一页'}/>
-                <Text>页面4</Text>
+                    this.props.navigation.push('Test4Page')
+                }} title={'push(Test4Page)'}/>
+                <Button onPress={() => {
+                    this.props.navigation.replace('Test4Page')
+                }} title={'replace(Test4Page)'}/>
+                <Text>页面3</Text>
             </View>
         );
     }

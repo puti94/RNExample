@@ -431,6 +431,12 @@ babel-plugin-jest-hoist@^22.2.0:
   version "22.2.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-jest-hoist/download/babel-plugin-jest-hoist-22.2.0.tgz#bd34f39d652406669713b8c89e23ef25c890b993"
 
+babel-plugin-react-transform@2.0.2:
+  version "2.0.2"
+  resolved "http://registry.npm.taobao.org/babel-plugin-react-transform/download/babel-plugin-react-transform-2.0.2.tgz#515bbfa996893981142d90b1f9b1635de2995109"
+  dependencies:
+    lodash "^4.6.1"
+
 babel-plugin-react-transform@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-react-transform/download/babel-plugin-react-transform-3.0.0.tgz#402f25137b7bb66e9b54ead75557dfbc7ecaaa74"
@@ -441,9 +447,21 @@ babel-plugin-syntax-async-functions@^6.5.0, babel-plugin-syntax-async-functions@
   version "6.13.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-syntax-async-functions/download/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
 
+babel-plugin-syntax-class-constructor-call@^6.18.0:
+  version "6.18.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-syntax-class-constructor-call/download/babel-plugin-syntax-class-constructor-call-6.18.0.tgz#9cb9d39fe43c8600bec8146456ddcbd4e1a76416"
+
 babel-plugin-syntax-class-properties@^6.5.0, babel-plugin-syntax-class-properties@^6.8.0:
   version "6.13.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-syntax-class-properties/download/babel-plugin-syntax-class-properties-6.13.0.tgz#d7eb23b79a317f8543962c505b827c7d6cac27de"
+
+babel-plugin-syntax-decorators@^6.1.18:
+  version "6.13.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-syntax-decorators/download/babel-plugin-syntax-decorators-6.13.0.tgz#312563b4dbde3cc806cee3e416cceeaddd11ac0b"
+
+babel-plugin-syntax-do-expressions@^6.8.0:
+  version "6.13.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-syntax-do-expressions/download/babel-plugin-syntax-do-expressions-6.13.0.tgz#5747756139aa26d390d09410b03744ba07e4796d"
 
 babel-plugin-syntax-dynamic-import@^6.18.0:
   version "6.18.0"
@@ -453,9 +471,17 @@ babel-plugin-syntax-exponentiation-operator@^6.8.0:
   version "6.13.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-syntax-exponentiation-operator/download/babel-plugin-syntax-exponentiation-operator-6.13.0.tgz#9ee7e8337290da95288201a6a57f4170317830de"
 
+babel-plugin-syntax-export-extensions@^6.8.0:
+  version "6.13.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-syntax-export-extensions/download/babel-plugin-syntax-export-extensions-6.13.0.tgz#70a1484f0f9089a4e84ad44bac353c95b9b12721"
+
 babel-plugin-syntax-flow@^6.18.0, babel-plugin-syntax-flow@^6.5.0, babel-plugin-syntax-flow@^6.8.0:
   version "6.18.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-syntax-flow/download/babel-plugin-syntax-flow-6.18.0.tgz#4c3ab20a2af26aa20cd25995c398c4eb70310c8d"
+
+babel-plugin-syntax-function-bind@^6.8.0:
+  version "6.13.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-syntax-function-bind/download/babel-plugin-syntax-function-bind-6.13.0.tgz#48c495f177bdf31a981e732f55adc0bdd2601f46"
 
 babel-plugin-syntax-jsx@^6.5.0, babel-plugin-syntax-jsx@^6.8.0:
   version "6.18.0"
@@ -477,6 +503,14 @@ babel-plugin-transform-async-to-generator@6.16.0:
     babel-plugin-syntax-async-functions "^6.8.0"
     babel-runtime "^6.0.0"
 
+babel-plugin-transform-class-constructor-call@^6.6.5:
+  version "6.24.1"
+  resolved "http://registry.npm.taobao.org/babel-plugin-transform-class-constructor-call/download/babel-plugin-transform-class-constructor-call-6.24.1.tgz#80dc285505ac067dcb8d6c65e2f6f11ab7765ef9"
+  dependencies:
+    babel-plugin-syntax-class-constructor-call "^6.18.0"
+    babel-runtime "^6.22.0"
+    babel-template "^6.24.1"
+
 babel-plugin-transform-class-properties@^6.18.0, babel-plugin-transform-class-properties@^6.5.0, babel-plugin-transform-class-properties@^6.8.0:
   version "6.24.1"
   resolved "http://registry.npm.taobao.org/babel-plugin-transform-class-properties/download/babel-plugin-transform-class-properties-6.24.1.tgz#6a79763ea61d33d36f37b611aa9def81a81b46ac"
@@ -485,6 +519,21 @@ babel-plugin-transform-class-properties@^6.18.0, babel-plugin-transform-class-pr
     babel-plugin-syntax-class-properties "^6.8.0"
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
+
+babel-plugin-transform-decorators-legacy@^1.3.4:
+  version "1.3.4"
+  resolved "http://registry.npm.taobao.org/babel-plugin-transform-decorators-legacy/download/babel-plugin-transform-decorators-legacy-1.3.4.tgz#741b58f6c5bce9e6027e0882d9c994f04f366925"
+  dependencies:
+    babel-plugin-syntax-decorators "^6.1.18"
+    babel-runtime "^6.2.0"
+    babel-template "^6.3.0"
+
+babel-plugin-transform-do-expressions@^6.5.0:
+  version "6.22.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-transform-do-expressions/download/babel-plugin-transform-do-expressions-6.22.0.tgz#28ccaf92812d949c2cd1281f690c8fdc468ae9bb"
+  dependencies:
+    babel-plugin-syntax-do-expressions "^6.8.0"
+    babel-runtime "^6.22.0"
 
 babel-plugin-transform-es2015-arrow-functions@^6.5.0, babel-plugin-transform-es2015-arrow-functions@^6.8.0:
   version "6.22.0"
@@ -637,11 +686,25 @@ babel-plugin-transform-exponentiation-operator@^6.5.0:
     babel-plugin-syntax-exponentiation-operator "^6.8.0"
     babel-runtime "^6.22.0"
 
+babel-plugin-transform-export-extensions@^6.5.0:
+  version "6.22.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-transform-export-extensions/download/babel-plugin-transform-export-extensions-6.22.0.tgz#53738b47e75e8218589eea946cbbd39109bbe653"
+  dependencies:
+    babel-plugin-syntax-export-extensions "^6.8.0"
+    babel-runtime "^6.22.0"
+
 babel-plugin-transform-flow-strip-types@^6.21.0, babel-plugin-transform-flow-strip-types@^6.5.0, babel-plugin-transform-flow-strip-types@^6.8.0:
   version "6.22.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-transform-flow-strip-types/download/babel-plugin-transform-flow-strip-types-6.22.0.tgz#84cb672935d43714fdc32bce84568d87441cf7cf"
   dependencies:
     babel-plugin-syntax-flow "^6.18.0"
+    babel-runtime "^6.22.0"
+
+babel-plugin-transform-function-bind@^6.5.2:
+  version "6.22.0"
+  resolved "http://registry.npm.taobao.org/babel-plugin-transform-function-bind/download/babel-plugin-transform-function-bind-6.22.0.tgz#c6fb8e96ac296a310b8cf8ea401462407ddf6a97"
+  dependencies:
+    babel-plugin-syntax-function-bind "^6.8.0"
     babel-runtime "^6.22.0"
 
 babel-plugin-transform-object-assign@^6.5.0:
@@ -745,6 +808,19 @@ babel-preset-jest@^22.2.0:
     babel-plugin-jest-hoist "^22.2.0"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
+babel-preset-react-native-stage-0@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/babel-preset-react-native-stage-0/download/babel-preset-react-native-stage-0-1.0.1.tgz#d5f5f685575471ef756a49f191b193269f74306e"
+  dependencies:
+    babel-plugin-syntax-trailing-function-commas "^6.5.0"
+    babel-plugin-transform-class-constructor-call "^6.6.5"
+    babel-plugin-transform-decorators-legacy "^1.3.4"
+    babel-plugin-transform-do-expressions "^6.5.0"
+    babel-plugin-transform-exponentiation-operator "^6.5.0"
+    babel-plugin-transform-export-extensions "^6.5.0"
+    babel-plugin-transform-function-bind "^6.5.2"
+    babel-preset-react-native "^1.5.6"
+
 babel-preset-react-native@4.0.0, babel-preset-react-native@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/babel-preset-react-native/download/babel-preset-react-native-4.0.0.tgz#3df80dd33a453888cdd33bdb87224d17a5d73959"
@@ -781,6 +857,40 @@ babel-preset-react-native@4.0.0, babel-preset-react-native@^4.0.0:
     babel-template "^6.24.1"
     react-transform-hmr "^1.0.4"
 
+babel-preset-react-native@^1.5.6:
+  version "1.9.2"
+  resolved "http://registry.npm.taobao.org/babel-preset-react-native/download/babel-preset-react-native-1.9.2.tgz#b22addd2e355ff3b39671b79be807e52dfa145f2"
+  dependencies:
+    babel-plugin-check-es2015-constants "^6.5.0"
+    babel-plugin-react-transform "2.0.2"
+    babel-plugin-syntax-async-functions "^6.5.0"
+    babel-plugin-syntax-class-properties "^6.5.0"
+    babel-plugin-syntax-flow "^6.5.0"
+    babel-plugin-syntax-jsx "^6.5.0"
+    babel-plugin-syntax-trailing-function-commas "^6.5.0"
+    babel-plugin-transform-class-properties "^6.5.0"
+    babel-plugin-transform-es2015-arrow-functions "^6.5.0"
+    babel-plugin-transform-es2015-block-scoping "^6.5.0"
+    babel-plugin-transform-es2015-classes "^6.5.0"
+    babel-plugin-transform-es2015-computed-properties "^6.5.0"
+    babel-plugin-transform-es2015-destructuring "^6.5.0"
+    babel-plugin-transform-es2015-for-of "^6.5.0"
+    babel-plugin-transform-es2015-function-name "^6.5.0"
+    babel-plugin-transform-es2015-literals "^6.5.0"
+    babel-plugin-transform-es2015-modules-commonjs "^6.5.0"
+    babel-plugin-transform-es2015-parameters "^6.5.0"
+    babel-plugin-transform-es2015-shorthand-properties "^6.5.0"
+    babel-plugin-transform-es2015-spread "^6.5.0"
+    babel-plugin-transform-es2015-template-literals "^6.5.0"
+    babel-plugin-transform-flow-strip-types "^6.5.0"
+    babel-plugin-transform-object-assign "^6.5.0"
+    babel-plugin-transform-object-rest-spread "^6.5.0"
+    babel-plugin-transform-react-display-name "^6.5.0"
+    babel-plugin-transform-react-jsx "^6.5.0"
+    babel-plugin-transform-react-jsx-source "^6.5.0"
+    babel-plugin-transform-regenerator "^6.5.0"
+    react-transform-hmr "^1.0.4"
+
 babel-register@^6.24.1, babel-register@^6.26.0:
   version "6.26.0"
   resolved "http://registry.npm.taobao.org/babel-register/download/babel-register-6.26.0.tgz#6ed021173e2fcb486d7acb45c6009a856f647071"
@@ -793,14 +903,14 @@ babel-register@^6.24.1, babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
+babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "http://registry.npm.taobao.org/babel-runtime/download/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
+babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0, babel-template@^6.3.0:
   version "6.26.0"
   resolved "http://registry.npm.taobao.org/babel-template/download/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:
@@ -1241,6 +1351,14 @@ crc@3.3.0:
   version "3.3.0"
   resolved "http://registry.npm.taobao.org/crc/download/crc-3.3.0.tgz#fa622e1bc388bf257309082d6b65200ce67090ba"
 
+create-react-class@15.6.0:
+  version "15.6.0"
+  resolved "http://registry.npm.taobao.org/create-react-class/download/create-react-class-15.6.0.tgz#ab448497c26566e1e29413e883207d57cfe7bed4"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 create-react-class@^15.5.2:
   version "15.6.3"
   resolved "http://registry.npm.taobao.org/create-react-class/download/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
@@ -1655,7 +1773,7 @@ fbjs-scripts@^0.8.1:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.14, fbjs@^0.8.16, fbjs@^0.8.9:
+fbjs@^0.8.14, fbjs@^0.8.16, fbjs@^0.8.9, fbjs@~0.8.9:
   version "0.8.16"
   resolved "http://registry.npm.taobao.org/fbjs/download/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -2009,7 +2127,11 @@ hoek@4.x.x:
   version "4.2.0"
   resolved "http://registry.npm.taobao.org/hoek/download/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
-hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.1:
+hoist-non-react-statics@^2.2.0:
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
+
+hoist-non-react-statics@^2.3.1:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -2068,6 +2190,10 @@ iconv-lite@0.4.19, iconv-lite@^0.4.17, iconv-lite@~0.4.13:
 image-size@^0.6.0:
   version "0.6.2"
   resolved "http://registry.npm.taobao.org/image-size/download/image-size-0.6.2.tgz#8ee316d4298b028b965091b673d5f1537adee5b4"
+
+immutable@~3.7.6:
+  version "3.7.6"
+  resolved "http://registry.npm.taobao.org/immutable/download/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
 
 import-local@^1.0.0:
   version "1.0.0"
@@ -2333,6 +2459,10 @@ istanbul-reports@^1.1.3:
   resolved "http://registry.npm.taobao.org/istanbul-reports/download/istanbul-reports-1.1.3.tgz#3b9e1e8defb6d18b1d425da8e8b32c5a163f2d10"
   dependencies:
     handlebars "^4.0.3"
+
+jcore-react-native@^1.2.5:
+  version "1.2.5"
+  resolved "http://registry.npm.taobao.org/jcore-react-native/download/jcore-react-native-1.2.5.tgz#47dd1674dd9c44d6e5aac3a384f8bf5fa56cc7ae"
 
 jest-changed-files@^22.2.0:
   version "22.2.0"
@@ -2661,6 +2791,10 @@ jsesc@^1.3.0:
 jsesc@~0.5.0:
   version "0.5.0"
   resolved "http://registry.npm.taobao.org/jsesc/download/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
+
+jshare-react-native@^1.1.10:
+  version "1.1.10"
+  resolved "http://registry.npm.taobao.org/jshare-react-native/download/jshare-react-native-1.1.10.tgz#882eef5f5e44d9bb01d2f2627b6b175bb0937400"
 
 json-schema-traverse@^0.3.0:
   version "0.3.1"
@@ -3092,6 +3226,16 @@ minimist@~0.0.1:
   resolved "http://registry.npm.taobao.org/mkdirp/download/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+mobx-react@^4.4.2:
+  version "4.4.2"
+  resolved "http://registry.npm.taobao.org/mobx-react/download/mobx-react-4.4.2.tgz#22d710974883de1763cdafce3025570a79c64336"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+
+mobx@^3.5.1:
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-3.5.1.tgz#8e682ec535cf44e04005b9e37e2df66acc975a42"
 
 morgan@~1.6.1:
   version "1.6.1"
@@ -3526,7 +3670,15 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10:
+  version "15.6.1"
+  resolved "http://registry.npm.taobao.org/prop-types/download/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
+prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "http://registry.npm.taobao.org/prop-types/download/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -3605,6 +3757,17 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+"react-native-deprecated-custom-components@github:facebookarchive/react-native-custom-components":
+  version "0.1.1"
+  resolved "https://codeload.github.com/facebookarchive/react-native-custom-components/tar.gz/83c4fa19ccc9b6cd48ff80e457c493332819b486"
+  dependencies:
+    create-react-class "15.6.0"
+    fbjs "~0.8.9"
+    immutable "~3.7.6"
+    prop-types "^15.5.10"
+    react-timer-mixin "^0.13.2"
+    rebound "^0.0.13"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/react-native-dismiss-keyboard/download/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3621,11 +3784,15 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-safe-area-view@^0.6.0:
-  version "0.6.0"
-  resolved "http://registry.npm.taobao.org/react-native-safe-area-view/download/react-native-safe-area-view-0.6.0.tgz#ce01eb27905a77780219537e0f53fe9c783a8b3d"
+react-native-safe-area-view@^0.7.0:
+  version "0.7.0"
+  resolved "http://registry.npm.taobao.org/react-native-safe-area-view/download/react-native-safe-area-view-0.7.0.tgz#38f5ab9368d6ef9e5d18ab64212938af3ec39421"
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+react-native-storage@^0.2.2:
+  version "0.2.2"
+  resolved "http://registry.npm.taobao.org/react-native-storage/download/react-native-storage-0.2.2.tgz#4449197f122b2da0650e3704e1f050260ed58d9f"
 
 react-native-tab-view@^0.0.74:
   version "0.0.74"
@@ -3692,16 +3859,16 @@ react-native@0.53.0:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
-react-navigation@^1.0.3:
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/react-navigation/download/react-navigation-1.0.3.tgz#1687ea67a72a382633b01e7afda88582ebc3b5f9"
+react-navigation@^1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/react-navigation/download/react-navigation-1.2.1.tgz#06cb2c97eb1b2e20bdb4ff7aee1acfa218a1561b"
   dependencies:
     clamp "^1.0.1"
     hoist-non-react-statics "^2.2.0"
     path-to-regexp "^1.7.0"
     prop-types "^15.5.10"
     react-native-drawer-layout-polyfill "^1.3.2"
-    react-native-safe-area-view "^0.6.0"
+    react-native-safe-area-view "^0.7.0"
     react-native-tab-view "^0.0.74"
 
 react-proxy@^1.1.7:
@@ -3795,6 +3962,10 @@ realpath-native@^1.0.0:
   resolved "http://registry.npm.taobao.org/realpath-native/download/realpath-native-1.0.0.tgz#7885721a83b43bd5327609f0ddecb2482305fdf0"
   dependencies:
     util.promisify "^1.0.0"
+
+rebound@^0.0.13:
+  version "0.0.13"
+  resolved "http://registry.npm.taobao.org/rebound/download/rebound-0.0.13.tgz#4a225254caf7da756797b19c5817bf7a7941fac1"
 
 regenerate@^1.2.1:
   version "1.3.3"
@@ -4347,6 +4518,13 @@ tar@^2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+teaset@^0.5.5:
+  version "0.5.5"
+  resolved "http://registry.npm.taobao.org/teaset/download/teaset-0.5.5.tgz#aa938dd3a1e40f6fa1e13945e76312b2ebd311ab"
+  dependencies:
+    prop-types "^15.5.10"
+    react-native-deprecated-custom-components "github:facebookarchive/react-native-custom-components"
 
 temp@0.8.3:
   version "0.8.3"

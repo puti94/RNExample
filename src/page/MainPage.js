@@ -13,23 +13,37 @@ import {
     Text,
     Button, LayoutAnimation
 } from 'react-native';
+import {inject, observer} from 'mobx-react'
+import {routeHelper} from '../utils/index'
+import {RouteHelper} from '../utils/RouteHelper'
 
-export default class Test1Page extends Component {
+// @inject('userStore', 'baseStore', 'themeStore')
+@routeHelper
+// @observer
+export default class MainPage extends Component {
+
+    static navigationOptions = ({navigation}) => ({
+        headerTitle: 'MainPage',
+    });
 
     constructor(props) {
         super(props);
+        console.log(this)
     }
-
 
     render() {
         LayoutAnimation.easeInEaseOut();
         return (
             <View style={styles.container}>
-                <Text>页面1</Text>
+                <Text >页面1</Text>
 
                 <Button onPress={() => {
-                    this.props.navigation.navigate('Test2Page', {params: '参数'})
+                    RouteHelper.navigate('UserPage')
                 }} title={'跳转下一页'}/>
+
+                <Button onPress={() => {
+
+                }} title={'切换'}/>
 
             </View>
         );
@@ -40,8 +54,11 @@ export default class Test1Page extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
+    view: {
+        height: 60,
+        backgroundColor: 'gray',
+        marginTop: 10
+    }
 });

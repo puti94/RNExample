@@ -115,8 +115,21 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file('text.jks')
+            storePassword "111111"
+            keyAlias "key0"
+            keyPassword "111111"
+        }
+
+    }
+
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -137,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':jshare-react-native')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
