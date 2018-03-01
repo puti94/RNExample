@@ -2460,10 +2460,6 @@ istanbul-reports@^1.1.3:
   dependencies:
     handlebars "^4.0.3"
 
-jcore-react-native@^1.2.5:
-  version "1.2.5"
-  resolved "http://registry.npm.taobao.org/jcore-react-native/download/jcore-react-native-1.2.5.tgz#47dd1674dd9c44d6e5aac3a384f8bf5fa56cc7ae"
-
 jest-changed-files@^22.2.0:
   version "22.2.0"
   resolved "http://registry.npm.taobao.org/jest-changed-files/download/jest-changed-files-22.2.0.tgz#517610c4a8ca0925bdc88b0ca53bd678aa8d019e"
@@ -2791,10 +2787,6 @@ jsesc@^1.3.0:
 jsesc@~0.5.0:
   version "0.5.0"
   resolved "http://registry.npm.taobao.org/jsesc/download/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
-
-jshare-react-native@^1.1.10:
-  version "1.1.10"
-  resolved "http://registry.npm.taobao.org/jshare-react-native/download/jshare-react-native-1.1.10.tgz#882eef5f5e44d9bb01d2f2627b6b175bb0937400"
 
 json-schema-traverse@^0.3.0:
   version "0.3.1"

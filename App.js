@@ -51,10 +51,11 @@ export default class App extends Component<Props> {
 class RouteMessage extends Component {
     render() {
         return <FlatList
-            style={{position: 'absolute', width: 100, bottom: 0, height: 300, opacity: 0.7, backgroundColor: '#eeeeee'}}
+            style={{position: 'absolute', width: 100, bottom: 0, height: 300, opacity: 0.7, backgroundColor: 'gray'}}
             data={RouteHelper.routeStack.slice()}
             keyExtractor={(item, i) => item.key}
             renderItem={({item}) => <Text
+                style={{color: 'white'}}
                 onPress={() => RouteHelper.goBackto(item.routeName)}>{item.routeName}</Text>}
         />
     }
