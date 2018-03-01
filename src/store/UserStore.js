@@ -32,9 +32,12 @@ export class UserStore {
      * 账号密码登录
      * @param account
      * @param password
+     * @param store 页面的store
      */
-    login(account, password) {
+    login(account, password, store) {
+        store.setLoading(true, '登录中');
         setTimeout(() => {
+            store.setLoading(false)
             this.setData(new UserData({uid: '21123', name: '张三', headImg: 'http://'}))
         }, 2000)
     }

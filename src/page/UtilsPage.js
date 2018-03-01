@@ -7,34 +7,71 @@
 
 
 import React, {Component} from 'react';
-import {View, Text, Button, TextInput, ScrollView} from 'react-native'
+import {View, Button, TextInput, ScrollView} from 'react-native'
 import {pageHelper, CommonUtils} from '../utils/index'
 import {NavigationActions} from 'react-navigation'
 import {observer, inject} from 'mobx-react'
+import {UtilsPageStore} from '../store/UtilsPageStore'
 import {ListRow} from 'teaset'
+import {LoadingUtils} from '../utils/index'
 
 @inject('baseStore')
 @pageHelper
 @observer
-export default class LaunchPage extends Component {
+export default class UtilsPage extends Component {
 
     static  navigationOptions = ({navigation}) => ({
-        title: 'LaunchPage',
-        headerRight: <Text onPress={() => navigation.navigate('MainPage')}>点击</Text>
+        title: '工具类用法'
     });
 
+    getStore() {
+        return new UtilsPageStore()
+    }
 
     constructor(props) {
         super(props);
-        console.log(this)
     }
 
     render() {
         return (<ScrollView style={{flex: 1}}>
+            <ListRow
+                title="城市选择"
+                onPress={() => {
+                    CommonUtils.showChooseCity((value) => {
+                        this.store.setChooseArea(value)
+                    }, (value) => {
+                        this.store.setChooseArea(value)
+                    })
+                }}
+                detail={`${this.store.chooseArea.province}-${this.store.chooseArea.city}-${this.store.chooseArea.area}`}/>
+            <ListRow
+                ref={ref => this.clickView = ref}
+                title="图片放大"
+                onPress={() => {
+                    CommonUtils.showBigImages(this.clickView, 1,
+                        [R.images.ic_photo1, R.images.ic_photo2, R.images.ic_photo3],
+                        (index) => {
+                            Toast.message(`点击了第${index + 1}张`)
+                        })
+                }}
+            />
+            <ListRow
+                title="显示加载框"
+                onPress={() => {
+                    LoadingUtils.show();
+                    setTimeout(() => {
+                        LoadingUtils.hide()
+                    }, 2000)
+                }}
+            />
 
-            <ListRow title={'工具页面'} onPress={() => {
-                RouteHelper.navigate('UtilsPage')
-            }}/>
+            <ListRow
+                title="显示自定义加载框"
+                onPress={() => {
+                    LoadingUtils.show('', '', <View style={{width: 100, height: 100, backgroundColor: 'blue'}}/>)
+                }}
+            />
+
 
             <Button title="显示加载视图" onPress={() => {
                 this.store.setLoading(true, '我是自定义加载');

@@ -10,4 +10,7 @@ export const images = {
     ic_home: require('./image/ic_home.png'),
     ic_cart: require('./image/ic_cart.png'),
     ic_mine: require('./image/ic_mine.png'),
+    ic_photo1: require('./image/ic_photo1.jpg'),
+    ic_photo2: require('./image/ic_photo2.jpg'),
+    ic_photo3: require('./image/ic_photo3.jpg'),
 };

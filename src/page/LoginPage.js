@@ -13,11 +13,11 @@ import {
     Text,
     Button
 } from 'react-native';
-import {routeHelper} from "../utils/index";
+import {pageHelper} from "../utils/index";
 import {inject, observer} from 'mobx-react'
 import {autorun} from 'mobx'
 @inject('userStore')
-@routeHelper
+@pageHelper
 @observer
 export default class LoginPage extends Component {
     static navigationOptions = ({navigation}) => ({
@@ -26,10 +26,10 @@ export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
-        console.log('login', this);
         autorun(() => {
             if (this.props.userStore.isLogin) {
-                this.props.navigation.replace(this.params.routeName, this.params.params)
+
+                this.props.navigation.goBack()
             }
         })
     }
@@ -63,11 +63,11 @@ export default class LoginPage extends Component {
     }
 
     _login = () => {
-        this.props.userStore.login('157xxxxxxxx', '111111')
+        this.props.userStore.login('157xxxxxxxx', '111111', this.store)
     };
 
     render() {
-        console.log('render');
+        console.log('render', this);
         return (
             <View style={styles.container}>
                 <Text>登录页面</Text>
