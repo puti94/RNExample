@@ -73,30 +73,66 @@ export class RouteHelper {
         this.navigation.navigate(routeName, params);
     }
 
+    static goBack(key) {
+        this.navigation.goBack(key)
+    }
+
+    static pop(n: number, params) {
+        this.navigation.pop(n, params)
+    }
+
+    static popToTop(params) {
+        this.navigation.popToTop(params)
+    }
+
+    static replace(routeName, params) {
+        this.navigation.replace(routeName, params)
+    }
+
+    static push(routeName, params, delay = true) {
+        let nowTime = new Date().getTime();
+        if ((nowTime - this.lastActionTime) <= this.interval && delay) {
+            //重复点击了
+            console.warn('间隔时间内重复点击了');
+            return
+        }
+        if (this.routeInterceptor && !this.routeInterceptor(routeName, params)) {
+            console.log('路由跳转被拦截');
+            return;
+        }
+        if (!this.navigation) {
+            console.error('请先初始化路由');
+            return
+        }
+        this.lastActionTime = nowTime;
+        this.navigation.push(routeName, params);
+    }
+
     /**
      * 返回第一个routeName 原理。StackNavigation能使用goBack(key)返回指定页面的上一页。
      * 所以根据想回到routeName页面就需要查找路由栈列表有这个routeName第一个的索引。获取索引+1值的key,就能回到第一个routeName的页面
      * @param routeName  声明的组件名
      * @returns {boolean} 正确则表示返回成功
      */
-    static goBackto(routeName) {
+    static goBackTo(routeName) {
+        let tag = false;
         this.routeStack.forEach((state, i) => {
             console.log('状态', state.routeName);
             //判断routeName相同并且不是列表最后一个表示匹配成功
-            if (state.routeName === routeName && i < this.routeStack.length - 1) {
+            if (state.routeName === routeName && i < this.routeStack.length - 1 && !tag) {
                 //获取+1的key
                 let key = this.routeStack[i + 1].key;
                 //需要移除导航栈索引后面的值
                 //执行StackNavigation的goBack(key)方法
                 this.navigation.goBack(key);
-                return true
+                tag = true;
             }
         });
-        return false;
+        return tag;
     }
 
     /**
-     * 重置路由
+     * 重置路由,只重置一页,如需自定义重置路由。参照写法自己写
      * @param routeName
      */
     static reset(routeName) {

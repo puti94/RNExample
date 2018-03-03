@@ -65,7 +65,7 @@ export default class ChooseCityWheel extends Component {
             <Wheel
                 key="1"
                 style={styles.wheelStyle}
-                itemStyle={{textAlign: 'center', fontSize: 16, color: 'black'}}
+                itemStyle={styles.itemStyle}
                 onChange={action((index) => {
                     this.provinceIndex = index;
                     this.cityIndex = 0;
@@ -79,7 +79,7 @@ export default class ChooseCityWheel extends Component {
             <Wheel
                 key="2"
                 style={styles.wheelStyle}
-                itemStyle={{textAlign: 'center', fontSize: 16, color: 'black'}}
+                itemStyle={styles.itemStyle}
                 onChange={action((index) => {
                     this.cityIndex = index;
                     this.areaIndex = 0;
@@ -94,7 +94,7 @@ export default class ChooseCityWheel extends Component {
             <Wheel
                 key="3"
                 style={styles.wheelStyle}
-                itemStyle={{textAlign: 'center', fontSize: 16, color: 'black'}}
+                itemStyle={styles.itemStyle}
                 onChange={action((index) => {
                     this.areaIndex = index;
                     this.onValueChange()
@@ -135,5 +135,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingLeft: 10,
         paddingRight: 10
+    },
+    itemStyle: {
+        textAlign: 'center',
+        fontSize: 16,
+        color: 'black'
     }
 });

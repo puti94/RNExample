@@ -6,7 +6,7 @@
 
 
 import {Toast} from "teaset";
-export default class StringUtils {
+export class StringUtils {
 
 
     /**

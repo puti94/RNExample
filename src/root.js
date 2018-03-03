@@ -14,6 +14,11 @@ import LoginPage from './page/LoginPage'
 import LaunchPage from './page/LaunchPage'
 import UserPage from './page/UserPage'
 import UtilsPage from './page/UtilsPage'
+import RouteUtilPage from './page/RouteUtilPage'
+import GuidePage from './page/GuidePage'
+import BasePage from './page/BasePage'
+import SetPage from './page/SetPage'
+import TeasetApp from '../node_modules/teaset/example/App'
 
 export const AppNavigator = StackNavigator(
     {
@@ -25,14 +30,13 @@ export const AppNavigator = StackNavigator(
         LoginPage: {screen: LoginPage},
         UtilsPage: {screen: UtilsPage},
         UserPage: {screen: UserPage},
+        RouteUtilPage: {screen: RouteUtilPage},
+        GuidePage: {screen: GuidePage},
+        BasePage: {screen: BasePage},
+        SetPage: {screen: SetPage},
+        TeasetApp: {screen: pageHelper()(TeasetApp)},
+    }, {
+        initialRouteName: 'LaunchPage'
     }
 );
-// export const AppNavigator = StackNavigator(
-//     {
-//         MainPage: {screen: route(MainPage)},
-//         UserPage: {screen: route(UserPage)},
-//         UtilsPage: {screen: route(UtilsPage)},
-//         Test4Page: {screen: route(Test4Page)},
-//     }
-// );
 

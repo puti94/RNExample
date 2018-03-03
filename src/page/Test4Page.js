@@ -13,9 +13,9 @@ import {
     Text,
     Button
 } from 'react-native';
-import {routeHelper} from '../utils/PageUtils'
+import {pageHelper} from '../utils/PageUtils'
 
-@routeHelper
+@pageHelper()
 export default class Test4Page extends Component {
     static navigationOptions = ({navigation}) => ({
         headerTitle: 'Test4Page',

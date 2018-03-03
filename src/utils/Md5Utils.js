@@ -132,7 +132,7 @@ function core_md5(x, len) {
         c = safe_add(c, oldc);
         d = safe_add(d, oldd);
     }
-    return Array(a, b, c, d);
+    return [a, b, c, d];
 
 }
 

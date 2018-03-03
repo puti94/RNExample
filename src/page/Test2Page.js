@@ -11,11 +11,13 @@ import {
     StyleSheet,
     View,
     Text,
-    Button
+    Button,
+    ScrollView
 } from 'react-native';
-import {routeHelper} from "../utils/index";
-import {withNavigation} from 'react-navigation'
-@routeHelper
+import {pageHelper} from "../utils/index";
+import {ListRow} from 'teaset'
+
+@pageHelper()
 export default class Test2Page extends Component {
 
     static navigationOptions = ({navigation}) => ({
@@ -27,48 +29,25 @@ export default class Test2Page extends Component {
         console.log('constructor', this)
     }
 
-    componentWillMount() {
-        console.log('componentWillMount')
-    }
-
-    componentWillFocus(e) {
-        console.log('componentWillFocus', e)
-    }
-
-    componentDidFocus = (e) => {
-        console.log('componentDidFocus', e)
-    };
-
-    componentDidMount() {
-        console.log('componentDidMount')
-    }
-
-    componentWillBlur(e) {
-        console.log('componentWillBlur', e)
-    }
-
-    componentWillUnmount() {
-        console.log('componentWillUnmount')
-    }
-
-    componentDidBlur(e) {
-        console.log('componentDidBlur', e)
-    }
-
 
     render() {
-        console.log('render');
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text>页面2</Text>
-                <Button onPress={() => {
-                    this.props.navigation.navigate('Test3Page')
-                }} title={'跳转下一页'}/>
-
-                <Button onPress={() => {
-                    this.props.navigation.pop()
-                }} title={'返回上一页'}/>
-            </View>
+                <ListRow title={'返回前两页 pop(number)'} onPress={() => {
+                    RouteHelper.pop(2)
+                }}/>
+                <ListRow title={'返回指定页 goBack(routeName) success'} onPress={() => {
+                    if (!RouteHelper.goBackTo('LaunchPage')) {
+                        Toast.fail('返回失败')
+                    }
+                }}/>
+                <ListRow title={'返回指定页 goBack(routeName) fail'} onPress={() => {
+                    if (!RouteHelper.goBackTo('MainPage')) {
+                        Toast.fail('返回失败')
+                    }
+                }}/>
+            </ScrollView>
         );
     }
 }
@@ -77,8 +56,5 @@ export default class Test2Page extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
     },
 });

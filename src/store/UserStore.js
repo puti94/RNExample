@@ -23,22 +23,36 @@ export class UserStore {
 
     constructor() {
         autorun(() => {
-            console.log('用户状态改变', this.isLogin)
+            console.log('用户状态改变', this.isLogin, this.data)
         })
     }
 
 
     /**
      * 账号密码登录
-     * @param account
-     * @param password
-     * @param store 页面的store
+     * @param params
      */
-    login(account, password, store) {
-        store.setLoading(true, '登录中');
+    login(params: { type: string, account: string, password: string, openId: string, store: string, callBack: () => void }) {
+        params.store && params.store.setLoading(true);
+        switch (params.type) {
+            case 'account':
+                //请求后台接口 API.login(params.account,params.password,type:params.type)
+                break;
+            case 'qq':
+                //请求后台接口 API.login(params.openId,type:params.type)
+                break;
+            case 'wx':
+                //请求后台接口 API.login(params.openId,type:params.type)
+                break;
+            case 'sina':
+                //请求后台接口 API.login(params.openId,type:params.type)
+                break;
+
+        }
         setTimeout(() => {
-            store.setLoading(false)
-            this.setData(new UserData({uid: '21123', name: '张三', headImg: 'http://'}))
+            params.store && params.store.setLoading(false);
+            this.setData(new UserData({uid: '21123', name: '张三', headImg: 'http://'}));
+            params.callBack && params.callBack()
         }, 2000)
     }
 
@@ -47,18 +61,9 @@ export class UserStore {
      */
     logout() {
         this.setData(null);
-
+        //doSomething
     }
 
-    /**
-     * 其它登录方式
-     * @param openid
-     * @param type
-     */
-    otherLogin(openid, type) {
-
-
-    }
 }
 
 export class UserData {

@@ -22,6 +22,7 @@ export class BasePageStore {
     isError: boolean;
     loadingMsg: string;
     errorMsg: string;
+    errorPress: () => void;
 
     constructor(data = {}, isLoading = false, isError = false, loadingMsg = '加载中...', errorMsg = '发生错误了') {
         this.setData(data);
@@ -35,7 +36,11 @@ export class BasePageStore {
      * 加载数据的方法
      */
     loadData() {
-
+        //模拟网络加载请求
+        this.setLoading(true);
+        setTimeout(() => {
+            this.setLoading(false)
+        }, 1000)
     }
 
     /**
@@ -50,13 +55,15 @@ export class BasePageStore {
      * 改变isError的值
      * @param isError  是否错误
      * @param errorMsg 错误的信息
+     * @param errorPress 点击事件
      */
-    @action setError(isError: boolean = true, errorMsg: string = '发生错误了') {
+    @action setError(isError: boolean = true, errorMsg: string = '发生错误了', errorPress: () => void = null) {
         if (this.isLoading) {
             this.isLoading = false;
         }
         this.isError = isError;
         this.errorMsg = errorMsg;
+        this.errorPress = errorPress;
     }
 
     /**
@@ -65,6 +72,9 @@ export class BasePageStore {
      * @param loadingMsg 加载提示
      */
     @action setLoading(isLoading: boolean = true, loadingMsg: string = '加载中...') {
+        if (this.isError) {
+            this.isError = false
+        }
         this.isLoading = isLoading;
         this.loadingMsg = loadingMsg;
     }

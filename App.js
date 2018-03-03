@@ -5,13 +5,12 @@
  */
 
 import React, {Component} from 'react';
-import {FlatList, Text, View, AsyncStorage} from 'react-native'
+import {View} from 'react-native'
 import {AppNavigator} from "./src/root";
-import {Provider, observer} from 'mobx-react'
+import {Provider} from 'mobx-react'
 import {useStrict} from 'mobx'
 import {BaseAppStore} from './src/store/index'
-import {RouteHelper} from './src/utils/index'
-
+import RouteMessageView from './src/component/RouteMessageView'
 
 useStrict(true);
 
@@ -36,27 +35,17 @@ RouteHelper.routeInterceptor = (routeName, params) => {
 export default class App extends Component<Props> {
 
     render() {
-        return <Provider {...store} baseStore={store}>
-            <View style={{flex: 1}}>
+        return __DEV__ ?
+            <Provider {...store} baseStore={store}>
+                <View style={{flex: 1}}>
+                    <AppNavigator/>
+                    <RouteMessageView/>
+                </View>
+            </Provider>
+            :
+            <Provider {...store} baseStore={store}>
                 <AppNavigator/>
-                {__DEV__ ? <RouteMessage/> : null}
-            </View>
-        </Provider>
-
-
+            </Provider>
     }
 }
 
-@observer
-class RouteMessage extends Component {
-    render() {
-        return <FlatList
-            style={{position: 'absolute', width: 100, bottom: 0, height: 300, opacity: 0.7, backgroundColor: 'gray'}}
-            data={RouteHelper.routeStack.slice()}
-            keyExtractor={(item, i) => item.key}
-            renderItem={({item}) => <Text
-                style={{color: 'white'}}
-                onPress={() => RouteHelper.goBackto(item.routeName)}>{item.routeName}</Text>}
-        />
-    }
-}
