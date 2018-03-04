@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import {Carousel, Button} from 'teaset'
 
-@inject('themeStore')
 @pageHelper(false)
 @observer
 export default class GuidePage extends Component {
@@ -41,9 +40,9 @@ export default class GuidePage extends Component {
                         <Carousel.Control
                             style={styles.controlContainer}
                             dot={<Text
-                                style={[styles.control, {color: this.props.themeStore.themeColor,}]}>□</Text>}
+                                style={[styles.control, {color: appTheme.themeColor,}]}>□</Text>}
                             activeDot={<Text
-                                style={[styles.control, {color: this.props.themeStore.themeColor,}]}>■</Text>}
+                                style={[styles.control, {color: appTheme.themeColor,}]}>■</Text>}
                         />
                     }
                     cycle={false}
@@ -57,12 +56,12 @@ export default class GuidePage extends Component {
                 {this.isShow ? <Button
                     style={{
                         position: 'absolute',
-                        backgroundColor: this.props.themeStore.themeColor,
-                        top: screenHeight - 60,
+                        backgroundColor: appTheme.themeColor,
+                        top: SCREEN_HEIGHT - 60,
                         width: 120,
                         alignSelf: 'center',
                         height: 35,
-                        borderColor: this.props.themeStore.themeColor
+                        borderColor: appTheme.themeColor
                     }}
                     title={'立即体验'}
                     titleStyle={{color: 'white'}}

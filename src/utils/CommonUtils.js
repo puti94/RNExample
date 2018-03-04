@@ -5,7 +5,7 @@
 import React from 'react'
 import {StatusBar} from 'react-native';
 import {AlbumView, Overlay} from 'teaset'
-import ChooseCityWheel from "../component/ChooseCityWheel";
+import ChooseCityWheel from "../components/ChooseCityWheel";
 
 export class CommonUtils {
 
@@ -52,7 +52,7 @@ export class CommonUtils {
      * @returns {{uri: string}}
      */
     static base64Image(data) {
-        return {uri: `data:image/png;base64,${data}`}
+        return `data:image/png;base64,${data}`
     }
 
     /**

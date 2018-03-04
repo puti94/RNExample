@@ -4,12 +4,13 @@
  * GitHub:https://github.com/puti94
  * Email:1059592160@qq.com
  */
-import {storage} from './database';
-import {Dimensions, PixelRatio} from 'react-native'
+import {storage} from './Database';
+import {Dimensions, PixelRatio, Platform} from 'react-native'
 import {RouteHelper} from '../utils/RouteHelper'
 import {Toast} from 'teaset'
 import * as R from '../res/index'
 import {pageHelper} from '../utils/index'
+import {appTheme} from '../store/Theme'
 import {inject, observer} from 'mobx-react'
 import {observable, computed, autorun, action} from 'mobx'
 const {width, height} = Dimensions.get('window');
@@ -78,8 +79,7 @@ const FontSize = (size) => {
  */
 global.Toast = Toast;
 global.storage = storage;
-global.screenWidth = width;
-global.screenHeight = height;
+
 global.RouteHelper = RouteHelper;
 global.R = R;
 global.FontSize = FontSize;
@@ -90,3 +90,8 @@ global.action = action;
 global.observer = observer;
 global.inject = inject;
 global.autorun = autorun;
+global.SCREEN_WIDTH = width;
+global.SCREEN_HEIGHT = height;
+global._IOS_ = Platform.OS === 'ios';
+global._ANDROID_ = Platform.OS === 'android';
+global.appTheme = appTheme;

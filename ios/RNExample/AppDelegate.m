@@ -32,6 +32,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  //开发模式下占位屏可以先不用打开，以免JS发生错误红屏显示不出来
 //  [SplashScreen show];
   return YES;
 }

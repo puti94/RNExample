@@ -6,10 +6,12 @@
  */
 import {observable} from 'mobx'
 
-export class ThemeStore {
+class ThemeStore {
     @observable
         //主题颜色
     themeColor = 'blue';
 
 
 }
+
+export const appTheme = new ThemeStore();

@@ -13,7 +13,6 @@ import {
 import {pageHelper} from '../utils/index'
 import Spinkit from 'react-native-spinkit';
 import {inject} from 'mobx-react'
-@inject('themeStore')
 @pageHelper()
 export default class WebPage extends Component {
 
@@ -89,7 +88,7 @@ export default class WebPage extends Component {
             justifyContent: 'center',
             paddingBottom: 100
         }}>
-            <Spinkit size={70} color={this.props.themeStore.themeColor} type={'9CubeGrid'}/>
+            <Spinkit size={70} color={appTheme.themeColor} type={'9CubeGrid'}/>
         </View>)
     };
 
@@ -107,13 +106,12 @@ export default class WebPage extends Component {
         }}>
             <Text style={{
                 fontSize: 14,
-                color: Theme.content,
                 marginTop: 15
             }}>页面加载错误</Text>
             <TouchableOpacity
                 style={{
                     marginTop: 20,
-                    backgroundColor: Theme.hint,
+                    backgroundColor: appTheme.hint,
                     borderRadius: 5,
                     height: 30,
                     width: 100,

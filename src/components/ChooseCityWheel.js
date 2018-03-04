@@ -6,7 +6,7 @@ import React, {Component}from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Wheel, Button} from 'teaset';
 import PropsType from 'prop-types'
-import AREA from '../res/area.json';
+import AREA from '../res/json/area.json';
 import {observer} from 'mobx-react';
 import {observable, computed, action} from 'mobx'
 

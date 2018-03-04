@@ -24,7 +24,7 @@ export class BasePageStore {
     errorMsg: string;
     errorPress: () => void;
 
-    constructor(data = {}, isLoading = false, isError = false, loadingMsg = '加载中...', errorMsg = '发生错误了') {
+    constructor(data = null, isLoading = false, isError = false, loadingMsg = '加载中...', errorMsg = '发生错误了') {
         this.setData(data);
         this.isLoading = isLoading;
         this.isError = isError;

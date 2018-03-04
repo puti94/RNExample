@@ -5,7 +5,7 @@
  * Email:1059592160@qq.com
  */
 
-import {BasePageStore}  from '../base/BasePageStore'
+import {BasePageStore}  from './BasePageStore'
 import {observable, action} from 'mobx'
 export class UtilsPageStore extends BasePageStore {
 

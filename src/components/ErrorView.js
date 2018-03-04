@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {observer} from 'mobx-react'
+import {appTheme} from '../store/Theme'
 /**
  * 默认错误视图,如果想自定义错误视图可继承此类重载renderErrorView()方法并声明成observer。
  */
@@ -32,7 +33,7 @@ export class ErrorView extends Component {
     renderErrorView() {
         return (<View style={style.container}>
             <Text>{this.props.store.errorMsg}</Text>
-            <TouchableOpacity style={style.btn_style} onPress={this.props.onPress}>
+            <TouchableOpacity style={[style.btn_style,{ borderColor: appTheme.themeColor}]} onPress={this.props.onPress}>
                 <Text>{this.props.btnTitle}</Text>
             </TouchableOpacity>
         </View>)
@@ -57,7 +58,7 @@ const style = StyleSheet.create({
         paddingVertical: 3,
         borderRadius: 3,
         borderWidth: 1,
-        borderColor: 'red'
+
     }
 });
 

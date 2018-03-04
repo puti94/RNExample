@@ -6,11 +6,11 @@
 
 import React, {Component} from 'react';
 import {View} from 'react-native'
-import {AppNavigator} from "./src/root";
+import {AppNavigator} from "./src/NavigationConfig";
 import {Provider} from 'mobx-react'
 import {useStrict} from 'mobx'
 import {BaseAppStore} from './src/store/index'
-import RouteMessageView from './src/component/RouteMessageView'
+import RouteMessageView from './src/components/RouteMessageView'
 
 useStrict(true);
 

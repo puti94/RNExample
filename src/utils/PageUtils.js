@@ -9,9 +9,9 @@
 import React, {Component} from 'react'
 import {RouteHelper} from './RouteHelper'
 import {View} from "react-native";
-import {ErrorView} from "../component/ErrorView";
-import {LoadingView} from "../component/LoadingView";
-import {BasePageStore} from "../base/BasePageStore";
+import {ErrorView} from "../components/ErrorView";
+import {LoadingView} from "../components/LoadingView";
+import {BasePageStore} from "../store/BasePageStore";
 import hoistNonReactStatics from 'hoist-non-react-statics'
 /**
  * 使用装饰模式给组件添加一些功能，将RouteHelper模块必须的功能加上,
@@ -31,15 +31,15 @@ export const pageHelper = (hasStoreAndView: boolean = true, isStackChild: boolea
                 return null;
             }
             if (isStackChild && !_instance.props.navigation) {
-                console.error('此组件不是StackNavigator的子组件');
+                console.error('此组件不是StackNavigator的子组件,请设为@pageHelper(true,false)');
                 return null;
             }
-            if (isStackChild && !_instance.props.navigation.addListener || typeof _instance.props.navigation.addListener !== 'function') {
+            if (isStackChild && (!_instance.props.navigation.addListener || typeof _instance.props.navigation.addListener !== 'function')) {
                 console.error('请更新最新版本的react-navigation');
                 return null;
             }
 
-            if (isStackChild) {
+            if (isStackChild && _instance.props.navigation) {
                 let _mComponentDidMount = _instance.componentDidMount ? _instance.componentDidMount.bind(_instance) : null;
                 let _mComponentWillUnmount = _instance.componentWillUnmount ? _instance.componentWillUnmount.bind(_instance) : null;
                 _instance.componentDidMount = () => {

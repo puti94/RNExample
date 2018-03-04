@@ -8,19 +8,19 @@
 
 import React, {Component} from 'react';
 import {
-    StyleSheet,
     Text,
     BackHandler
 } from 'react-native';
 import {inject, observer} from 'mobx-react'
-import {routeHelper, pageHelper} from '../utils/index'
+import {pageHelper} from '../utils/index'
 import {RouteHelper} from '../utils/RouteHelper'
 import {TabView, Button} from "teaset";
-
+import HomePage from './HomePage'
+import {ShopCarPage} from './ShopCarPage'
 
 const titles = ['首页', '购物车', '我的'];
 
-@inject('userStore', 'baseStore', 'themeStore')
+@inject('userStore', 'baseStore', 'shopCar')
 @pageHelper()
 @observer
 export default class MainPage extends Component {
@@ -50,13 +50,13 @@ export default class MainPage extends Component {
                     activeTitleStyle={{color: 'red'}}
                     icon={R.images.ic_home}
                 >
-                    <Text>首页</Text>
+                    <HomePage/>
                 </TabView.Sheet>
                 <TabView.Sheet
                     title='购物车'
                     icon={R.images.ic_cart}
                 >
-                    <Text>首页</Text>
+                    <ShopCarPage tabChange={this.onTabChange}/>
                 </TabView.Sheet>
                 <TabView.Sheet
                     title='我的'
@@ -84,9 +84,7 @@ export default class MainPage extends Component {
             case 0:
                 return null;
             case 1:
-                return <Button type={'link'} title={'编辑'} onPress={() => {
-                    Toast.message('编辑模式')
-                }}/>;
+                return <ObserverButton/>;
             case 2:
                 return <Button type={'link'} title={'设置'} onPress={() => {
                     RouteHelper.push('SetPage')
@@ -105,4 +103,17 @@ export default class MainPage extends Component {
         }
         return false;
     };
+}
+
+@inject('shopCar')
+@observer
+class ObserverButton extends Component {
+
+    render() {
+        return this.props.shopCar.dataLength !== 0 ?
+            <Button type={'link'} title={this.props.shopCar.isEditMode ? '完成' : '编辑'}
+                    onPress={() => {
+                        this.props.shopCar.reversalEdit()
+                    }}/> : null;
+    }
 }

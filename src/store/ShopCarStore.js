@@ -95,7 +95,7 @@ class ShopData {
     number: number;
     title: string;
     img: string;
-    price: string;
+    price: number;
     id: string;
     @observable
     check: boolean;

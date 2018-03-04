@@ -7,7 +7,7 @@
 
 export {BaseAppStore} from './BaseAppStore'
 export {ShopCarStore} from './ShopCarStore'
-export {ThemeStore} from './ThemeStore'
+export {ThemeStore} from './Theme'
 export {UserStore} from './UserStore'
 export {UtilsPageStore} from './UtilsPageStore'
 export {appStateStore} from './AppStateStore'

@@ -60,12 +60,12 @@ export default class RouteMessageView extends Component {
             this._previousBottom = 0
         }
         const _width = this.hide ? 50 : 130;
-        if (this._previousLeft + _width > screenWidth) {
-            this._previousLeft = screenWidth - _width;
+        if (this._previousLeft + _width > SCREEN_WIDTH) {
+            this._previousLeft = SCREEN_WIDTH - _width;
         }
         const _height = 30;
-        if (this._previousBottom + _height > screenHeight) {
-            this._previousBottom = screenHeight - _height;
+        if (this._previousBottom + _height > SCREEN_HEIGHT) {
+            this._previousBottom = SCREEN_HEIGHT - _height;
         }
         this._viewStyles.style.left = this._previousLeft;
         this._viewStyles.style.bottom = this._previousBottom;
