@@ -28,7 +28,7 @@
 ### 主要第三方库
  - 数据管理   [mobx](https://github.com/mobxjs/mobx)
  - 路由导航  [react-navigation](https://github.com/react-navigation/react-navigation)
- - 主要UI框架  [teaset](https://github.com/rilyu/teaset)
+ - 主要UI框架  [teaset](https://github.com/rilyu/teaset)  [react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
  - 启动页     [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen)
  - 缓存清理   [react-native-http-cache](https://github.com/reactnativecn/react-native-http-cache)
  - 设备信息   [react-native-device-info](https://github.com/rebeccahughes/react-native-device-info)
@@ -37,8 +37,9 @@
 - [x] 启动页
 - [x] react-navigation封装
 - [x] 购物车示例
+- [x] 缓存清理
 - [ ] code-push 热更新
 - [ ] 极光消息推送
 - [ ] 微信支付宝支付
 - [ ] 第三方分享,登录
-- [ ] 第三方分享,登录
+- [ ] Android App自更新
