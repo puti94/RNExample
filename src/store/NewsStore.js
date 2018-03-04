@@ -23,9 +23,7 @@ export class NewsStore extends BasePageStore {
                 this.setData(res)
             })
             .catch(e => {
-                this.data.length === 0 ? this.setError(true, e.msg, action(() => {
-                    appTheme.themeColor = 'red'
-                })) : Toast.fail('请求失败')
+                this.data.length === 0 ? this.setError(true, e.msg) : Toast.fail('请求失败')
             })
     }
 }

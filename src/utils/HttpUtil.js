@@ -14,7 +14,7 @@ export function ImageBody(response) {
 export class HttpUtil {
     static header = null;
     //超时设置
-    static timeOut = 20;
+    static timeOut = 20 * 1000;
     static host = '';
 
     /**

@@ -9,9 +9,7 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    View,
     Text,
-    Image,
     ScrollView
 } from 'react-native';
 import ListRow from "teaset/components/ListRow/ListRow";
