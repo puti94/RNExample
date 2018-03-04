@@ -96,10 +96,13 @@ export const pageHelper = (hasStoreAndView: boolean = true, isStackChild: boolea
                 _instance.render = () => {
                     return <View style={{flex: 1}}>
                         {_mRender()}
-                        { !_instance.renderErrorView ?
-                            <ErrorView store={_instance.store} onPress={errorPress}/> : _instance.renderErrorView()}
-                        { !_instance.renderLoadingView ?
-                            <LoadingView store={_instance.store}/> : _instance.renderErrorView()}
+                        <ErrorView
+                            store={_instance.store}
+                            errorView={_instance.renderErrorView ? _instance.renderErrorView() : null}
+                            onPress={errorPress}/>
+                        <LoadingView
+                            store={_instance.store}
+                            loadingView={_instance.renderLoadingView ? _instance.renderLoadingView() : null}/>
                     </View>
                 };
                 if (_instance.store) {

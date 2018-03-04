@@ -18,6 +18,7 @@ import RouteUtilPage from './pages/RouteUtilPage'
 import GuidePage from './pages/GuidePage'
 import BasePage from './pages/BasePage'
 import SetPage from './pages/SetPage'
+import CustomBasePage from './pages/CustomBasePage'
 import TeasetApp from '../node_modules/teaset/example/App'
 
 export const AppNavigator = StackNavigator(
@@ -34,6 +35,7 @@ export const AppNavigator = StackNavigator(
         GuidePage: {screen: GuidePage},
         BasePage: {screen: BasePage},
         SetPage: {screen: SetPage},
+        CustomBasePage: {screen: CustomBasePage},
         TeasetApp: {screen: pageHelper()(TeasetApp)},
     }, {
         initialRouteName: 'LaunchPage'

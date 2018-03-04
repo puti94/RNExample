@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react';
 import {
-    Animated
+    View
 } from 'react-native';
 import {observer} from 'mobx-react'
 import Spinkit from 'react-native-spinkit';
@@ -24,7 +24,7 @@ export class LoadingView extends Component {
             return null;
         }
         return (
-            <Animated.View
+            <View
                 style={{
                     width: '100%',
                     height: '100%',
@@ -34,8 +34,8 @@ export class LoadingView extends Component {
                     justifyContent: 'center',
                     marginTop: this.props.marginTop
                 }}>
-                <Spinkit size={70} type={'9CubeGrid'}/>
-            </Animated.View>
+                {this.props.loadingView ? this.props.loadingView : <Spinkit size={70} type={'9CubeGrid'}/> }
+            </View>
         );
     }
 }

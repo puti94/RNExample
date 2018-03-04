@@ -7,16 +7,16 @@
 
 
 import React, {Component} from 'react';
-import {ScrollView} from 'react-native'
+import {ScrollView, View, ActivityIndicator, TouchableOpacity, Text} from 'react-native'
 import {ListRow} from 'teaset'
 
 @inject('baseStore')
 @pageHelper()
 @observer
-export default class BasePage extends Component {
+export default class CustomBasePage extends Component {
 
     static  navigationOptions = ({navigation}) => ({
-        title: 'BasePage用法'
+        title: '自定义加载用法'
     });
 
     constructor(props) {
@@ -26,6 +26,32 @@ export default class BasePage extends Component {
     componentDidMount() {
         this.store.loadData();
     }
+
+    renderLoadingView() {
+        return <View style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
+            <ActivityIndicator/>
+        </View>
+    };
+
+    renderErrorView() {
+        return <TouchableOpacity style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+        }} onPress={() => {
+            this.store.setLoading(true);
+            setTimeout(() => {
+                this.store.setLoading(false)
+            }, 2000)
+        }}>
+            <Text>发生错误了</Text>
+            <Text>点击页面重新加载</Text>
+        </TouchableOpacity>
+    };
 
     render() {
         return (<ScrollView style={{flex: 1}}>
@@ -44,12 +70,6 @@ export default class BasePage extends Component {
                     this.store.setError(true, '发生不明错误', () => {
                         this.store.loadData();
                     });
-                }}
-            />
-            <ListRow
-                title="自定义加载组件"
-                onPress={() => {
-                    RouteHelper.push('CustomBasePage')
                 }}
             />
         </ScrollView>);

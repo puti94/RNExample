@@ -23,7 +23,8 @@ export class ErrorView extends Component {
     static propTypes = {
         btnTitle: PropTypes.string,
         onPress: PropTypes.func,
-        store: PropTypes.object.isRequired
+        store: PropTypes.object.isRequired,
+        errorView: PropTypes.object
     };
 
     static defaultProps = {
@@ -32,10 +33,17 @@ export class ErrorView extends Component {
 
     renderErrorView() {
         return (<View style={style.container}>
-            <Text>{this.props.store.errorMsg}</Text>
-            <TouchableOpacity style={[style.btn_style,{ borderColor: appTheme.themeColor}]} onPress={this.props.onPress}>
-                <Text>{this.props.btnTitle}</Text>
-            </TouchableOpacity>
+            {
+                this.props.errorView ? this.props.errorView :
+                    <View>
+                        <Text>{this.props.store.errorMsg}</Text>
+                        <TouchableOpacity style={[style.btn_style, {borderColor: appTheme.themeColor}]}
+                                          onPress={this.props.onPress}>
+                            <Text>{this.props.btnTitle}</Text>
+                        </TouchableOpacity>
+                    </View>
+            }
+
         </View>)
     }
 
