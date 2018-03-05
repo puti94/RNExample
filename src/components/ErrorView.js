@@ -15,6 +15,7 @@ import {
 import PropTypes from 'prop-types';
 import {observer} from 'mobx-react'
 import {appTheme} from '../store/Theme'
+
 /**
  * 默认错误视图,如果想自定义错误视图可继承此类重载renderErrorView()方法并声明成observer。
  */
@@ -31,35 +32,30 @@ export class ErrorView extends Component {
         btnTitle: '重新加载'
     };
 
-    renderErrorView() {
-        return (<View style={style.container}>
-            {
-                this.props.errorView ? this.props.errorView :
-                    <View>
-                        <Text>{this.props.store.errorMsg}</Text>
-                        <TouchableOpacity style={[style.btn_style, {borderColor: appTheme.themeColor}]}
-                                          onPress={this.props.onPress}>
-                            <Text>{this.props.btnTitle}</Text>
-                        </TouchableOpacity>
-                    </View>
-            }
-
-        </View>)
-    }
-
     render() {
-        return this.props.store.isError ? this.renderErrorView() : null;
+        if (!this.props.store.isError) {
+            return null;
+        }
+        return <View style={styles.container}>
+            {this.props.errorView ?
+                this.props.errorView
+                :
+                <View style={styles.errorContainer}>
+                    <Text>{this.props.store.errorMsg}</Text>
+                    <TouchableOpacity style={[styles.btn_style, {borderColor: appTheme.themeColor}]}
+                                      onPress={this.props.onPress}>
+                        <Text>{this.props.btnTitle}</Text>
+                    </TouchableOpacity>
+                </View>}
+        </View>
     }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
         position: 'absolute',
-        backgroundColor: '#e6e6e6'
     },
     btn_style: {
         paddingHorizontal: 10,
@@ -67,6 +63,12 @@ const style = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 1,
 
+    },
+    errorContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

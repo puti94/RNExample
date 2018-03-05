@@ -31,23 +31,28 @@ export default class CustomBasePage extends Component {
         return <View style={{
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            backgroundColor: 'white'
         }}>
             <ActivityIndicator/>
         </View>
     };
 
     renderErrorView() {
-        return <TouchableOpacity style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
-        }} onPress={() => {
-            this.store.setLoading(true);
-            setTimeout(() => {
-                this.store.setLoading(false)
-            }, 2000)
-        }}>
+        return <TouchableOpacity
+            style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'white'
+            }}
+            activeOpacity={1}
+            onPress={() => {
+                this.store.setLoading(true);
+                setTimeout(() => {
+                    this.store.setLoading(false)
+                }, 2000)
+            }}>
             <Text>发生错误了</Text>
             <Text>点击页面重新加载</Text>
         </TouchableOpacity>

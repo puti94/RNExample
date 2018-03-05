@@ -15,6 +15,7 @@ import {
 import ListRow from "teaset/components/ListRow/ListRow";
 import {NewsStore} from '../store/NewsStore'
 import {toJS} from 'mobx'
+
 @pageHelper(true, false)
 @observer
 export default class HomePage extends Component {
@@ -25,7 +26,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
+            <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
 
                 <ListRow title={'重新刷新'} onPress={() => {
                     this.store.loadData();
