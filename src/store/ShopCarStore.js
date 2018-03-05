@@ -17,6 +17,9 @@ export class ShopCarStore {
     constructor() {
         autorun(() => {
             console.log('购物车数据', this.data, this.dataLength)
+            if (this.dataLength === 0 && this.isEditMode) {
+                this.reversalEdit()
+            }
         });
     }
 

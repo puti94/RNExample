@@ -16,6 +16,8 @@ import {
 
 import {Checkbox, Stepper} from "teaset";
 import ListRow from "teaset/components/ListRow/ListRow";
+import {startAddShopAnim} from '../components/ShoppingCarView'
+
 @inject('shopCar')
 @observer
 export class ShopCarPage extends Component {
@@ -27,14 +29,34 @@ export class ShopCarPage extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ListRow title={'添加商品'} onPress={() => {
-                    this.props.shopCar.addShop({
-                        number: 1,
-                        title: `商品名称${this.props.shopCar.dataLength}`,
-                        price: (Math.random() * 10000).toFixed(2),
-                        img: 'http://www.xxxx.com/thumb/xx.png',
-                        id: `${Date.now()}${parseInt(Math.random() * 100)}`
-                    })
+                <ListRow ref={'view'} title={'添加商品'} onPress={() => {
+
+                    startAddShopAnim(<Image style={{height: 50, width: 50, margin: 10, borderRadius: 20}}
+                                            source={R.images.ic_shop_img}/>,
+                        {
+                            beforeView: this.refs['view'],
+                            afterValue: {
+                                x: SCREEN_WIDTH / 2 - 25, y: SCREEN_HEIGHT - 110
+                            },
+                            beforeValue: {
+                                x: 10,
+                                y: 0
+                            },
+                            duration: 1000,
+                            endRotateZ: 1440,
+                            endScale: 0.1,
+                            callBack: () => {
+                                this.props.shopCar.addShop({
+                                    number: 1,
+                                    title: `商品名称${this.props.shopCar.dataLength}`,
+                                    price: (Math.random() * 10000).toFixed(2),
+                                    img: 'http://www.xxxx.com/thumb/xx.png',
+                                    id: `${Date.now()}${parseInt(Math.random() * 100)}`
+                                })
+                            }
+                        });
+
+
                 }}/>
                 {this.props.shopCar.dataLength !== 0 ? <View style={styles.container}>
                     <FlatList
@@ -151,11 +173,20 @@ class BottomView extends Component {
             <TouchableOpacity style={{
                 width: 80,
                 height: '100%',
-                backgroundColor: appTheme.themeColor,
+                backgroundColor: this.props.shopCar.isEditMode ? 'red' : appTheme.themeColor,
                 alignItems: 'center',
                 justifyContent: 'center'
-            }} onPress={() => alert('结算')}>
-                <Text style={{color: 'white', fontSize: 13}}>结算:({this.props.shopCar.checkNumber})</Text>
+            }} onPress={() => {
+                if (this.props.shopCar.isEditMode) {
+                    this.props.shopCar.filterCheckShop();
+                    return;
+                }
+                alert('结算')
+            }}>
+                <Text style={{
+                    color: 'white',
+                    fontSize: 13
+                }}>{`${this.props.shopCar.isEditMode ? '删除' : '结算'}:(${this.props.shopCar.checkNumber})`}</Text>
             </TouchableOpacity>
         </View>)
     }
