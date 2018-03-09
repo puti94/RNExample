@@ -5,4 +5,4 @@ import './src/base/Config'
 import App from './App';
 import TestComponent from './TestComponent';
 
-AppRegistry.registerComponent('RNExample', () => App);
+AppRegistry.registerComponent('RNExample', () => TestComponent);

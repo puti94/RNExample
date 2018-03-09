@@ -13,6 +13,7 @@ import {ErrorView} from "../components/ErrorView";
 import {LoadingView} from "../components/LoadingView";
 import {BasePageStore} from "../store/BasePageStore";
 import hoistNonReactStatics from 'hoist-non-react-statics'
+
 /**
  * 使用装饰模式给组件添加一些功能，将RouteHelper模块必须的功能加上,
  * 并结合新版react-navigation的API,为每个page页面添加一下生命周期函数
@@ -121,3 +122,89 @@ export const pageHelper = (hasStoreAndView: boolean = true, isStackChild: boolea
         return NewCompontent
     }
 };
+
+
+export const addPageHelper =
+    ({
+         initialStore = (params) => new BasePageStore(),
+         storeName = 'store',
+         errorView = null,
+         loadingView = null,
+         errorPress = null,
+     } = {}) => {
+        return (OldComponent) => {
+            class NewComponent extends Component {
+
+                static displayName = `addPageHelper(${OldComponent.displayName ||
+                OldComponent.name})`;
+
+                constructor(props, content) {
+                    super(props);
+                    this.store = initialStore(this.props.navigation.state.params)
+                }
+
+                render() {
+                    let newProps = {
+                        [storeName]: this.store,
+                    };
+                    return <View style={{flex: 1}}>
+                        <OldComponent
+                            {...this.props}
+                            {...newProps}
+                        />
+                        <ErrorView
+                            store={this.store}
+                            errorView={errorView ? errorView(this.store) : null}
+                            onPress={errorPress}/>
+                        <LoadingView
+                            store={this.store}
+                            loadingView={loadingView ? loadingView(this.store) : null}/>
+
+                    </View>
+                }
+            }
+
+            return hoistNonReactStatics(NewComponent, OldComponent)
+        }
+    };
+
+
+export const addToRoute = (OldComponent) => {
+    class NewComponent extends Component {
+        static displayName = `addToRoute(${OldComponent.displayName ||
+        OldComponent.name})`;
+
+        isFocus = false;
+
+        constructor(props, content) {
+            super(props);
+        }
+
+        componentDidMount() {
+            RouteHelper.addStack(this.props.navigation);
+            this.subscriptions = [
+                this.props.navigation.addListener('didFocus', () => {
+                    this.isFocus = true;
+                }), this.props.navigation.addListener('willBlur', () => {
+                    this.isFocus = false;
+                })]
+        }
+
+        componentWillUnmount() {
+            RouteHelper.remove(this.props.navigation);
+            this.subscriptions.forEach(sub => sub.remove());
+        }
+
+        render() {
+            return <OldComponent
+                {...this.props}
+                params={this.props.navigation.state.params}
+                isFocused={() => this.isFocus}
+            />
+        }
+    }
+
+    return hoistNonReactStatics(NewComponent, OldComponent)
+};
+
+

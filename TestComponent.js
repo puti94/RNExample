@@ -6,46 +6,55 @@
  */
 
 
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
-    View,
-    Animated,
-    Easing
+    Text,
 } from 'react-native';
-import {ListRow} from 'teaset'
-import {startAddShopAnim, ShoppingCarView} from './src/components/ShoppingCarView'
+import {AutoFlatList} from "./src/components/AutoFlatlist";
 
 export default class TestComponent extends Component {
 
-    constructor(props) {
-        super(props);
-        this.x = new Animated.Value(100);
-        this.y = new Animated.Value(100);
-        this.rotateZ = new Animated.Value(0);
-
-        this.state = {
-            rotateZ: new Animated.Value(0)
-        }
+    render() {
+        return <AutoFlatList
+            style={{backgroundColor: 'white'}}
+            ListHeaderComponent={<Text style={{fontSize: 30, backgroundColor: 'gray'}}>我是头部</Text>}
+            ListFooterComponent={<MFooter/>}
+            renderItem={({item}) => <Item item={item}/>}
+            fetchData={(page) => new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let list = [];
+                    for (let i = 0; i < (page === 20 ? 4 : 6); i++) {
+                        list.push({title: `第${page}页，第${i}个`, id: '' + Date.now() + i})
+                    }
+                    if (page === 15) {
+                        reject();
+                    }
+                    resolve(list)
+                }, 1000)
+            })}
+            stickyHeaderIndices={[0]}
+            ListLoadMoringComponent={<Text>正在加载更多</Text>}
+            ListLoadMoredComponent={<Text style={{fontSize: 30}}>加载完成</Text>}
+            ListNoMoreDataComponent={<Text>已经没有了</Text>}
+            judgeNoMoreData={(newValue) => newValue.length < 5}
+        />
     }
+}
 
+class MFooter extends PureComponent {
 
     render() {
-        return <View style={{flex: 1}}>
-            <ListRow
-                ref={ref => this.tagView = ref}
-                title='测试' onPress={() => {
-                startAddShopAnim(<View
-                    style={{width: 50, height: 50, backgroundColor: 'green'}}/>, {
-                    afterView: this.tagView, beforeValue: {x: 200, y: 200}
-                })
-            }}/>
+        console.log('MFooter,render');
+        return <Text style={{height: 100, backgroundColor: 'gray'}}>我是Footer</Text>
+    }
+}
 
-            <View
-                ref={ref => this.toView = ref}
-                style={{width: 30, height: 30, position: 'absolute', bottom: 10, right: 10, backgroundColor: 'blue'}}/>
 
-            <ShoppingCarView ref={'anim'}/>
-        </View>
+class Item extends Component {
+
+    render() {
+        console.log('item,render');
+        return <Text style={{height: 50}}>{this.props.item.title}</Text>
     }
 }
 

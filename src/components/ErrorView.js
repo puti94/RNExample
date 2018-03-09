@@ -43,7 +43,14 @@ export class ErrorView extends Component {
                 <View style={styles.errorContainer}>
                     <Text>{this.props.store.errorMsg}</Text>
                     <TouchableOpacity style={[styles.btn_style, {borderColor: appTheme.themeColor}]}
-                                      onPress={this.props.onPress}>
+                                      onPress={() => {
+                                          this.props.store.errorPress();
+                                          // if (this.props.onPress) {
+                                          //     this.props.onPress()
+                                          // } else {
+                                          //
+                                          // }
+                                      }}>
                         <Text>{this.props.btnTitle}</Text>
                     </TouchableOpacity>
                 </View>}
