@@ -8,22 +8,20 @@
 
 import React, {Component} from 'react';
 import {
-    Text,
-    BackHandler, View
+    BackHandler, View, ToastAndroid
 } from 'react-native';
 import {inject, observer} from 'mobx-react'
-import {pageHelper} from '../utils/index'
-import {RouteHelper} from '../utils/RouteHelper'
-import {TabView, Button} from "teaset";
+import {RouteHelper} from 'react-navigation-easy-helper'
+import {TabView, Button, Toast} from "teaset";
 import HomePage from './HomePage'
 import {ShopCarPage} from './ShopCarPage'
 import MinePage from "./MinePage";
-import {ShoppingCarView} from '../components/ShoppingCarView'
+import {ShoppingCarView} from 'react-native-addcarview'
+import {images} from "../res";
 
 const titles = ['首页', '购物车', '我的'];
 
-@inject('userStore', 'baseStore', 'shopCar')
-@pageHelper()
+@inject('userStore', 'shopCar')
 @observer
 export default class MainPage extends Component {
 
@@ -55,21 +53,21 @@ export default class MainPage extends Component {
                     <TabView.Sheet
                         title='首页'
                         activeTitleStyle={{color: 'red'}}
-                        icon={R.images.ic_home}
+                        icon={images.ic_home}
                     >
                         <HomePage/>
 
                     </TabView.Sheet>
                     <TabView.Sheet
                         title='购物车'
-                        icon={R.images.ic_cart}
+                        icon={images.ic_cart}
                         badge={this.props.shopCar.dataLength === 0 ? null : this.props.shopCar.dataLength}
                     >
                         <ShopCarPage tabChange={this.onTabChange}/>
                     </TabView.Sheet>
                     <TabView.Sheet
                         title='我的'
-                        icon={R.images.ic_mine}
+                        icon={images.ic_mine}
                     >
                         <MinePage/>
                     </TabView.Sheet>
@@ -110,6 +108,7 @@ export default class MainPage extends Component {
     onBackHander = () => {
         if (RouteHelper.routeStack.length === 1 && Date.now() - this.lastClickTime >= 2000) {
             Toast.message('再按一次退出');
+            ToastAndroid.show('再按一次退出',);
             this.lastClickTime = Date.now();
             return true;
         }

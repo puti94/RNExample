@@ -12,8 +12,11 @@ import {
     StyleSheet
 } from 'react-native';
 import {Carousel, Button} from 'teaset'
+import {observer} from 'mobx-react'
+import {action, observable} from 'mobx'
+import {RouteHelper} from 'react-navigation-easy-helper'
+import {Theme} from '../store'
 
-@pageHelper(false)
 @observer
 export default class GuidePage extends Component {
 
@@ -40,9 +43,9 @@ export default class GuidePage extends Component {
                         <Carousel.Control
                             style={styles.controlContainer}
                             dot={<Text
-                                style={[styles.control, {color: appTheme.themeColor,}]}>□</Text>}
+                                style={[styles.control, {color: Theme.baseColor,}]}>□</Text>}
                             activeDot={<Text
-                                style={[styles.control, {color: appTheme.themeColor,}]}>■</Text>}
+                                style={[styles.control, {color: Theme.baseColor,}]}>■</Text>}
                         />
                     }
                     cycle={false}
@@ -56,12 +59,12 @@ export default class GuidePage extends Component {
                 {this.isShow ? <Button
                     style={{
                         position: 'absolute',
-                        backgroundColor: appTheme.themeColor,
+                        backgroundColor: Theme.baseColor,
                         top: SCREEN_HEIGHT - 60,
                         width: 120,
                         alignSelf: 'center',
                         height: 35,
-                        borderColor: appTheme.themeColor
+                        borderColor: Theme.baseColor
                     }}
                     title={'立即体验'}
                     titleStyle={{color: 'white'}}

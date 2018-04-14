@@ -13,13 +13,10 @@ import {
     Text,
     Button
 } from 'react-native';
-import {pageHelper} from "../utils/index";
 import {inject, observer} from 'mobx-react'
-import {autorun} from 'mobx'
 
 
 @inject('userStore')
-@pageHelper()
 @observer
 export default class LoginPage extends Component {
 

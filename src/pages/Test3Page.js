@@ -10,14 +10,12 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     Text,
-    Button,
     ScrollView
 } from 'react-native';
-import {pageHelper} from '../utils/PageUtils'
-import  {observable, action} from 'mobx'
-import {ListRow} from 'teaset'
-import  {observer} from 'mobx-react'
-@pageHelper()
+import {ListRow, Toast} from 'teaset'
+import {observer} from 'mobx-react'
+import {RouteHelper} from 'react-navigation-easy-helper'
+
 @observer
 export default class Test3Page extends Component {
 
@@ -25,65 +23,27 @@ export default class Test3Page extends Component {
         headerTitle: 'Test3Page',
     });
 
-    @observable megList = [];
-
-    @action push(params) {
-        this.megList.push(params)
-    }
-
     constructor(props) {
         super(props);
-        console.log('哈哈', this);
-        this.push(`constructor,isFocus:${this.isFocus}`)
     }
-
-    componentWillMount() {
-        console.log('componentWillMount')
-        this.push(`componentWillMount,isFocus:${this.isFocus}`)
-    }
-
-    componentWillFocus(e) {
-        console.log('componentWillFocus', e);
-        this.push(`componentWillFocus,isFocus:${this.isFocus}`)
-        Toast.message('页面WillFocus')
-    }
-
-    componentDidFocus = (e) => {
-        console.log('componentDidFocus', e);
-        this.push(`componentDidFocus,isFocus:${this.isFocus}`)
-        Toast.message('页面DidFocus')
-    };
 
     componentDidMount() {
         console.log('componentDidMount')
-        this.push(`componentDidMount,isFocus:${this.isFocus}`)
-    }
-
-    componentWillBlur(e) {
-        this.push(`componentWillBlur,isFocus:${this.isFocus}`)
-        console.log('componentWillBlur', e);
-        Toast.message('页面WillBlur')
     }
 
     componentWillUnmount() {
-        console.log('componentWillUnmount');
-        this.push(`componentWillUnmount,isFocus:${this.isFocus}`)
         this.action && clearInterval(this.action)
     }
 
-    componentDidBlur(e) {
-        console.log('componentDidBlur', e);
-        this.push(`componentDidBlur,isFocus:${this.isFocus}`)
-        Toast.message('页面DidBlur')
-    }
 
     render() {
+        const {navigation} = this.props;
         return (
             <ScrollView style={styles.container}>
                 <ListRow title={'开启定时器 可见限制'} onPress={() => {
-                    this.action && clearInterval(this.action)
+                    this.action && clearInterval(this.action);
                     this.action = setInterval(() => {
-                        if (this.isFocus)
+                        if (this.navigation.isFocused())
                             Toast.message('定时任务')
                     }, 2000)
                 }}/>
@@ -96,8 +56,6 @@ export default class Test3Page extends Component {
                 <ListRow title={'进入下一页'} onPress={() => {
                     RouteHelper.push('UserPage')
                 }}/>
-                <Text>生命周期历程</Text>
-                {this.megList.slice().map((item, index) => <Text key={index}>{item}</Text>)}
             </ScrollView>
         );
     }

@@ -12,10 +12,10 @@ import {
     ScrollView,
     Alert
 } from 'react-native';
-import {pageHelper} from "../utils/index";
 import {ListRow} from 'teaset'
 import {appStateStore} from '../store/index'
-
+import {inject, observer} from 'mobx-react'
+import {RouteHelper} from 'react-navigation-easy-helper'
 
 const ITEMS = ['apiLevel', 'applicationName', 'brand', 'buildNumber', 'bundleId', 'carrier',
     'deviceCountry', 'deviceId', 'deviceLocale', 'deviceName', 'firstInstallTime', 'fontScale',
@@ -23,7 +23,6 @@ const ITEMS = ['apiLevel', 'applicationName', 'brand', 'buildNumber', 'bundleId'
     'phoneNumber', 'model', 'readableVersion', 'serialNumber', 'systemVersion', 'timezone', 'totalDiskCapacity',
     'totalMemory', 'uniqueID', 'userAgent', 'version', 'is24Hour', 'isEmulator', 'mACAddress'];
 @inject('userStore')
-@pageHelper(false)
 @observer
 export default class SetPage extends Component {
 

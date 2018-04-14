@@ -7,16 +7,14 @@
 
 
 import React, {Component} from 'react';
-import {View, Button, TextInput, ScrollView, Text} from 'react-native'
-import {pageHelper, CommonUtils} from '../utils/index'
-import {NavigationActions} from 'react-navigation'
-import {observer, inject} from 'mobx-react'
+import {View, ScrollView, Text} from 'react-native'
+import {CommonUtils} from '../utils/index'
+import {observer} from 'mobx-react'
 import {UtilsPageStore} from '../store/UtilsPageStore'
-import {ListRow} from 'teaset'
+import {ListRow, Toast} from 'teaset'
 import {LoadingUtils} from '../utils/index'
+import {images} from "../res";
 
-@inject('baseStore')
-@pageHelper()
 @observer
 export default class UtilsPage extends Component {
 
@@ -24,9 +22,7 @@ export default class UtilsPage extends Component {
         title: '工具类用法'
     });
 
-    getStore() {
-        return new UtilsPageStore()
-    }
+    store = new UtilsPageStore();
 
     constructor(props) {
         super(props);
@@ -42,7 +38,7 @@ export default class UtilsPage extends Component {
 
     showBigImages = () => {
         CommonUtils.showBigImages(this.clickView, 1,
-            [R.images.ic_photo1, R.images.ic_photo2, R.images.ic_photo3],
+            [images.ic_photo1, images.ic_photo2, images.ic_photo3],
             (index) => {
                 Toast.message(`点击了第${index + 1}张`)
             })

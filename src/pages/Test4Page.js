@@ -13,16 +13,15 @@ import {
     Text,
     Button
 } from 'react-native';
-import {pageHelper} from '../utils/PageUtils'
+import {RouteHelper} from 'react-navigation-easy-helper'
 
-@pageHelper()
 export default class Test4Page extends Component {
     static navigationOptions = ({navigation}) => ({
         headerTitle: 'Test4Page',
     });
+
     constructor(props) {
         super(props);
-        console.log(this)
     }
 
     render() {
@@ -37,7 +36,7 @@ export default class Test4Page extends Component {
                     this.props.navigation.goBack()
                 }} title={'返回上一页'}/>
                 <Button onPress={() => {
-                    RouteHelper.goBackto('MainPage')
+                    RouteHelper.goBackTo('MainPage')
                 }} title={'返回首页'}/>
                 <Button onPress={() => {
                     RouteHelper.reset('MainPage')

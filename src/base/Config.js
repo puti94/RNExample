@@ -12,6 +12,20 @@ import {TextInput, Text} from 'react-native'
  */
 
 
+
+//非开发模式下关闭日志打印
+if (!__DEV__) {
+    global.console = {
+        info: () => {
+        },
+        log: () => {
+        },
+        warn: () => {
+        },
+        error: () => {
+        }
+    };
+}
 /**
  * 更改三个文件控件字体大小随系统改变的属性,如果想更改其它第三方的默认属性也可以这样改
  */

@@ -15,26 +15,26 @@ import {
 import ListRow from "teaset/components/ListRow/ListRow";
 import {NewsStore} from '../store/NewsStore'
 import {toJS} from 'mobx'
+import BaseContainer from "../components/BaseContainer";
+import {observer} from 'mobx-react'
 
-@pageHelper(true, false)
 @observer
 export default class HomePage extends Component {
 
-    getStore() {
-        return new NewsStore()
-    }
+    store = new NewsStore();
 
     render() {
         return (
-            <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
-
-                <ListRow title={'重新刷新'} onPress={() => {
-                    this.store.loadData();
-                    console.log(toJS(this.store.data.tid));
-                }}/>
-                {this.store.data.tid && this.store.data.tid.map((item, index) => <Text
-                    key={item.title}>{JSON.stringify(item)}</Text>)}
-            </ScrollView>
+            <BaseContainer store={this.store}>
+                <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
+                    <ListRow title={'重新刷新'} onPress={() => {
+                        this.store.loadData();
+                        console.log(toJS(this.store.data.tid));
+                    }}/>
+                    {this.store.data.tid && this.store.data.tid.map((item, index) => <Text
+                        key={item.title}>{JSON.stringify(item)}</Text>)}
+                </ScrollView>
+            </BaseContainer>
         );
     }
 }

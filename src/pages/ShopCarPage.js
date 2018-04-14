@@ -16,7 +16,10 @@ import {
 
 import {Checkbox, Stepper} from "teaset";
 import ListRow from "teaset/components/ListRow/ListRow";
-import {startAddShopAnim} from '../components/ShoppingCarView'
+import {startAddShopAnim} from 'react-native-addcarview'
+import {inject, observer} from 'mobx-react'
+import {images} from "../res";
+import {Theme} from "../store";
 
 @inject('shopCar')
 @observer
@@ -32,7 +35,7 @@ export class ShopCarPage extends Component {
                 <ListRow ref={'view'} title={'添加商品'} onPress={() => {
 
                     startAddShopAnim(<Image style={{height: 50, width: 50, margin: 10, borderRadius: 20}}
-                                            source={R.images.ic_shop_img}/>,
+                                            source={images.ic_shop_img}/>,
                         {
                             beforeView: this.refs['view'],
                             afterValue: {
@@ -76,7 +79,7 @@ export class ShopCarPage extends Component {
                     <TouchableOpacity
                         style={{
                             marginTop: 20,
-                            backgroundColor: appTheme.hint,
+                            backgroundColor: Theme.baseColor,
                             borderRadius: 5,
                             height: 30,
                             width: 100,
@@ -111,10 +114,10 @@ class ShopCarItem extends Component {
                 paddingLeft: 10
             }}>
 
-            <Checkbox checkedIconStyle={{tintColor: appTheme.themeColor}} size={'lg'}
+            <Checkbox checkedIconStyle={{tintColor: Theme.baseColor}} size={'lg'}
                       checked={item.check || this.props.shopCar.isAllCheck}
                       onChange={check => item.setCheck(check, this.props.shopCar)}/>
-            <Image style={{height: 50, width: 50, margin: 10}} source={R.images.ic_shop_img}/>
+            <Image style={{height: 50, width: 50, margin: 10}} source={images.ic_shop_img}/>
             <View style={{flex: 1, height: 60, justifyContent: 'space-around'}}>
 
                 <Text numberOfLines={1} style={{fontSize: 14}}>{item.title}</Text>
@@ -157,10 +160,10 @@ class BottomView extends Component {
     render() {
         return (<View style={{
             flexDirection: 'row', height: 40, alignItems: 'center',
-            paddingLeft: 10, borderTopColor: appTheme.line, borderTopWidth: 1
+            paddingLeft: 10, borderTopColor: Theme.line, borderTopWidth: 1
         }}>
             <Checkbox
-                checkedIconStyle={{tintColor: appTheme.themeColor}} size={'lg'}
+                checkedIconStyle={{tintColor: Theme.baseColor}} size={'lg'}
                 checked={this.props.shopCar.isAllCheck} title={'全选'}
                 onChange={(check) => this.props.shopCar.setAllCheck(check)}/>
 
@@ -169,11 +172,11 @@ class BottomView extends Component {
                     color: 'black',
                     marginHorizontal: 5,
                     flex: 1
-                }}>合计:<Text style={{color: appTheme.themeColor}}>¥{this.props.shopCar.allPrice}</Text></Text>
+                }}>合计:<Text style={{color: Theme.baseColor}}>¥{this.props.shopCar.allPrice}</Text></Text>
             <TouchableOpacity style={{
                 width: 80,
                 height: '100%',
-                backgroundColor: this.props.shopCar.isEditMode ? 'red' : appTheme.themeColor,
+                backgroundColor: this.props.shopCar.isEditMode ? 'red' : Theme.baseColor,
                 alignItems: 'center',
                 justifyContent: 'center'
             }} onPress={() => {

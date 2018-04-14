@@ -9,15 +9,12 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    View,
     Text,
-    Button,
     ScrollView
 } from 'react-native';
-import {pageHelper} from "../utils/index";
-import {ListRow} from 'teaset'
+import {ListRow, Toast} from 'teaset'
+import {RouteHelper} from 'react-navigation-easy-helper'
 
-@pageHelper()
 export default class Test2Page extends Component {
 
     static navigationOptions = ({navigation}) => ({
@@ -26,7 +23,6 @@ export default class Test2Page extends Component {
 
     constructor(props) {
         super(props);
-        console.log('constructor', this)
     }
 
 

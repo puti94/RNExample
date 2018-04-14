@@ -7,14 +7,14 @@
 
 
 import React, {Component} from 'react';
-import {Button, ScrollView, Text} from 'react-native'
-import {pageHelper} from '../utils/index'
+import {ScrollView} from 'react-native'
+import {RouteHelper} from 'react-navigation-easy-helper'
 import {NavigationActions} from 'react-navigation'
 import {observer, inject} from 'mobx-react'
 import {ListRow} from 'teaset'
+
 @observer
-@inject('baseStore', 'userStore')
-@pageHelper()
+@inject('userStore')
 export default class RouteUtilPage extends Component {
 
     static  navigationOptions = ({navigation}) => ({

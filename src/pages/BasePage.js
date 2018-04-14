@@ -9,26 +9,24 @@
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native'
 import {ListRow} from 'teaset'
+import BaseContainer from "../components/BaseContainer";
+import {RouteHelper} from 'react-navigation-easy-helper'
+import {BasePageStore} from "../store/BasePageStore";
 
-@inject('baseStore')
-@pageHelper()
-@observer
 export default class BasePage extends Component {
 
     static  navigationOptions = ({navigation}) => ({
         title: 'BasePage用法'
     });
 
-    constructor(props) {
-        super(props);
-    }
+    store = new BasePageStore();
 
     componentDidMount() {
         this.store.loadData();
     }
 
     render() {
-        return (<ScrollView style={{flex: 1}}>
+        return (<BaseContainer store={this.store}><ScrollView style={{flex: 1}}>
             <ListRow
                 title="显示加载组件"
                 onPress={() => {
@@ -46,13 +44,7 @@ export default class BasePage extends Component {
                     });
                 }}
             />
-            <ListRow
-                title="自定义加载组件"
-                onPress={() => {
-                    RouteHelper.push('CustomBasePage')
-                }}
-            />
-        </ScrollView>);
+        </ScrollView></BaseContainer>);
     }
 
 }

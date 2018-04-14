@@ -56,7 +56,7 @@ export class AutoFlatList extends Component {
 
 
     @action
-    setData(data) {
+    setData = data => {
         this.isNoMoreData = this.props.judgeNoMoreData(data);
         if (this.page === 1) {
             this.data = data;
@@ -73,7 +73,7 @@ export class AutoFlatList extends Component {
 
     loadData() {
         this.props.fetchData(this.page)
-            .then(data => this.setData(data))
+            .then(this.setData)
             .catch(e => {
                 if (this.props.catchHandle) {
                     this.props.catchHandle(e, this)

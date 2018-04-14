@@ -13,10 +13,10 @@ import {
     Text,
     Button
 } from 'react-native';
-import {pageHelper} from "../utils/index";
+import {RouteHelper} from "react-navigation-easy-helper";
 import {inject} from 'mobx-react'
+
 @inject('userStore')
-@pageHelper()
 export default class UserPage extends Component {
 
     static navigationOptions = ({navigation}) => ({

@@ -4,7 +4,6 @@
  * @flow
  */
 
-import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation'
 import MainPage from './pages/MainPage'
 import Test2Page from './pages/Test2Page'
@@ -18,12 +17,11 @@ import RouteUtilPage from './pages/RouteUtilPage'
 import GuidePage from './pages/GuidePage'
 import BasePage from './pages/BasePage'
 import SetPage from './pages/SetPage'
-import CustomBasePage from './pages/CustomBasePage'
 import TeasetApp from '../node_modules/teaset/example/App'
-import {addToRoute} from './utils/PageUtils'
+import {configRoute} from 'react-navigation-easy-helper'
 
 export const AppNavigator = StackNavigator(
-    ConfigRouteHelper({
+    configRoute({
         LaunchPage: {screen: LaunchPage},
         MainPage: {screen: MainPage},
         Test2Page: {screen: Test2Page},
@@ -36,17 +34,8 @@ export const AppNavigator = StackNavigator(
         GuidePage: {screen: GuidePage},
         BasePage: {screen: BasePage},
         SetPage: {screen: SetPage},
-        CustomBasePage: {screen: CustomBasePage},
-        TeasetApp: {screen: pageHelper()(TeasetApp)},
+        TeasetApp: {screen: (TeasetApp)},
     }), {
         initialRouteName: 'LaunchPage'
     }
 );
-
-function ConfigRouteHelper(routeConfig) {
-    for (let name in routeConfig) {
-        let Component = routeConfig[name].screen;
-        routeConfig[name].screen = addToRoute(Component)
-    }
-    return routeConfig
-}

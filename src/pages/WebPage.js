@@ -8,19 +8,24 @@ import React, {Component} from 'react';
 import {
     View,
     WebView,
-    Platform, TouchableOpacity, Image, Text, BackHandler, ActivityIndicator
+    Platform, TouchableOpacity, Text, BackHandler
 } from 'react-native';
-import {pageHelper} from '../utils/index'
 import Spinkit from 'react-native-spinkit';
-import {inject} from 'mobx-react'
-@pageHelper()
+import {Theme} from "../store";
+
 export default class WebPage extends Component {
 
-    canGoBack = false;
+    navState = {};
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            source: {uri: 'https://www.baidu.com'},
+        };
+    }
 
     onBackPressed = () => {
-        if (this.state.canGoBack && this.isVisiable) {
+        if (this.navState.canGoBack) {
             this.webView.goBack();
             return true;
         } else {
@@ -62,8 +67,8 @@ export default class WebPage extends Component {
 
     onNavigationStateChange = (navState) => {
         console.log("onNavigationStateChange", navState);
-        this.url = navState.url;
-        this.canGoBack = navState.canGoBack;
+        // this.setState({source: {uri: navState.url}, canGoback: navState.canGoBack})
+        this.navState = navState;
     };
 
     /**
@@ -88,7 +93,7 @@ export default class WebPage extends Component {
             justifyContent: 'center',
             paddingBottom: 100
         }}>
-            <Spinkit size={70} color={appTheme.themeColor} type={'9CubeGrid'}/>
+            <Spinkit size={70} color={Theme.baseColor} type={'9CubeGrid'}/>
         </View>)
     };
 
@@ -111,7 +116,7 @@ export default class WebPage extends Component {
             <TouchableOpacity
                 style={{
                     marginTop: 20,
-                    backgroundColor: appTheme.hint,
+                    backgroundColor: Theme.baseColor,
                     borderRadius: 5,
                     height: 30,
                     width: 100,
@@ -130,6 +135,27 @@ export default class WebPage extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
+                <View style={{flexDirection: 'row', marginTop: 20}}>
+                    <Text onPress={() => {
+                        console.log(this.navState);
+                        // if (this.navState.canGoBack) {
+                        this.webView.goBack();
+                        // }
+                    }}>上一页</Text>
+                    <Text onPress={() => {
+                        // this.setState({source: {uri: 'https://reactnative.cn'}})
+                        this.forceUpdate()
+                    }}>首页</Text>
+                    <Text onPress={() => {
+                        console.log(this.navState);
+                        // if (this.navState.canGoBack) {
+                        this.webView.goForward()
+                        // }
+                    }}>下一页</Text>
+                    <Text onPress={() => {
+                        this.webView.reload();
+                    }}>重新刷新</Text>
+                </View>
                 <WebView
                     source={this.state.source}
                     ref={ref => this.webView = ref}
@@ -142,7 +168,7 @@ export default class WebPage extends Component {
                     renderError={this.renderError}
                     startInLoadingState={true}
                     renderLoading={this.renderLoading}
-                    onMessage={this.onMessage}
+                    // onMessage={this.onMessage}
                 />
             </View>
         );

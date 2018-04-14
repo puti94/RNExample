@@ -4,11 +4,13 @@
  * GitHub:https://github.com/puti94
  * Email:1059592160@qq.com
  */
-import * as CacheManager  from 'react-native-http-cache'
+import * as CacheManager from 'react-native-http-cache'
 import {StringUtils} from '../utils/index'
 import {Platform} from 'react-native'
 import {LoadingUtils} from '../utils/index'
 import DeviceInfo from 'react-native-device-info';
+import {observable, action} from 'mobx'
+
 class AppStateStore {
 
     @observable

@@ -5,12 +5,11 @@
  */
 
 import React, {Component} from 'react';
-import {View, StatusBar} from 'react-native'
 import {AppNavigator} from "./src/NavigationConfig";
 import {Provider} from 'mobx-react'
 import {useStrict} from 'mobx'
 import {BaseAppStore} from './src/store/index'
-import RouteMessageView from './src/components/RouteMessageView'
+import {RouteHelper} from 'react-navigation-easy-helper'
 
 useStrict(true);
 
@@ -34,17 +33,9 @@ RouteHelper.routeInterceptor = (routeName, params) => {
 export default class App extends Component<Props> {
 
     render() {
-        return __DEV__ ?
-            <Provider {...store} baseStore={store}>
-                <View style={{flex: 1}}>
-                    <AppNavigator/>
-                    <RouteMessageView/>
-                </View>
-            </Provider>
-            :
-            <Provider {...store} baseStore={store}>
-                <AppNavigator/>
-            </Provider>
+        return <Provider {...store} baseStore={store}>
+            <AppNavigator/>
+        </Provider>
     }
 }
 

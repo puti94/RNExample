@@ -5,13 +5,21 @@
  * Email:1059592160@qq.com
  */
 import {observable} from 'mobx'
+import {Platform, StatusBar, DeviceInfo} from 'react-native'
 
-class ThemeStore {
-    @observable
-        //主题颜色
-    themeColor = 'blue';
-
-
+export const Theme = {
+    //主题颜色
+    @observable  baseColor: '#E6C3A1',
+    line: '#cccccc',
+    backgroundColor: '#f5f5f5',
+    isIPhoneX: DeviceInfo.isIPhoneX_deprecated,
+    get statusBarHeight() {
+        if (Theme.isIPhoneX) {
+            return 44;
+        }
+        if (Platform.OS === 'android') {
+            return StatusBar.currentHeight;
+        }
+        return 20;
+    }
 }
-
-export const appTheme = new ThemeStore();

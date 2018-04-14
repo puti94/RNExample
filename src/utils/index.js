@@ -6,8 +6,6 @@
  */
 
 
-export {pageHelper} from './PageUtils'
-export {RouteHelper} from './RouteHelper'
 export {CommonUtils} from './CommonUtils'
 export {LoadingUtils} from './LoadingUtils'
 export {ColorUtils} from './ColorUtils'

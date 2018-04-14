@@ -6,8 +6,10 @@
  */
 
 import {BasePageStore} from './BasePageStore'
-import{HttpUtil} from '../utils/HttpUtil'
+import {Toast} from 'teaset'
+import {HttpUtil} from '../utils/HttpUtil'
 import {WANGYINEWS} from "../base/Constant";
+
 export class NewsStore extends BasePageStore {
 
     constructor() {
