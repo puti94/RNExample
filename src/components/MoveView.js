@@ -82,7 +82,6 @@ export default class MoveView extends PureComponent {
     }
 
     render() {
-        console.log('height', StatusBar.currentHeight);
         const {style, children} = this.props;
         return <View
             {...this.panResponder.panHandlers}

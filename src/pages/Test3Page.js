@@ -43,7 +43,7 @@ export default class Test3Page extends Component {
                 <ListRow title={'开启定时器 可见限制'} onPress={() => {
                     this.action && clearInterval(this.action);
                     this.action = setInterval(() => {
-                        if (this.navigation.isFocused())
+                        if (navigation.isFocused())
                             Toast.message('定时任务')
                     }, 2000)
                 }}/>

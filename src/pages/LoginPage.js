@@ -14,6 +14,7 @@ import {
     Button
 } from 'react-native';
 import {inject, observer} from 'mobx-react'
+import {RouteHelper} from 'react-navigation-easy-helper'
 
 
 @inject('userStore')

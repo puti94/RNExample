@@ -53,7 +53,7 @@ export default class RouteUtilPage extends Component {
                 });
                 RouteHelper.navigation.dispatch(resetAction);
             }}/>
-            <ListRow title={'addListener用法'} onPress={() => {
+            <ListRow title={'isFocused()用法'} onPress={() => {
                 RouteHelper.push('Test3Page', {params: '我是参数'})
             }}/>
             <ListRow title={'拦截器的用法'} onPress={() => {
