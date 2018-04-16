@@ -34,8 +34,15 @@ export const AppNavigator = StackNavigator(
         GuidePage: {screen: GuidePage},
         BasePage: {screen: BasePage},
         SetPage: {screen: SetPage},
-        TeasetApp: {screen: (TeasetApp)},
+        TeasetApp: {
+            screen: TeasetApp, navigationOptions: {
+                header: null
+            }
+        },
     }), {
-        initialRouteName: 'LaunchPage'
+        initialRouteName: 'LaunchPage',
+        navigationOptions: {
+            header: null
+        }
     }
 );

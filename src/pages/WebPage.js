@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Spinkit from 'react-native-spinkit';
 import {Theme} from "../store";
+import BaseContainer from "../components/BaseContainer";
 
 export default class WebPage extends Component {
 
@@ -134,7 +135,7 @@ export default class WebPage extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <BaseContainer>
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                     <Text onPress={() => {
                         console.log(this.navState);
@@ -170,7 +171,7 @@ export default class WebPage extends Component {
                     renderLoading={this.renderLoading}
                     // onMessage={this.onMessage}
                 />
-            </View>
+            </BaseContainer>
         );
     }
 

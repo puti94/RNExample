@@ -3,9 +3,16 @@
  */
 
 import React from 'react'
-import {StatusBar} from 'react-native';
+import {StatusBar, Dimensions, PixelRatio} from 'react-native';
 import {AlbumView, Overlay} from 'teaset'
 import ChooseCityWheel from "../components/ChooseCityWheel";
+
+//设计宽度
+const basePixelWidth = 375;
+const {width} = Dimensions.get('window');
+export const px2dp = px => {
+    return px * width / basePixelWidth;
+};
 
 export class CommonUtils {
 

@@ -20,6 +20,7 @@ import {startAddShopAnim} from 'react-native-addcarview'
 import {inject, observer} from 'mobx-react'
 import {images} from "../res";
 import {Theme} from "../store";
+import BaseContainer from "../components/BaseContainer";
 
 @inject('shopCar')
 @observer
@@ -30,41 +31,46 @@ export class ShopCarPage extends Component {
     };
 
     render() {
+        const {shopCar, tabChange} = this.props;
+        const {isArrayEmpty, data, addShop} = shopCar;
         return (
-            <View style={styles.container}>
-                <ListRow ref={'view'} title={'添加商品'} onPress={() => {
+            <BaseContainer title={'购物车'}>
+                <ListRow
+                    ref={'view'}
+                    title={'添加商品'}
+                    onPress={() => {
+                        startAddShopAnim(
+                            <Image style={{height: 50, width: 50, margin: 10, borderRadius: 20}}
+                                   source={images.ic_shop_img}/>,
+                            {
+                                beforeView: this.refs['view'],
+                                afterValue: {
+                                    x: SCREEN_WIDTH / 2 - 25, y: SCREEN_HEIGHT - 110
+                                },
+                                // beforeValue: {
+                                //     x: 10,
+                                //     y: 0
+                                // },
+                                duration: 1000,
+                                endRotateZ: 1440,
+                                endScale: 0.1,
+                                callBack: () => {
+                                    addShop({
+                                        number: 1,
+                                        title: `商品名称${data.length}`,
+                                        price: (Math.random() * 10000).toFixed(2),
+                                        img: 'http://www.xxxx.com/thumb/xx.png',
+                                        id: `${Date.now()}${parseInt(Math.random() * 100)}`
+                                    })
+                                }
+                            });
 
-                    startAddShopAnim(<Image style={{height: 50, width: 50, margin: 10, borderRadius: 20}}
-                                            source={images.ic_shop_img}/>,
-                        {
-                            beforeView: this.refs['view'],
-                            afterValue: {
-                                x: SCREEN_WIDTH / 2 - 25, y: SCREEN_HEIGHT - 110
-                            },
-                            beforeValue: {
-                                x: 10,
-                                y: 0
-                            },
-                            duration: 1000,
-                            endRotateZ: 1440,
-                            endScale: 0.1,
-                            callBack: () => {
-                                this.props.shopCar.addShop({
-                                    number: 1,
-                                    title: `商品名称${this.props.shopCar.dataLength}`,
-                                    price: (Math.random() * 10000).toFixed(2),
-                                    img: 'http://www.xxxx.com/thumb/xx.png',
-                                    id: `${Date.now()}${parseInt(Math.random() * 100)}`
-                                })
-                            }
-                        });
 
-
-                }}/>
-                {this.props.shopCar.dataLength !== 0 ? <View style={styles.container}>
+                    }}/>
+                {!isArrayEmpty ? <View style={styles.container}>
                     <FlatList
                         style={{flex: 1}}
-                        data={this.props.shopCar.data.slice()}
+                        data={data.slice()}
                         keyExtractor={item => item.id}
                         renderItem={({item}) => this.renderItem(item)}
                     />
@@ -73,27 +79,17 @@ export class ShopCarPage extends Component {
                     style={{
                         flex: 1,
                         alignItems: 'center',
-                        backgroundColor: 'white'
+                        justifyContent: 'center'
                     }}>
-                    <Text style={{fontSize: 18, color: 'black', marginTop: 15}}>购物车没有商品</Text>
+                    <Text>购物车没有商品</Text>
                     <TouchableOpacity
-                        style={{
-                            marginTop: 20,
-                            backgroundColor: Theme.baseColor,
-                            borderRadius: 5,
-                            height: 30,
-                            width: 100,
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}
                         onPress={() => {
-                            this.props.tabChange && this.props.tabChange(0)
+                            tabChange && tabChange(0)
                         }}>
-                        <Text
-                            style={{color: 'white'}}>前往首页</Text>
+                        <Text>前往首页</Text>
                     </TouchableOpacity>
                 </View>}
-            </View>
+            </BaseContainer>
         );
     }
 }

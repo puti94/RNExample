@@ -14,12 +14,10 @@ import {
 } from 'react-native';
 import {ListRow, Toast} from 'teaset'
 import {RouteHelper} from 'react-navigation-easy-helper'
+import BaseContainer from "../components/BaseContainer";
 
 export default class Test2Page extends Component {
 
-    static navigationOptions = ({navigation}) => ({
-        headerTitle: 'Test2Page',
-    });
 
     constructor(props) {
         super(props);
@@ -28,22 +26,24 @@ export default class Test2Page extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <Text>页面2</Text>
-                <ListRow title={'返回前两页 pop(number)'} onPress={() => {
-                    RouteHelper.pop(2)
-                }}/>
-                <ListRow title={'返回指定页 goBack(routeName) success'} onPress={() => {
-                    if (!RouteHelper.goBackTo('LaunchPage')) {
-                        Toast.fail('返回失败')
-                    }
-                }}/>
-                <ListRow title={'返回指定页 goBack(routeName) fail'} onPress={() => {
-                    if (!RouteHelper.goBackTo('MainPage')) {
-                        Toast.fail('返回失败')
-                    }
-                }}/>
-            </ScrollView>
+            <BaseContainer title={'Test2Page'}>
+                <ScrollView style={styles.container}>
+                    <Text>页面2</Text>
+                    <ListRow title={'返回前两页 pop(number)'} onPress={() => {
+                        RouteHelper.pop(2)
+                    }}/>
+                    <ListRow title={'返回指定页 goBack(routeName) success'} onPress={() => {
+                        if (!RouteHelper.goBackTo('LaunchPage')) {
+                            Toast.fail('返回失败')
+                        }
+                    }}/>
+                    <ListRow title={'返回指定页 goBack(routeName) fail'} onPress={() => {
+                        if (!RouteHelper.goBackTo('MainPage')) {
+                            Toast.fail('返回失败')
+                        }
+                    }}/>
+                </ScrollView>
+            </BaseContainer>
         );
     }
 }

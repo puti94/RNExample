@@ -5,13 +5,11 @@
  */
 
 import React, {Component} from 'react';
-import {AppNavigator} from "./src/NavigationConfig";
+import {AppNavigator} from "./src/AppNav";
 import {Provider} from 'mobx-react'
-import {useStrict} from 'mobx'
 import {BaseAppStore} from './src/store/index'
 import {RouteHelper} from 'react-navigation-easy-helper'
 
-useStrict(true);
 
 const store = new BaseAppStore();
 const needLoginPage = ['UserPage'];
@@ -33,7 +31,7 @@ RouteHelper.routeInterceptor = (routeName, params) => {
 export default class App extends Component<Props> {
 
     render() {
-        return <Provider {...store} baseStore={store}>
+        return <Provider {...store}>
             <AppNavigator/>
         </Provider>
     }

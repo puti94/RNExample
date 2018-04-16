@@ -15,7 +15,7 @@ import {
 import ListRow from "teaset/components/ListRow/ListRow";
 import {NewsStore} from '../store/NewsStore'
 import {toJS} from 'mobx'
-import BaseContainer from "../components/BaseContainer";
+import {BaseContainer} from "../components";
 import {observer} from 'mobx-react'
 
 @observer
@@ -25,7 +25,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <BaseContainer store={this.store}>
+            <BaseContainer store={this.store} hideLeft title={'Home'} rightTitle={'哈'}>
                 <ScrollView style={styles.container} stickyHeaderIndices={[0]}>
                     <ListRow title={'重新刷新'} onPress={() => {
                         this.store.loadData();

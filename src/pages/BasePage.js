@@ -10,13 +10,12 @@ import React, {Component} from 'react';
 import {ScrollView} from 'react-native'
 import {ListRow} from 'teaset'
 import BaseContainer from "../components/BaseContainer";
-import {RouteHelper} from 'react-navigation-easy-helper'
 import {BasePageStore} from "../store/BasePageStore";
 
 export default class BasePage extends Component {
 
     static  navigationOptions = ({navigation}) => ({
-        title: 'BasePage用法'
+        title: 'BaseContainer用法'
     });
 
     store = new BasePageStore();
@@ -26,25 +25,27 @@ export default class BasePage extends Component {
     }
 
     render() {
-        return (<BaseContainer store={this.store}><ScrollView style={{flex: 1}}>
-            <ListRow
-                title="显示加载组件"
-                onPress={() => {
-                    this.store.setLoading(true);
-                    setTimeout(() => {
-                        this.store.setLoading(false)
-                    }, 2000)
-                }}
-            />
-            <ListRow
-                title="显示错误组件"
-                onPress={() => {
-                    this.store.setError(true, '发生不明错误', () => {
-                        this.store.loadData();
-                    });
-                }}
-            />
-        </ScrollView></BaseContainer>);
+        return (<BaseContainer store={this.store} title={'BaseContainer用法'}>
+            <ScrollView style={{flex: 1}}>
+                <ListRow
+                    title="显示加载组件"
+                    onPress={() => {
+                        this.store.setLoading(true);
+                        setTimeout(() => {
+                            this.store.setLoading(false)
+                        }, 2000)
+                    }}
+                />
+                <ListRow
+                    title="显示错误组件"
+                    onPress={() => {
+                        this.store.setError(true, '发生不明错误', () => {
+                            this.store.loadData();
+                        });
+                    }}
+                />
+            </ScrollView>
+        </BaseContainer>);
     }
 
 }

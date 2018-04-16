@@ -3,6 +3,7 @@ package com.rnexample;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cn.reactnative.httpcache.HttpCachePackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
+            new SvgPackage(),
             new RNDeviceInfo(),
             new HttpCachePackage(),
             new SplashScreenReactPackage(),

@@ -16,6 +16,7 @@ import {ListRow} from 'teaset'
 import {appStateStore} from '../store/index'
 import {inject, observer} from 'mobx-react'
 import {RouteHelper} from 'react-navigation-easy-helper'
+import BaseContainer from "../components/BaseContainer";
 
 const ITEMS = ['apiLevel', 'applicationName', 'brand', 'buildNumber', 'bundleId', 'carrier',
     'deviceCountry', 'deviceId', 'deviceLocale', 'deviceName', 'firstInstallTime', 'fontScale',
@@ -26,9 +27,6 @@ const ITEMS = ['apiLevel', 'applicationName', 'brand', 'buildNumber', 'bundleId'
 @observer
 export default class SetPage extends Component {
 
-    static navigationOptions = ({navigation}) => ({
-        headerTitle: '设置',
-    });
 
     componentDidMount() {
         appStateStore.syncCacheSize()
@@ -42,31 +40,33 @@ export default class SetPage extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <ListRow title={'检查更新aa'} onPress={() => {
-                    RouteHelper.pop(2)
-                }}/>
-                <ListRow title={'清除缓存'} detail={`大小:${appStateStore.cacheSize}`} onPress={() => {
-                    appStateStore.clearCache();
-                }}/>
+            <BaseContainer title={'设置'}>
+                <ScrollView style={styles.container}>
+                    <ListRow title={'检查更新aa'} onPress={() => {
+                        RouteHelper.pop(2)
+                    }}/>
+                    <ListRow title={'清除缓存'} detail={`大小:${appStateStore.cacheSize}`} onPress={() => {
+                        appStateStore.clearCache();
+                    }}/>
 
 
-                {this.props.userStore.isLogin ?
-                    <ListRow title={'退出登录'} detail={`用户名:${this.props.userStore.data.name}`} onPress={() => {
-                        Alert.alert('确定要退出登录吗？', '下次将不能自动的登录。', [
-                            {text: '取消', style: 'cancel'},
-                            {text: '确定', onPress: () => this.props.userStore.logout()},
-                        ])
-                    }}/> :
-                    <ListRow title={'模拟登录'} detail={'未登录'} onPress={() => {
-                        this.props.userStore.login({type: 111})
-                    }}/>}
+                    {this.props.userStore.isLogin ?
+                        <ListRow title={'退出登录'} detail={`用户名:${this.props.userStore.data.name}`} onPress={() => {
+                            Alert.alert('确定要退出登录吗？', '下次将不能自动的登录。', [
+                                {text: '取消', style: 'cancel'},
+                                {text: '确定', onPress: () => this.props.userStore.logout()},
+                            ])
+                        }}/> :
+                        <ListRow title={'模拟登录'} detail={'未登录'} onPress={() => {
+                            this.props.userStore.login({type: 111})
+                        }}/>}
 
-                <ListRow title={'清除缓存'} detail={`大小:${appStateStore.cacheSize}`} onPress={() => {
-                    appStateStore.clearCache();
-                }}/>
-                {this.renderItems()}
-            </ScrollView>
+                    <ListRow title={'清除缓存'} detail={`大小:${appStateStore.cacheSize}`} onPress={() => {
+                        appStateStore.clearCache();
+                    }}/>
+                    {this.renderItems()}
+                </ScrollView>
+            </BaseContainer>
         );
     }
 }

@@ -16,15 +16,15 @@ export class ShopCarStore {
 
     constructor() {
         autorun(() => {
-            console.log('购物车数据', this.data, this.dataLength);
-            if (this.dataLength === 0 && this.isEditMode) {
+            console.log('购物车数据', this.data);
+            if (this.isArrayEmpty && this.isEditMode) {
                 this.reversalEdit()
             }
         });
     }
 
     @action
-    addShop(shop): boolean {
+    addShop = (shop): boolean => {
         let item = new ShopData(shop);
         let index = this.index(item);
         if (index === -1) {
@@ -66,8 +66,8 @@ export class ShopCarStore {
         return this.isAllCheck ? this.data.length : this.data.filter((item) => item.check).length;
     }
 
-    @computed get dataLength(): number {
-        return this.data.length;
+    @computed get isArrayEmpty(): number {
+        return this.data.length === 0;
     }
 
     @computed get allPrice(): number {

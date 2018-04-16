@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {inject, observer} from 'mobx-react'
 import {RouteHelper} from 'react-navigation-easy-helper'
-import {TabView, Button, Toast} from "teaset";
+import {TabView, Button} from "teaset";
 import HomePage from './HomePage'
 import {ShopCarPage} from './ShopCarPage'
 import MinePage from "./MinePage";
@@ -25,17 +25,16 @@ const titles = ['首页', '购物车', '我的'];
 @observer
 export default class MainPage extends Component {
 
-    static navigationOptions = ({navigation}) => {
-        let options = {
-            headerTitle: navigation.state.params ? navigation.state.params.title : '首页',
-            headerRight: navigation.state.params ? navigation.state.params.headerRight : null,
-        };
-        if (navigation.state.params && navigation.state.params.index === 2) options.header = null;
-        return options
-    };
 
     lastClickTime = 0;
     seleIndex = 0;
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeIndex: 0
+        };
+    }
 
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.onBackHander);
@@ -47,9 +46,12 @@ export default class MainPage extends Component {
 
 
     render() {
+        const {shopCar} = this.props;
+        const {isArrayEmpty, data} = shopCar;
         return (
             <View style={{flex: 1}}>
-                <TabView style={{flex: 1}} type='projector' onChange={this.onTabChange}>
+                <TabView style={{flex: 1}} type='projector' activeIndex={this.state.activeIndex}
+                         onChange={this.onTabChange}>
                     <TabView.Sheet
                         title='首页'
                         activeTitleStyle={{color: 'red'}}
@@ -61,7 +63,7 @@ export default class MainPage extends Component {
                     <TabView.Sheet
                         title='购物车'
                         icon={images.ic_cart}
-                        badge={this.props.shopCar.dataLength === 0 ? null : this.props.shopCar.dataLength}
+                        badge={isArrayEmpty ? null : data.length}
                     >
                         <ShopCarPage tabChange={this.onTabChange}/>
                     </TabView.Sheet>
@@ -78,37 +80,13 @@ export default class MainPage extends Component {
     }
 
     onTabChange = (index) => {
-        this.seleIndex = index;
-        this.props.navigation.setParams({
-            title: titles[index],
-            headerRight: this.renderHeaderRight(),
-            index: index,
-        })
-
-
-    };
-
-
-    renderHeaderRight = () => {
-        switch (this.seleIndex) {
-            case 0:
-                return null;
-            case 1:
-                return <ObserverButton/>;
-            case 2:
-                return <Button type={'link'} title={'设置'} onPress={() => {
-                    RouteHelper.push('SetPage')
-                }}/>;
-            default:
-                return null;
-        }
+        this.setState({activeIndex: index})
     };
 
 
     onBackHander = () => {
         if (RouteHelper.routeStack.length === 1 && Date.now() - this.lastClickTime >= 2000) {
-            Toast.message('再按一次退出');
-            ToastAndroid.show('再按一次退出',);
+            ToastAndroid.show('再按一次退出', ToastAndroid.LONG);
             this.lastClickTime = Date.now();
             return true;
         }

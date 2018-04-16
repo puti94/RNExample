@@ -2,16 +2,16 @@
  * User: puti.
  * Time: 2018/4/14 下午5:37.
  */
-import {Component} from 'react'
 
-export const setCustomProps = (WrapComponent, customProps) => {
-    if (!WrapComponent instanceof Component) {
-        console.warn(`${WrapComponent.displayName} is not a Component`);
-        return;
-    }
+/**
+ * 添加组件的的自定义属性
+ * @param WrapComponent 组件
+ * @param customProps 默认属性
+ */
+export const addCustomProps = (WrapComponent, customProps) => {
     const componentRender = WrapComponent.prototype.render;
-    const componentDefaultProps = WrapComponent.prototype.defaultProps;
-    WrapComponent.prototype.defaultProps = {
+    const componentDefaultProps = WrapComponent.prototype.constructor.defaultProps;
+    WrapComponent.prototype.constructor.defaultProps = {
         ...componentDefaultProps,
         ...customProps
     };

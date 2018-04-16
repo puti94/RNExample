@@ -6,78 +6,25 @@
  */
 
 
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
-    ScrollView,
-    AsyncStorage,
     View,
     Text,
     TouchableOpacity,
     Image,
     StyleSheet,
     Dimensions,
-    Platform,
 } from 'react-native'
-import {ListRow} from 'teaset'
-import SplashScreen from 'react-native-splash-screen'
-import {RouteHelper} from 'react-navigation-easy-helper'
 import PropTypes from "prop-types";
 import {observer} from 'mobx-react'
 import {Theme} from "../store";
 import {images} from "../res";
 import ShadowView from "react-native-shadow-view";
-import {BaseContainer} from "../components";
 
 const {width} = Dimensions.get('window');
-export default class LaunchPage extends Component {
 
-
-    launchApp = async () => {
-        let notFirstOpen = await AsyncStorage.getItem('notFirstOpen');
-        if (notFirstOpen) {
-            RouteHelper.reset('MainPage')
-        } else {
-            AsyncStorage.setItem('notFirstOpen', 'true');
-            RouteHelper.replace('GuidePage')
-        }
-    };
-
-    componentDidMount() {
-        //当启动页完全渲染完毕后隐藏白屏占位图
-        SplashScreen.hide();
-        console.log('版本', Platform.Version)
-    }
-
-    render() {
-        return (<BaseContainer store={this.store} hideLeft title={'LaunchPage'}>
-            <ScrollView style={{flex: 1}}>
-                <ListRow title={'工具示例'} onPress={() => {
-                    RouteHelper.navigate('UtilsPage')
-                }}/>
-                <ListRow title={'路由示例'} onPress={() => {
-                    RouteHelper.navigate('RouteUtilPage')
-                }}/>
-                <ListRow title={'基础页面'} onPress={() => {
-                    RouteHelper.navigate('BasePage')
-                }}/>
-
-                <ListRow title={'设置页面'} onPress={() => {
-                    RouteHelper.navigate('SetPage')
-                }}/>
-
-                <ListRow title={'Teaset Example'} onPress={() => {
-                    RouteHelper.navigate('TeasetApp')
-                }}/>
-
-                <ListRow title={'打开正常App'} onPress={this.launchApp}/>
-            </ScrollView>
-        </BaseContainer>);
-    }
-
-}
-
-@observer
-class NavBar extends Component {
+// @observer
+export default class NavBar extends PureComponent {
 
     static propTypes = {
         title: PropTypes.string,
@@ -108,6 +55,7 @@ class NavBar extends Component {
 
 
     render() {
+        console.log('render');
         const {
             hideLeft,
             leftPress,
@@ -123,14 +71,23 @@ class NavBar extends Component {
             hasShadow
         } = this.props;
 
+        const {navigation} = this.context;
+
         const ContainView = hasShadow ? ShadowView : View;
+
+        let leftViewPress = null;
+        if (typeof leftPress === 'undefined') {
+            leftViewPress = () => navigation.goBack();
+        } else {
+            leftViewPress = leftPress
+        }
 
         const leftProps = {
             view: leftView,
             hide: hideLeft,
             icon: leftIcon,
             title: leftTitle,
-            onPress: leftPress
+            onPress: leftViewPress
         };
         const rightProps = {
             view: rightView,
@@ -156,7 +113,7 @@ class NavBar extends Component {
 
 }
 
-BothSideView = ({hide, onPress, icon, view, title, style}) => {
+const BothSideView = ({hide, onPress, icon, view, title, style}) => {
     let subView = null;
     if (view) {
         subView = view;
@@ -198,8 +155,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     icon: {
-        width: 28,
-        height: 28,
+        width: 24,
+        height: 24,
         tintColor: 'white'
     },
     centerContain: {

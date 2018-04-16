@@ -150,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     compile project(':react-native-device-info')
     compile project(':react-native-http-cache')
     compile project(':react-native-splash-screen')

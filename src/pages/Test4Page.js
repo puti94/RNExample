@@ -8,25 +8,17 @@
 
 import React, {Component} from 'react';
 import {
-    StyleSheet,
-    View,
     Text,
     Button
 } from 'react-native';
 import {RouteHelper} from 'react-navigation-easy-helper'
+import BaseContainer from "../components/BaseContainer";
 
 export default class Test4Page extends Component {
-    static navigationOptions = ({navigation}) => ({
-        headerTitle: 'Test4Page',
-    });
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <View style={styles.container}>
+            <BaseContainer title={'Test4Page'}>
 
                 <Text>页面4</Text>
                 <Button onPress={() => {
@@ -42,16 +34,7 @@ export default class Test4Page extends Component {
                     RouteHelper.reset('MainPage')
                 }} title={'重置首页'}/>
                 <Text>页面4</Text>
-            </View>
+            </BaseContainer>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-});

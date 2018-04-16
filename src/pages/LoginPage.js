@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import {inject, observer} from 'mobx-react'
 import {RouteHelper} from 'react-navigation-easy-helper'
+import {BaseContainer} from "../components";
 
 
 @inject('userStore')
@@ -25,20 +26,16 @@ export default class LoginPage extends Component {
         headerTitle: 'LoginPage',
     });
 
-    constructor(props) {
-        super(props);
-    }
-
-
     _login = () => {
-        this.props.userStore.login({
+        const {userStore, navigation} = this.props;
+        const {routeName, params, successCallBack} = navigation.state.params;
+        userStore.login({
             account: '157xxxxxxxx',
             password: '111111',
             store: this.store,
             type: 'account',
             callBack: () => {
-                if (this.props.userStore.isLogin) {
-                    const {routeName, params, successCallBack} = this.props.navigation.state.params;
+                if (userStore.isLogin) {
                     if (routeName) {
                         RouteHelper.replace(routeName, params)
                     }
@@ -53,7 +50,7 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <BaseContainer title={'LoginPage'} rightTitle={'注册'} rightPress={alert}>
                 <Text>登录页面</Text>
                 <Button onPress={this._login} title={'登录'}/>
 
@@ -61,7 +58,7 @@ export default class LoginPage extends Component {
                     this.props.navigation.navigate('LaunchPage')
                 }} title={'返回上一页'}/>
 
-            </View>
+            </BaseContainer>
         );
     }
 }

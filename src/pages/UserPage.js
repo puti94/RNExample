@@ -15,23 +15,21 @@ import {
 } from 'react-native';
 import {RouteHelper} from "react-navigation-easy-helper";
 import {inject} from 'mobx-react'
+import BaseContainer from "../components/BaseContainer";
 
 @inject('userStore')
 export default class UserPage extends Component {
 
-    static navigationOptions = ({navigation}) => ({
-        title: 'UserPage',
-    });
 
     render() {
         console.log('render');
         return (
-            <View style={styles.container}>
+            <BaseContainer title={'UserPage'}>
                 <Text>用户个人页面</Text>
                 <Button onPress={() => {
                     RouteHelper.pop()
                 }} title={'返回上一页'}/>
-            </View>
+            </BaseContainer>
         );
     }
 }

@@ -4,6 +4,7 @@
  */
 
 import {LoadingUtils} from './LoadingUtils'
+
 export function ImageBody(response) {
     this.uri = response.uri;
     this.name = response.fileName;

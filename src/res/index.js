@@ -14,4 +14,5 @@ export const images = {
     ic_photo2: require('./image/ic_photo2.jpg'),
     ic_photo3: require('./image/ic_photo3.jpg'),
     ic_shop_img: require('./image/ic_shop_img.jpg'),
+    back: require('./image/back.png'),
 };

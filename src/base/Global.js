@@ -1,6 +1,7 @@
 /**
  * User: puti.
  * Time: 2018/4/14 下午6:36.
+ * 设置一些全局变量，global需慎用
  */
 import {Dimensions, Platform} from 'react-native'
 
