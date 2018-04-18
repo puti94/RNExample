@@ -23,8 +23,8 @@ import ShadowView from "react-native-shadow-view";
 
 const {width} = Dimensions.get('window');
 
-// @observer
-export default class NavBar extends PureComponent {
+@observer
+export default class NavBar extends Component {
 
     static propTypes = {
         title: PropTypes.string,
@@ -77,7 +77,7 @@ export default class NavBar extends PureComponent {
 
         let leftViewPress = null;
         if (typeof leftPress === 'undefined') {
-            leftViewPress = () => navigation.goBack();
+            leftViewPress = () => navigation && navigation.goBack();
         } else {
             leftViewPress = leftPress
         }

@@ -1,8 +1,6 @@
 /**
  * User: puti.
- * Time: 2018/2/7 下午8:22.
- * GitHub:https://github.com/puti94
- * Email:guoquanxie@foxmail.com
+ * Time: 2018/4/18 下午8:22.
  */
 
 

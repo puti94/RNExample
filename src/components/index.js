@@ -11,6 +11,7 @@ import {LoadingView} from './LoadingView';
 import MoveView from './MoveView';
 import NavBar from './NavBar';
 import Indexes from "./Indexes";
+import StateImage from "./StateImage";
 
 export {
     AutoFlatList,
@@ -20,5 +21,6 @@ export {
     LoadingView,
     MoveView,
     NavBar,
-    Indexes
+    Indexes,
+    StateImage
 }

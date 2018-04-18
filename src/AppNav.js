@@ -20,6 +20,7 @@ import SetPage from './pages/SetPage'
 import TeasetApp from '../node_modules/teaset/example/App'
 import {configRoute} from 'react-navigation-easy-helper'
 import NotesPage from "./pages/NotesPage";
+import StateImagePage from "./pages/StateImagePage";
 
 export const AppNavigator = StackNavigator(
     configRoute({
@@ -36,6 +37,7 @@ export const AppNavigator = StackNavigator(
         BasePage: {screen: BasePage},
         SetPage: {screen: SetPage},
         NotesPage: {screen: NotesPage},
+        StateImagePage: {screen: StateImagePage},
         TeasetApp: {
             screen: TeasetApp, navigationOptions: {
                 header: null
