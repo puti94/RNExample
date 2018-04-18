@@ -10,3 +10,5 @@ global.SCREEN_WIDTH = width;
 global.SCREEN_HEIGHT = height;
 global._IOS_ = Platform.OS === 'ios';
 global._ANDROID_ = Platform.OS === 'android';
+//release改为false
+global._STAGING_ = true;
