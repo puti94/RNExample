@@ -10,26 +10,16 @@ import React, {Component} from 'react';
 import {
     ScrollView,
     AsyncStorage,
-    View,
-    Text,
-    TouchableOpacity,
-    Image,
-    StyleSheet,
     Dimensions,
     Platform,
 } from 'react-native'
 import {ListRow} from 'teaset'
 import SplashScreen from 'react-native-splash-screen'
 import {RouteHelper} from 'react-navigation-easy-helper'
-import PropTypes from "prop-types";
-import {observer} from 'mobx-react'
-import {Theme} from "../store";
-import {images} from "../res";
-import ShadowView from "react-native-shadow-view";
 import {BaseContainer} from "../components";
 import StateImagePage from "./StateImagePage";
+import {codePushCheckForUpdate} from "../utils/UpdateUtils";
 
-const {width} = Dimensions.get('window');
 export default class LaunchPage extends Component {
 
 
@@ -54,6 +44,9 @@ export default class LaunchPage extends Component {
             <ScrollView style={{flex: 1}}>
                 <ListRow title={'工具示例'} onPress={() => {
                     RouteHelper.navigate('UtilsPage')
+                }}/>
+                <ListRow title={'code-push检测更新'} onPress={() => {
+                    codePushCheckForUpdate()
                 }}/>
                 <ListRow title={'模拟通讯录'} onPress={() => {
                     RouteHelper.navigate('NotesPage')

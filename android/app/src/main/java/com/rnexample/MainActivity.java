@@ -11,6 +11,7 @@ public class MainActivity extends ReactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //debug模式关掉启动屏，避免有时js还未hide就发生错误
         if (!BuildConfig.DEBUG)
             SplashScreen.show(this, true);  // here
         super.onCreate(savedInstanceState);
