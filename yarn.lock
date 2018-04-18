@@ -4175,25 +4175,15 @@ react-native-drawer-layout@1.3.2:
   version "0.2.0"
   resolved "https://github.com/puti94/react-native-http-cache#efd7e16ed184ad537ce5a79902913b11ac9c4a61"
 
-react-native-image-pan-zoom@^2.1.2:
-  version "2.1.2"
-  resolved "http://registry.npm.taobao.org/react-native-image-pan-zoom/download/react-native-image-pan-zoom-2.1.2.tgz#278bd8b044ba94b13d1f194c73c1a7da26d903e3"
-
-react-native-image-zoom-viewer@^2.1.2:
-  version "2.1.2"
-  resolved "http://registry.npm.taobao.org/react-native-image-zoom-viewer/download/react-native-image-zoom-viewer-2.1.2.tgz#e21b0667c7a4681b105ea92e8b7d23f6bd5b5335"
-  dependencies:
-    react-native-image-pan-zoom "^2.1.2"
-
-react-native-material-shadows@^0.0.2:
-  version "0.0.2"
-  resolved "http://registry.npm.taobao.org/react-native-material-shadows/download/react-native-material-shadows-0.0.2.tgz#024a50b097423325c6e51f93298c4ab1b226e7f5"
-
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"
   resolved "http://registry.npm.taobao.org/react-native-safe-area-view/download/react-native-safe-area-view-0.7.0.tgz#38f5ab9368d6ef9e5d18ab64212938af3ec39421"
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+react-native-section-list-get-item-layout@^2.2.2:
+  version "2.2.2"
+  resolved "http://registry.npm.taobao.org/react-native-section-list-get-item-layout/download/react-native-section-list-get-item-layout-2.2.2.tgz#567bf9b51c97020787c45ffe73e57eb25dd8b466"
 
 react-native-shadow-view@^0.0.1:
   version "0.0.1"
@@ -4210,10 +4200,6 @@ react-native-spinkit@^1.1.1:
 react-native-splash-screen@^3.0.6:
   version "3.0.6"
   resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.0.6.tgz#c0bbf2c8ae40a313c4c7044f55e569414ff68332"
-
-react-native-storage@^0.2.2:
-  version "0.2.2"
-  resolved "http://registry.npm.taobao.org/react-native-storage/download/react-native-storage-0.2.2.tgz#4449197f122b2da0650e3704e1f050260ed58d9f"
 
 react-native-svg@^6.3.1:
   version "6.3.1"

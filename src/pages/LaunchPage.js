@@ -54,6 +54,9 @@ export default class LaunchPage extends Component {
                 <ListRow title={'工具示例'} onPress={() => {
                     RouteHelper.navigate('UtilsPage')
                 }}/>
+                <ListRow title={'模拟通讯录'} onPress={() => {
+                    RouteHelper.navigate('NotesPage')
+                }}/>
                 <ListRow title={'路由示例'} onPress={() => {
                     RouteHelper.navigate('RouteUtilPage')
                 }}/>

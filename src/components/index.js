@@ -10,6 +10,7 @@ import {ErrorView} from './ErrorView';
 import {LoadingView} from './LoadingView';
 import MoveView from './MoveView';
 import NavBar from './NavBar';
+import Indexes from "./Indexes";
 
 export {
     AutoFlatList,
@@ -18,5 +19,6 @@ export {
     ErrorView,
     LoadingView,
     MoveView,
-    NavBar
+    NavBar,
+    Indexes
 }

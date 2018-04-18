@@ -17,20 +17,8 @@ import {images} from "../res";
 
 const IMAGES = [images.ic_photo1, images.ic_photo2, images.ic_photo3];
 
-import ImageViewer from 'react-native-image-zoom-viewer';
 import BaseContainer from "../components/BaseContainer";
 
-const Images = [{
-    url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-    // Pass props to <Image />.
-    props: {
-        // headers: ...
-    }
-}, {
-    url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460'
-}, {
-    url: 'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460'
-}]
 
 @observer
 export default class UtilsPage extends Component {

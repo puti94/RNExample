@@ -34,7 +34,7 @@ export default class NavBar extends PureComponent {
         leftView: PropTypes.element,
         leftIcon: PropTypes.any,
         hideRight: PropTypes.bool,
-        rightPress: PropTypes.bool,
+        rightPress: PropTypes.func,
         rightView: PropTypes.element,
         rightIcon: PropTypes.any,
         rightTitle: PropTypes.string,
