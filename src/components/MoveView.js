@@ -12,9 +12,7 @@ import {
     PanResponder,
     StyleSheet,
     Dimensions,
-    StatusBar
 } from 'react-native';
-import PropTypes from 'prop-types'
 
 const {width, height} = Dimensions.get('window');
 export default class MoveView extends PureComponent {

@@ -18,6 +18,7 @@ import {images} from "../res";
 const IMAGES = [images.ic_photo1, images.ic_photo2, images.ic_photo3];
 
 import BaseContainer from "../components/BaseContainer";
+import {RouteHelper} from "react-navigation-easy-helper";
 
 
 @observer
@@ -42,7 +43,6 @@ export default class UtilsPage extends Component {
     };
 
     showBigImages = () => {
-
         CommonUtils.showBigImages(this.clickView, 1, IMAGES,
             (index) => {
                 Toast.message(`点击了第${index + 1}张`)
@@ -62,6 +62,15 @@ export default class UtilsPage extends Component {
         </View>)
     };
 
+    showQCord = () => {
+        CommonUtils.showQCord(e => {
+            if (e.code.startsWith('http')) {
+                Toast.message('扫描结果:' + e.code)
+                RouteHelper.navigate('WebPage', {url: e.code})
+            }
+        })
+    };
+
     render() {
         return (<BaseContainer title={'工具类用法'}>
             <ScrollView style={{flex: 1}}>
@@ -73,6 +82,10 @@ export default class UtilsPage extends Component {
                     ref={ref => this.clickView = ref}
                     title="图片放大"
                     onPress={this.showBigImages}
+                />
+                <ListRow
+                    title="二维码扫描"
+                    onPress={this.showQCord}
                 />
                 <ListRow
                     title="显示加载框"
