@@ -21,7 +21,7 @@ export default class WebPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            source: {uri: 'https://www.baidu.com'},
+            source: {uri: this.props.url || 'https://www.baidu.com'},
         };
     }
 

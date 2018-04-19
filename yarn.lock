@@ -4504,6 +4504,10 @@ react-native-shadow-view@^0.0.1:
   dependencies:
     color-alpha "^1.0.2"
 
+"react-native-smart-barcode@https://github.com/puti94/react-native-smart-barcode":
+  version "1.0.6"
+  resolved "https://github.com/puti94/react-native-smart-barcode#4126286f042ecca07033ed695352b13003c73868"
+
 react-native-spinkit@^1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/react-native-spinkit/download/react-native-spinkit-1.1.1.tgz#3ae512f3978bc750b7c02639911e1710750d8539"

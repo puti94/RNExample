@@ -10,6 +10,7 @@
 #import "SplashScreen.h"
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <Bugly/Bugly.h>
 
 
 @implementation AppDelegate
@@ -37,7 +38,12 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   //开发模式下占位屏可以先不用打开，以免JS发生错误红屏显示不出来
-//  [SplashScreen show];
+#ifdef DEBUG
+
+#else
+  [SplashScreen show];
+#endif
+  [Bugly startWithAppId:@"1067191600"];
   return YES;
 }
 

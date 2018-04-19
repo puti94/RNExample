@@ -3,6 +3,7 @@ package com.rnexample;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecomponent.barcode.RCTCapturePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -11,6 +12,7 @@ import com.horcrux.svg.SvgPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.microsoft.codepush.react.CodePush;
 import com.react.rnspinkit.RNSpinkitPackage;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
@@ -37,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
+                    new RCTCapturePackage(),
                     new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
                     new SvgPackage(),
                     new RNDeviceInfo(),
@@ -61,5 +64,6 @@ public class MainApplication extends Application implements ReactApplication {
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
+        CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BUGLY_ID, BuildConfig.DEBUG);
     }
 }

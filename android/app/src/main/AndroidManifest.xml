@@ -15,6 +15,22 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- react-native-fetch-blob所需权限 结束-->
 
+    <!-- bugly所需权限 开始-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- bugly所需权限 结束-->
+
+    <!-- smart-barcode所需权限 开始-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!-- smart-barcode所需权限 结束-->
+
     <application
         android:name=".MainApplication"
         android:icon="@mipmap/ic_launcher"

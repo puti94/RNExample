@@ -37,7 +37,6 @@ export default class GuidePage extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar hidden={true}/>
                 <Carousel
                     control={
                         <Carousel.Control
