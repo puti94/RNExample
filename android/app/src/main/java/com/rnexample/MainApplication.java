@@ -2,6 +2,7 @@ package com.rnexample;
 
 import android.app.Application;
 
+import com.example.customlib.CustomPackage;
 import com.facebook.react.ReactApplication;
 import com.reactnativecomponent.barcode.RCTCapturePackage;
 import com.facebook.react.ReactNativeHost;
@@ -45,7 +46,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new RNDeviceInfo(),
                     new HttpCachePackage(),
                     new SplashScreenReactPackage(),
-                    new RNSpinkitPackage()
+                    new RNSpinkitPackage(),
+                    new CustomPackage()
             );
         }
 

@@ -22,6 +22,8 @@ import {configRoute} from 'react-navigation-easy-helper'
 import NotesPage from "./pages/NotesPage";
 import StateImagePage from "./pages/StateImagePage";
 import WebPage from "./pages/WebPage";
+import CustomNativeUIPage from "./pages/CustomNativeUIPage";
+
 
 export const AppNavigator = StackNavigator(
     configRoute({
@@ -40,6 +42,7 @@ export const AppNavigator = StackNavigator(
         NotesPage: {screen: NotesPage},
         WebPage: {screen: WebPage},
         StateImagePage: {screen: StateImagePage},
+        CustomNativeUIPage: {screen: CustomNativeUIPage},
         TeasetApp: {
             screen: TeasetApp, navigationOptions: {
                 header: null

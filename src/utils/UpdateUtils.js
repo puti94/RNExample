@@ -47,7 +47,10 @@ export const codePushCheckForUpdate = async () => {
                 state => console.log('code-push-state', state),
                 progress => console.log('code-push-progress', progress))
         } else {
-            console.log('code-push没有可用更新')
+            CodePush.sync();//就算没有更新也需要调用一次，不然会执行回滚
+            if (__DEV__) {
+                alert('code-push没有新版')
+            }
         }
     } catch (e) {
         console.log('checkForUpdate--error', e)

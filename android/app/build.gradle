@@ -98,6 +98,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+
     defaultConfig {
         applicationId "com.rnexample"
         minSdkVersion 16
@@ -135,11 +136,20 @@ android {
         debug {
             signingConfig signingConfigs.release
             buildConfigField "String", "CODEPUSH_KEY", '"cs0uMRdV9FKk50G8kJ7jItfPlOCW69164cd5-3ec5-40b7-9175-9f0b5d36de44"'
+            buildConfigField "String", "BUILD_TYPES", '"DEBUG"'
+        }
+
+        staging {
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"cs0uMRdV9FKk50G8kJ7jItfPlOCW69164cd5-3ec5-40b7-9175-9f0b5d36de44"'
+            buildConfigField "String", "BUILD_TYPES", '"STAGING"'
+//            matchingFallbacks = ['debug', 'release']
         }
 
         release {
             signingConfig signingConfigs.release
             buildConfigField "String", "CODEPUSH_KEY", '"aSqHmmeAAa9an1VvrRjoA4vXkptm06deade4-1f87-4d67-b199-fbf216d3f314"'
+            buildConfigField "String", "BUILD_TYPES", '"RELEASE"'
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -172,9 +182,11 @@ dependencies {
     compile project(':react-native-http-cache')
     compile project(':react-native-splash-screen')
     compile project(':react-native-spinkit')
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.facebook.react:react-native:+'
+    // From node_modules
+    compile project(':customlib')
 }
 
 // Run this once to be able to run the application with BUCK

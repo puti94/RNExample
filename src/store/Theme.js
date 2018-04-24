@@ -41,7 +41,7 @@ export const Theme = {
             return 44;
         }
         if (Platform.OS === 'android') {
-            if (Platform.Version < 19) return 0;
+            if (Platform.Version < 21) return 0;
             return StatusBar.currentHeight;
         }
         return 20;
