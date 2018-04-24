@@ -9,7 +9,6 @@
 │   │    ├── Api                // 可将项目网络请求接口都写在此处
 │   │    ├── Config             // app配置项
 │   │    ├── Constant           // 放置一些常量
-│   │    ├── Database           // 本地存储接口可统一写在此处
 │   │    ├── Global             // 为节省导入,可将一些全局变量放在此处
 │   ├── components              // 通用组件
 │   ├── page                    // 所有的StackNavigator注册页面或者Tab页面
@@ -19,7 +18,7 @@
 │   │    └── index.js           // 统一管理
 │   ├── store.js                // 将所有存储状态的文件放此处
 │   ├── utils.js                // 工具类
-│   └── NavigationConfig.js     // 导航配置项
+│   └── AppNav.js     // 导航配置项
 
 ```
 
@@ -43,6 +42,7 @@
 - [x] 缓存清理
 - [x] code-push 热更新
 - [x] bugly集成
+- [x] 自定义原生UI的简单示例(ios使用swift混编)
 - [ ] 极光消息推送
 - [ ] 微信支付宝支付
 - [ ] 第三方分享,登录

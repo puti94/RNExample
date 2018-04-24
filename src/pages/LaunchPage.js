@@ -10,7 +10,6 @@ import React, {Component} from 'react';
 import {
     ScrollView,
     AsyncStorage,
-    Dimensions,
     Platform,
 } from 'react-native'
 import {ListRow} from 'teaset'
@@ -36,11 +35,21 @@ export default class LaunchPage extends Component {
     componentDidMount() {
         //当启动页完全渲染完毕后隐藏白屏占位图
         SplashScreen.hide();
-        console.log('版本', Platform.Version)
     }
 
     render() {
-        return (<BaseContainer store={this.store} hideLeft title={'LaunchPage'}>
+
+        let title = '';
+        if (__DEV__) {
+            title = "开发版本"
+        }
+        if (global._STAGING_) {
+            title = "测试版本"
+        }
+        if (global._RELEASE_) {
+            title = "正式版本"
+        }
+        return (<BaseContainer store={this.store} hideLeft title={`${title}`}>
             <ScrollView style={{flex: 1}}>
                 <ListRow title={'工具示例'} onPress={() => {
                     RouteHelper.navigate('UtilsPage')

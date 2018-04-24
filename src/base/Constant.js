@@ -8,30 +8,35 @@
 import {Platform} from 'react-native'
 
 const debug = {
+    TYPE: 'debug',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'GJf_gAWqYPwRg_jzh5YtT5qXWrwO06deade4-1f87-4d67-b199-fbf216d3f314' :
         'mENSa_WNjzP6HOMmq9ECK8lEr8qQ06deade4-1f87-4d67-b199-fbf216d3f314'
 };
 
 const staging = {
+    TYPE: 'staging',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'GJf_gAWqYPwRg_jzh5YtT5qXWrwO06deade4-1f87-4d67-b199-fbf216d3f314' :
         'mENSa_WNjzP6HOMmq9ECK8lEr8qQ06deade4-1f87-4d67-b199-fbf216d3f314'
 };
 
 const release = {
+    TYPE: 'release',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'gm-Zizg975oJztUDW4sgymi6_jm_06deade4-1f87-4d67-b199-fbf216d3f314' :
         'aSqHmmeAAa9an1VvrRjoA4vXkptm06deade4-1f87-4d67-b199-fbf216d3f314'
 };
 
-const divisive = __DEV__ ? debug : (_STAGING_ ? staging : release);
 const common = {};
-
-export default {
-    ...divisive,
-    ...common
-}
+/**
+ * 重新赋值
+ */
+export const reInit = () => {
+    const divisive = __DEV__ ? debug : (_STAGING_ ? staging : release);
+    Object.assign(common, divisive)
+};
+export default common
 
 
 //网易新闻最新新闻列表

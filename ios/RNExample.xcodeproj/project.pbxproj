@@ -30,6 +30,9 @@
 		C532F95820885F9900CFF2E6 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C532F92820885F9800CFF2E6 /* Bugly.framework */; };
 		C532F95A20885FAD00CFF2E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C532F95920885FAD00CFF2E6 /* SystemConfiguration.framework */; };
 		C532F95C20885FB600CFF2E6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C532F95B20885FB600CFF2E6 /* Security.framework */; };
+		C5445740208C2D5300F42D44 /* RCTUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544573F208C2D5300F42D44 /* RCTUITest.swift */; };
+		C5445742208C2E8D00F42D44 /* RCTUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5445741208C2E8D00F42D44 /* RCTUITest.m */; };
+		C5445A57208F5ECB00F42D44 /* RCTUITestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5445A56208F5ECB00F42D44 /* RCTUITestManager.swift */; };
 		CE2C203461F34D528C04E840 /* libRCTBarcode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFED9955DE35400E87B040E9 /* libRCTBarcode.a */; };
 		D53942E8A619443F9E7C77C2 /* libRNSpinkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1FCEA002FE45CEA09DDE20 /* libRNSpinkit.a */; };
 		DCB5884391DD488AA9FEBAED /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4898A4FDCA04419488026E0B /* libz.tbd */; };
@@ -413,6 +416,10 @@
 		C532F92820885F9800CFF2E6 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		C532F95920885FAD00CFF2E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C532F95B20885FB600CFF2E6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C544573E208C2D5200F42D44 /* RNExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		C544573F208C2D5300F42D44 /* RCTUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTUITest.swift; sourceTree = "<group>"; };
+		C5445741208C2E8D00F42D44 /* RCTUITest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTUITest.m; sourceTree = "<group>"; };
+		C5445A56208F5ECB00F42D44 /* RCTUITestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTUITestManager.swift; sourceTree = "<group>"; };
 		CA1FCEA002FE45CEA09DDE20 /* libRNSpinkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpinkit.a; sourceTree = "<group>"; };
 		EC6DB37B7EAF41299A6DF7B2 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
 		EFED9955DE35400E87B040E9 /* libRCTBarcode.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTBarcode.a; sourceTree = "<group>"; };
@@ -537,6 +544,7 @@
 		13B07FAE1A68108700A75B9A /* RNExample */ = {
 			isa = PBXGroup;
 			children = (
+				C544573D208C2D1100F42D44 /* nativeModule */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -683,6 +691,17 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		C544573D208C2D1100F42D44 /* nativeModule */ = {
+			isa = PBXGroup;
+			children = (
+				C544573F208C2D5300F42D44 /* RCTUITest.swift */,
+				C544573E208C2D5200F42D44 /* RNExample-Bridging-Header.h */,
+				C5445741208C2E8D00F42D44 /* RCTUITest.m */,
+				C5445A56208F5ECB00F42D44 /* RCTUITestManager.swift */,
+			);
+			name = nativeModule;
+			sourceTree = "<group>";
+		};
 		C567D06E2047ED4800037A3A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +794,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = Y49FB37NS3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -1248,7 +1268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				C5445742208C2E8D00F42D44 /* RCTUITest.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				C5445740208C2D5300F42D44 /* RCTUITest.swift in Sources */,
+				C5445A57208F5ECB00F42D44 /* RCTUITestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Y49FB37NS3;
@@ -1293,8 +1317,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1303,6 +1325,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.puti.rnexample;
 				PRODUCT_NAME = RNExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1311,6 +1336,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODEPUSH_KEY = "gm-Zizg975oJztUDW4sgymi6_jm_06deade4-1f87-4d67-b199-fbf216d3f314";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y49FB37NS3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1332,8 +1359,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1342,6 +1367,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.puti.rnexample;
 				PRODUCT_NAME = RNExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNExample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1411,6 +1438,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1447,6 +1475,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "STAGING=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1464,6 +1493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y49FB37NS3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1485,8 +1515,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
-					"\"$(SRCROOT)/RNExample\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1495,6 +1523,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.puti.rnexample;
 				PRODUCT_NAME = RNExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNExample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Staging;
