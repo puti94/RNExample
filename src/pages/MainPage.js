@@ -18,6 +18,7 @@ import {ShopCarPage} from './ShopCarPage'
 import MinePage from "./MinePage";
 import {ShoppingCarView} from 'react-native-addcarview'
 import {images} from "../res";
+import {checkNativeUpdate} from "../utils/UpdateUtils";
 
 const titles = ['首页', '购物车', '我的'];
 
@@ -38,6 +39,7 @@ export default class MainPage extends Component {
 
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.onBackHander);
+        checkNativeUpdate()
     }
 
     componentWillUnmount() {

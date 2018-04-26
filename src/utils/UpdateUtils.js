@@ -2,9 +2,10 @@
  * User: puti.
  * Time: 2018/4/19 上午12:16.
  */
-
+import {Platform, Alert} from 'react-native'
 import CodePush from 'react-native-code-push'
 import C from '../base/Constant'
+import {upgrade, openAPPStore} from 'react-native-app-upgrade'
 
 /**
  * codepush检查更新
@@ -29,6 +30,7 @@ export const codePushCheckForUpdate = async () => {
                 download,
                 downloadUrl
             } = message;
+            console.log('size', packageSize);
             CodePush.sync(
                 {
                     deploymentKey: C.CODE_PUSH_KEY,
@@ -54,6 +56,43 @@ export const codePushCheckForUpdate = async () => {
         }
     } catch (e) {
         console.log('checkForUpdate--error', e)
+    }
+
+};
+
+/**
+ * 检测更新
+ * @returns {Promise<void>}
+ */
+export const checkNativeUpdate = async () => {
+    //模拟服务器放回结果
+    const result = await new Promise((resolve, reject) => {
+        setTimeout(() => resolve({
+            apkUrl: 'http://ofgkyri4t.bkt.clouddn.com/app-release.apk',
+            versionCode: 2,
+            description: '我是更新信息',
+            appId: '414478124'
+        }), 2000)
+    });
+    //对比服务器
+    if (C.BUILD_NUMBER < result.versionCode) {
+        Alert.alert('有新版本',
+            result.description,
+            [{
+                text: '取消', type: 'cancel'
+            }, {
+                text: Platform.OS === 'ios' ? '立即前往' : '立即更新',
+                onPress: () => {
+                    if (Platform.OS === 'ios') {
+                        openAPPStore(result.appId)
+                        // upgrade(result.appId, alert);
+                    } else {
+                        upgrade(result.apkUrl, progress => console.log('下载进度', progress + '%'))
+                    }
+                }
+            }]);
+    } else {
+        await  codePushCheckForUpdate()
     }
 
 };

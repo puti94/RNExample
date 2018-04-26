@@ -22,6 +22,7 @@ export default class CustomNativeUIPage extends Component {
         };
     }
 
+
     render() {
         return (
             <BaseContainer style={styles.container}>

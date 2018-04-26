@@ -31,7 +31,7 @@ export default class MoveView extends PureComponent {
             onPanResponderRelease: this._handlePanResponderEnd,
             onPanResponderTerminate: this._handlePanResponderEnd,
         });
-        const {style} = this.props;
+        const {style = {}} = this.props;
         this._previousTop = style.top || 0;
         this._previousLeft = style.left || 0;
 

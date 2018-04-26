@@ -11,6 +11,8 @@ import {BaseAppStore} from './src/store/index'
 import {RouteHelper} from 'react-navigation-easy-helper'
 import {reInit} from "./src/base/Constant";
 import codePush from 'react-native-code-push'
+import MoveView from "./src/components/MoveView";
+import {Platform, StatusBar, Text, TouchableOpacity, View} from "react-native";
 
 const store = new BaseAppStore();
 const needLoginPage = ['UserPage'];
@@ -46,9 +48,32 @@ export default class App extends Component<Props> {
         reInit();
     }
 
+    componentDidMount() {
+        if (Platform.OS === 'android') {
+            StatusBar.setTranslucent(true);
+            StatusBar.setBackgroundColor('transparent')
+        }
+    }
+
     render() {
         return <Provider {...store}>
-            <AppNavigator/>
+            <View style={{flex: 1}}>
+                <AppNavigator/>
+                <MoveView style={{top: SCREEN_HEIGHT - 140, left: SCREEN_WIDTH - 120}}>
+                    <TouchableOpacity
+                        onPress={() => alert('')}
+                        style={{
+                            width: 80,
+                            height: 80,
+                            borderRadius: 40,
+                            backgroundColor: '#0008',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                        <Text style={{color: 'white'}}>悬浮窗口</Text>
+                    </TouchableOpacity>
+                </MoveView>
+            </View>
         </Provider>
     }
 }

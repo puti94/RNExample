@@ -4448,6 +4448,10 @@ react-native-addcarview@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/react-native-addcarview/download/react-native-addcarview-1.0.1.tgz#0c447e0574fe65dd15f154b26c3c5aef0e98dcaf"
 
+"react-native-app-upgrade@https://github.com/puti94/react-native-app-upgrade":
+  version "1.0.0"
+  resolved "https://github.com/puti94/react-native-app-upgrade#96e4e2d7964fb67b824269f5a7722d8b7d98523b"
+
 react-native-code-push@^5.3.2:
   version "5.3.2"
   resolved "http://registry.npm.taobao.org/react-native-code-push/download/react-native-code-push-5.3.2.tgz#32bc019b37ab14c0c1065ac967b5913e1598dca4"

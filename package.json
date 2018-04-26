@@ -28,6 +28,7 @@
     "react": "16.3.1",
     "react-native": "0.55.3",
     "react-native-addcarview": "^1.0.1",
+    "react-native-app-upgrade": "https://github.com/puti94/react-native-app-upgrade",
     "react-native-code-push": "^5.3.2",
     "react-native-device-info": "^0.17.3",
     "react-native-http-cache": "https://github.com/puti94/react-native-http-cache",
