@@ -18,6 +18,7 @@ import {RouteHelper} from 'react-navigation-easy-helper'
 import {BaseContainer} from "../components";
 import StateImagePage from "./StateImagePage";
 import {codePushCheckForUpdate} from "../utils/UpdateUtils";
+import CustomNativeUIPage from "./CustomNativeUIPage";
 
 export default class LaunchPage extends Component {
 
@@ -68,6 +69,9 @@ export default class LaunchPage extends Component {
                 }}/>
                 <ListRow title={'基础页面'} onPress={() => {
                     RouteHelper.navigate('BasePage')
+                }}/>
+                <ListRow title={'自定义原生UI'} onPress={() => {
+                    RouteHelper.navigate('CustomNativeUIPage')
                 }}/>
 
                 <ListRow title={'设置页面'} onPress={() => {

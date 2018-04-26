@@ -6,6 +6,7 @@
  * 保存一些常量
  */
 import {Platform} from 'react-native'
+import {getBuildNumber} from 'react-native-device-info'
 
 const debug = {
     TYPE: 'debug',
@@ -28,12 +29,14 @@ const release = {
         'aSqHmmeAAa9an1VvrRjoA4vXkptm06deade4-1f87-4d67-b199-fbf216d3f314'
 };
 
-const common = {};
+const common = {
+    BUILD_NUMBER: getBuildNumber()
+};
 /**
  * 重新赋值
  */
 export const reInit = () => {
-    const divisive = __DEV__ ? debug : (_STAGING_ ? staging : release);
+    const divisive = __DEV__ ? debug : (global._STAGING_ ? staging : release);
     Object.assign(common, divisive)
 };
 export default common
