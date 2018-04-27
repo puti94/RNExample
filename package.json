@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "testNode": "babel TestJS.js --out-file Test.js && node Test.js && rm Test.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "adb-reverse": "adb reverse tcp:8081 tcp:8081",
     "run-ios": "react-native run-ios",
     "run-ios iPhoneX": "react-native run-ios --simulator \"iPhone X\"",
     "run-android": "react-native run-android",
@@ -23,6 +25,7 @@
   "dependencies": {
     "hoist-non-react-statics": "^2.5.0",
     "mobx": "^4.1.1",
+    "mobx-persist": "^0.4.1",
     "mobx-react": "^5.0.0",
     "prop-types": "latest",
     "react": "16.3.1",
@@ -33,6 +36,7 @@
     "react-native-device-info": "^0.17.3",
     "react-native-http-cache": "https://github.com/puti94/react-native-http-cache",
     "react-native-permissions": "^1.1.1",
+    "react-native-puti-pay": "^1.0.2",
     "react-native-section-list-get-item-layout": "^2.2.2",
     "react-native-shadow-view": "^0.0.1",
     "react-native-smart-barcode": "https://github.com/puti94/react-native-smart-barcode",
@@ -40,7 +44,7 @@
     "react-native-splash-screen": "^3.0.6",
     "react-native-svg": "^6.3.1",
     "react-navigation": "^1.5.11",
-    "react-navigation-easy-helper": "^1.1.0",
+    "react-navigation-easy-helper": "^1.2.0",
     "teaset": "^0.5.6"
   },
   "devDependencies": {

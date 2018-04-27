@@ -38,6 +38,16 @@ export default class LaunchPage extends Component {
         SplashScreen.hide();
     }
 
+
+    componentDidFocus() {
+        console.log('componentDidFocus', arguments, this)
+    }
+
+    componentWillBlur() {
+        console.log('componentWillBlur', arguments)
+    }
+
+
     render() {
 
         let title = '';

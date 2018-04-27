@@ -4,7 +4,7 @@
  * GitHub:https://github.com/puti94
  * Email:1059592160@qq.com
  */
-import {observable, action, computed} from 'mobx'
+import {observable, action} from 'mobx'
 import {Platform, StatusBar, DeviceInfo} from 'react-native'
 
 export const Theme = {

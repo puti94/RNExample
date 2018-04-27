@@ -5,6 +5,7 @@ import android.app.Application;
 import com.example.customlib.CustomPackage;
 import com.facebook.react.ReactApplication;
 import com.puti.upgrade.UpgradePackage;
+import com.puti.paylib.PayReactPackage;
 import com.reactnativecomponent.barcode.RCTCapturePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -42,6 +43,8 @@ public class MainApplication extends Application implements ReactApplication {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
             new UpgradePackage(),
+                    new PayReactPackage(),
+                    new UpgradePackage(),
                     new RCTCapturePackage(),
                     new CodePush(BuildConfig.CODEPUSH_KEY, getApplicationContext(), BuildConfig.DEBUG),
                     new SvgPackage(),
