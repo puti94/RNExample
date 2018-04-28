@@ -1,6 +1,8 @@
 rootProject.name = 'RNExample'
 include ':react-native-app-upgrade'
 project(':react-native-app-upgrade').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-app-upgrade/android')
+include ':react-native-puti-pay'
+project(':react-native-puti-pay').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-puti-pay/android')
 
 include ':react-native-smart-barcode', ':customlib'
 project(':react-native-smart-barcode').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-smart-barcode/android')
