@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {
     ScrollView,
     AsyncStorage,
-    Platform,
+    NativeModules
 } from 'react-native'
 import {ListRow} from 'teaset'
 import SplashScreen from 'react-native-splash-screen'
@@ -19,6 +19,7 @@ import {BaseContainer} from "../components";
 import StateImagePage from "./StateImagePage";
 import {codePushCheckForUpdate} from "../utils/UpdateUtils";
 import CustomNativeUIPage from "./CustomNativeUIPage";
+import Config from '../base/Constant'
 
 export default class LaunchPage extends Component {
 
@@ -38,9 +39,8 @@ export default class LaunchPage extends Component {
         SplashScreen.hide();
     }
 
-
     componentDidFocus() {
-        console.log('componentDidFocus', arguments, this)
+        console.log('componentDidFocus', arguments, this.props)
     }
 
     componentWillBlur() {
@@ -49,18 +49,7 @@ export default class LaunchPage extends Component {
 
 
     render() {
-
-        let title = '';
-        if (__DEV__) {
-            title = "开发版本"
-        }
-        if (global._STAGING_) {
-            title = "测试版本"
-        }
-        if (global._RELEASE_) {
-            title = "正式版本"
-        }
-        return (<BaseContainer store={this.store} hideLeft title={`${title}`}>
+        return (<BaseContainer store={this.store} hideLeft title={Config.TEST_TITLE}>
             <ScrollView style={{flex: 1}}>
                 <ListRow title={'工具示例'} onPress={() => {
                     RouteHelper.navigate('UtilsPage')
@@ -77,6 +66,9 @@ export default class LaunchPage extends Component {
                 <ListRow title={'路由示例'} onPress={() => {
                     RouteHelper.navigate('RouteUtilPage')
                 }}/>
+                <ListRow title={'支付示例'} onPress={() => {
+                    RouteHelper.navigate('PayPage')
+                }}/>
                 <ListRow title={'基础页面'} onPress={() => {
                     RouteHelper.navigate('BasePage')
                 }}/>
@@ -87,7 +79,6 @@ export default class LaunchPage extends Component {
                 <ListRow title={'设置页面'} onPress={() => {
                     RouteHelper.navigate('SetPage')
                 }}/>
-
                 <ListRow title={'Teaset Example'} onPress={() => {
                     RouteHelper.navigate('TeasetApp')
                 }}/>

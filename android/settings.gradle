@@ -1,5 +1,11 @@
 rootProject.name = 'RNExample'
-include ':react-native-app-upgrade'
+include ':jcore-react-native'
+project(':jcore-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/jcore-react-native/android')
+
+include ':jpush-react-native'
+project(':jpush-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/jpush-react-native/android')
+
+include ':react-native-app-upgrade', ':umeng'
 project(':react-native-app-upgrade').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-app-upgrade/android')
 include ':react-native-puti-pay'
 project(':react-native-puti-pay').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-puti-pay/android')

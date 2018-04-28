@@ -34,7 +34,7 @@ export class ShopCarPage extends Component {
         const {shopCar, tabChange} = this.props;
         const {isArrayEmpty, data, addShop} = shopCar;
         return (
-            <BaseContainer title={'购物车'}>
+            <BaseContainer hideLeft={true} title={'购物车'}>
                 <ListRow
                     ref={'view'}
                     title={'添加商品'}

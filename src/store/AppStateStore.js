@@ -6,7 +6,7 @@
  */
 import * as CacheManager from 'react-native-http-cache'
 import {StringUtils} from '../utils/index'
-import {Platform} from 'react-native'
+import {Platform, Linking} from 'react-native'
 import {LoadingUtils} from '../utils/index'
 import DeviceInfo from 'react-native-device-info';
 import {observable, action} from 'mobx'
@@ -15,7 +15,9 @@ class AppStateStore {
 
     @observable
     cacheSize = '0KB';
-
+    isQQInstall = true;
+    isWXInstall = true;
+    isSinaInstall = true;
     apiLevel = DeviceInfo.getAPILevel();
     applicationName = DeviceInfo.getApplicationName();
     brand = DeviceInfo.getBrand();
@@ -52,12 +54,26 @@ class AppStateStore {
 
     constructor() {
         this.syncCacheSize();
+        this.syncAppInstall();
         Platform.OS === 'android' && DeviceInfo.getMACAddress().then(mac => this.mACAddress = mac).catch(e => console.log('获取macAddress失败', e))
     }
 
     syncCacheSize() {
         CacheManager.getCacheSize().then(size => this.setCacheSize(size))
     }
+
+    @action
+    async syncAppInstall() {
+        const [isQQInstall, isWXInstall, isSinaInstall] = await Promise.all(
+            ['mqq://', 'weixin://', 'weibo://'].map(item =>
+                Linking.canOpenURL(item)
+            )
+        );
+        this.isQQInstall = isQQInstall;
+        this.isWXInstall = isWXInstall;
+        this.isSinaInstall = isSinaInstall;
+    }
+
 
     @action
     setCacheSize(size) {

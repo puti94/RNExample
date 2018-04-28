@@ -23,6 +23,7 @@ import NotesPage from "./pages/NotesPage";
 import StateImagePage from "./pages/StateImagePage";
 import WebPage from "./pages/WebPage";
 import CustomNativeUIPage from "./pages/CustomNativeUIPage";
+import PayPage from "./pages/PayPage";
 
 
 export const AppNavigator = StackNavigator(
@@ -41,6 +42,7 @@ export const AppNavigator = StackNavigator(
         SetPage: {screen: SetPage},
         NotesPage: {screen: NotesPage},
         WebPage: {screen: WebPage},
+        PayPage: {screen: PayPage},
         StateImagePage: {screen: StateImagePage},
         CustomNativeUIPage: {screen: CustomNativeUIPage},
         TeasetApp: {

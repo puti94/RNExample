@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "hoist-non-react-statics": "^2.5.0",
+    "jcore-react-native": "^1.2.5",
+    "jpush-react-native": "^2.2.1",
     "mobx": "^4.1.1",
     "mobx-persist": "^0.4.1",
     "mobx-react": "^5.0.0",

@@ -5,10 +5,15 @@
  * Email:1059592160@qq.com
  * 保存一些常量
  */
-import {Platform} from 'react-native'
-import {getBuildNumber} from 'react-native-device-info'
+import {Platform, NativeModules} from 'react-native'
+import {getBuildNumber, getVersion} from 'react-native-device-info'
+//从原生导出常量
+const nativeConstant = NativeModules.nativeConstant;
+//构建类型
+const BUILD_TYPE = nativeConstant.BUILD_TYPES;
 
 const debug = {
+    TEST_TITLE: 'debug模式',
     TYPE: 'debug',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'GJf_gAWqYPwRg_jzh5YtT5qXWrwO06deade4-1f87-4d67-b199-fbf216d3f314' :
@@ -16,6 +21,7 @@ const debug = {
 };
 
 const staging = {
+    TEST_TITLE: 'staging模式',
     TYPE: 'staging',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'GJf_gAWqYPwRg_jzh5YtT5qXWrwO06deade4-1f87-4d67-b199-fbf216d3f314' :
@@ -23,6 +29,7 @@ const staging = {
 };
 
 const release = {
+    TEST_TITLE: 'release模式',
     TYPE: 'release',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'gm-Zizg975oJztUDW4sgymi6_jm_06deade4-1f87-4d67-b199-fbf216d3f314' :
@@ -30,16 +37,20 @@ const release = {
 };
 
 const common = {
-    BUILD_NUMBER: getBuildNumber()
+    BUILD_TYPE: BUILD_TYPE,
+    VERSION: getVersion(),
+    BUILD_NUMBER: getBuildNumber(),
+    //是否是测试模式
+    _STAGING_: BUILD_TYPE === 'STAGING',
+    //是否是正式模式
+    _RELEASE_: BUILD_TYPE === 'RELEASE',
 };
-/**
- * 重新赋值
- */
-export const reInit = () => {
-    const divisive = __DEV__ ? debug : (global._STAGING_ ? staging : release);
-    Object.assign(common, divisive)
-};
-export default common
+
+const divisive = __DEV__ ? debug : (common._STAGING_ ? staging : release);
+export default {
+    ...common,
+    ...divisive
+}
 
 
 //网易新闻最新新闻列表

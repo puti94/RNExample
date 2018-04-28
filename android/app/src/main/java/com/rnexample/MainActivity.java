@@ -1,12 +1,16 @@
 package com.rnexample;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
+import com.umeng.socialize.UMShareAPI;
 
 import org.devio.rn.splashscreen.SplashScreen;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends ReactActivity {
 
@@ -21,7 +25,20 @@ public class MainActivity extends ReactActivity {
         //debug模式关掉启动屏，避免有时js还未hide就发生错误
         if (!BuildConfig.DEBUG)
             SplashScreen.show(this, true);  // here
+        JPushInterface.init(this);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     /**

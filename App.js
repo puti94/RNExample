@@ -9,10 +9,11 @@ import {AppNavigator} from "./src/AppNav";
 import {Provider} from 'mobx-react'
 import {BaseAppStore} from './src/store/index'
 import {RouteHelper} from 'react-navigation-easy-helper'
-import {reInit} from "./src/base/Constant";
 import codePush from 'react-native-code-push'
 import MoveView from "./src/components/MoveView";
 import {Platform, StatusBar, Text, TouchableOpacity, View} from "react-native";
+import JPushModule from 'jpush-react-native';
+import {Toast} from 'teaset'
 
 const store = new BaseAppStore();
 const needLoginPage = ['UserPage'];
@@ -35,24 +36,36 @@ export default class App extends Component<Props> {
 
     constructor(props) {
         super(props);
-        switch (this.props['BUILD_TYPES']) {
-            case 'DEBUG':
-                break;
-            case 'STAGING':
-                global._STAGING_ = true;
-                break;
-            case 'RELEASE':
-                global._RELEASE_ = true;
-                break;
+        this.state={
+            source:{html:''}
         }
-        reInit();
     }
 
     componentDidMount() {
         if (Platform.OS === 'android') {
             StatusBar.setTranslucent(true);
-            StatusBar.setBackgroundColor('transparent')
+            StatusBar.setBackgroundColor('transparent');
+            JPushModule.notifyJSDidLoad(res => console.log(res));
         }
+        JPushModule.getRegistrationID(registrationId => {
+            console.log('registrationId', registrationId);
+            Toast.message(registrationId);
+        });
+        this.notificationListener = event => {
+            console.log('addReceiveNotificationListener', event);
+            alert(`Notification:${JSON.stringify(event)}`);
+        };
+        JPushModule.addReceiveNotificationListener(this.notificationListener);
+        this.customMsgListener = event => {
+            console.log('addReceiveCustomMsgListener', event);
+            alert(`Custom:${JSON.stringify(event)}`);
+        };
+        JPushModule.addReceiveCustomMsgListener(this.customMsgListener);
+    }
+
+    componentWillUnmount() {
+        JPushModule.removeReceiveCustomMsgListener(this.customMsgListener);
+        JPushModule.removeReceiveNotificationListener(this.notificationListener);
     }
 
     render() {

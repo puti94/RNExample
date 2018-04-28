@@ -7,7 +7,7 @@
 
 
 import React, {Component} from 'react';
-import {View, ScrollView, Text, Modal} from 'react-native'
+import {View, ScrollView, Text} from 'react-native'
 import {CommonUtils} from '../utils/index'
 import {observer} from 'mobx-react'
 import {UtilsPageStore, Theme} from '../store'
@@ -32,9 +32,6 @@ export default class UtilsPage extends Component {
         this.state = {
             modelShow: false
         };
-        XPay.setWxId('wxb4ba3c02aa476ea1');
-        //设置	支付宝URL Schemes
-        XPay.setAlipayScheme('ap2017102209453437')
     }
 
     showChooseCity = () => {
@@ -68,7 +65,7 @@ export default class UtilsPage extends Component {
     showQCord = () => {
         CommonUtils.showQCord(e => {
             if (e.code.startsWith('http')) {
-                Toast.message('扫描结果:' + e.code)
+                Toast.message('扫描结果:' + e.code);
                 RouteHelper.navigate('WebPage', {url: e.code})
             }
         })
@@ -76,35 +73,6 @@ export default class UtilsPage extends Component {
 
     changeTheme = () => {
         Theme.setColors({baseColor: 'red'})
-    };
-
-
-    wxPay = async () => {
-        const res = await fetch('http://wxpay.wxutil.com/pub_v2/app/app_pay.php');
-        const params = await res.json();
-        console.log('支付参数', params);
-        const {partnerid, appid, noncestr, timestamp, prepayid, sign} = params;
-        XPay.wxPay({
-                partnerId: partnerid,
-                prepayId: prepayid,
-                packageValue: params.package,
-                nonceStr: noncestr,
-                timeStamp: String(timestamp),
-                sign: sign
-            },
-            res => {
-                alert(JSON.stringify(res));
-                // if (res.errCode == 0) {
-                //     alert('支付成功')
-                // } else {
-                //     alert('支付失败')
-                // }
-            })
-    };
-
-    aliPay = () => {
-        XPay.alipay('app_id=2015052600090779&biz_content=%7B%22timeout_express%22%3A%2230m%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%221%22%2C%22body%22%3A%22%E6%88%91%E6%98%AF%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%22%2C%22out_trade_no%22%3A%22IQJZSRC1YMQB5HU%22%7D&charset=utf-8&format=json&method=alipay.trade.app.pay&notify_url=http%3A%2F%2Fdomain.merchant.com%2Fpayment_notify&sign_type=RSA2&timestamp=2016-08-25%2020%3A26%3A31&version=1.0&sign=cYmuUnKi5QdBsoZEAbMXVMmRWjsuUj%2By48A2DvWAVVBuYkiBj13CFDHu2vZQvmOfkjE0YqCUQE04kqm9Xg3tIX8tPeIGIFtsIyp%2FM45w1ZsDOiduBbduGfRo1XRsvAyVAv2hCrBLLrDI5Vi7uZZ77Lo5J0PpUUWwyQGt0M4cj8g%3D',
-            res => alert(JSON.stringify(res)))
     };
 
     render() {
@@ -137,15 +105,6 @@ export default class UtilsPage extends Component {
                     onPress={this.showCustomLoading}
                 />
 
-                <ListRow
-                    title="微信支付"
-                    onPress={this.wxPay}
-                />
-
-                <ListRow
-                    title="支付宝支付"
-                    onPress={this.aliPay}
-                />
             </ScrollView>
         </BaseContainer>);
     }

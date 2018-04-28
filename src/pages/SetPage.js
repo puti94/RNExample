@@ -13,7 +13,7 @@ import {
     Alert
 } from 'react-native';
 import {ListRow} from 'teaset'
-import {appStateStore} from '../store/index'
+import {appStateStore} from '../store'
 import {inject, observer} from 'mobx-react'
 import {RouteHelper} from 'react-navigation-easy-helper'
 import BaseContainer from "../components/BaseContainer";
