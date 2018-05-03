@@ -35,7 +35,6 @@
 		A2ED008077DA44DB947A3E23 /* libRCTHttpCache.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F32776E6A8342C184003323 /* libRCTHttpCache.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B5DC831B3DB94AE0BB12905A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279A41AD65D34EE0A41CC54C /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C5380C782094479E00BB6C6C /* upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = C5380C772094479E00BB6C6C /* upgrade.m */; };
 		C5380C7D20945AFD00BB6C6C /* nativeConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = C5380C7C20945AFD00BB6C6C /* nativeConstant.m */; };
 		C5380CAD20946F7100BB6C6C /* UMShareModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C5380C9920946F7100BB6C6C /* UMShareModule.m */; };
 		C5380CAE20946F7100BB6C6C /* RNUMConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = C5380C9A20946F7100BB6C6C /* RNUMConfigure.m */; };
@@ -485,8 +484,6 @@
 		A5370B3FD6654F4A91256C23 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		AB27BD4828A7471EA34F2B09 /* libRCTJCoreModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJCoreModule.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		C5380C762094479E00BB6C6C /* upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = upgrade.h; path = RNExample/upgrade.h; sourceTree = "<group>"; };
-		C5380C772094479E00BB6C6C /* upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = upgrade.m; path = RNExample/upgrade.m; sourceTree = "<group>"; };
 		C5380C7B20945AC400BB6C6C /* nativeConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nativeConstant.h; sourceTree = "<group>"; };
 		C5380C7C20945AFD00BB6C6C /* nativeConstant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nativeConstant.m; sourceTree = "<group>"; };
 		C5380C9920946F7100BB6C6C /* UMShareModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMShareModule.m; sourceTree = "<group>"; };
@@ -681,8 +678,6 @@
 		13B07FAE1A68108700A75B9A /* RNExample */ = {
 			isa = PBXGroup;
 			children = (
-				C5380C762094479E00BB6C6C /* upgrade.h */,
-				C5380C772094479E00BB6C6C /* upgrade.m */,
 				C5B418A02093745A005CB24F /* RCTUITest.m */,
 				C5B418A22093745A005CB24F /* RCTUITest.swift */,
 				C5B418A12093745A005CB24F /* RCTUITestManager.swift */,
@@ -1592,7 +1587,6 @@
 				C5B418A32093745A005CB24F /* RCTUITest.m in Sources */,
 				C5380CAE20946F7100BB6C6C /* RNUMConfigure.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				C5380C782094479E00BB6C6C /* upgrade.m in Sources */,
 				C5380CAD20946F7100BB6C6C /* UMShareModule.m in Sources */,
 				C5380C7D20945AFD00BB6C6C /* nativeConstant.m in Sources */,
 				C5B417BD209343A6005CB24F /* RCTXPay.m in Sources */,

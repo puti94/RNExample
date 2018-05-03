@@ -9,7 +9,6 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    Text,
     ScrollView
 } from 'react-native';
 import {ListRow, Toast} from 'teaset'

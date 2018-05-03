@@ -23,8 +23,9 @@ const ITEMS = ['apiLevel', 'applicationName', 'brand', 'buildNumber', 'bundleId'
     'freeDiskStorage', 'iPAddress', 'instanceID', 'lastUpdateTime', 'manufacturer', 'maxMemory',
     'phoneNumber', 'model', 'readableVersion', 'serialNumber', 'systemVersion', 'timezone', 'totalDiskCapacity',
     'totalMemory', 'uniqueID', 'userAgent', 'version', 'is24Hour', 'isEmulator', 'mACAddress'];
-@inject('userStore')
+
 @observer
+@inject('userStore')
 export default class SetPage extends Component {
 
 

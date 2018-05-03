@@ -22,8 +22,9 @@ import {checkNativeUpdate} from "../utils/UpdateUtils";
 
 const titles = ['首页', '购物车', '我的'];
 
-@inject('userStore', 'shopCar')
+
 @observer
+@inject('userStore', 'shopCar')
 export default class MainPage extends Component {
 
 

@@ -17,9 +17,8 @@ import {inject, observer} from 'mobx-react'
 import {RouteHelper} from 'react-navigation-easy-helper'
 import {BaseContainer} from "../components";
 
-
-@inject('userStore')
 @observer
+@inject('userStore')
 export default class LoginPage extends Component {
 
     static navigationOptions = ({navigation}) => ({

@@ -22,8 +22,9 @@ import {images} from "../res";
 import {Theme} from "../store";
 import BaseContainer from "../components/BaseContainer";
 
-@inject('shopCar')
+
 @observer
+@inject('shopCar')
 export class ShopCarPage extends Component {
 
     renderItem(item) {

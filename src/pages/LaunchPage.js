@@ -20,6 +20,7 @@ import StateImagePage from "./StateImagePage";
 import {codePushCheckForUpdate} from "../utils/UpdateUtils";
 import CustomNativeUIPage from "./CustomNativeUIPage";
 import Config from '../base/Constant'
+import {openAPPStore} from "react-native-app-upgrade";
 
 export default class LaunchPage extends Component {
 
@@ -55,7 +56,8 @@ export default class LaunchPage extends Component {
                     RouteHelper.navigate('UtilsPage')
                 }}/>
                 <ListRow title={'code-push检测更新'} onPress={() => {
-                    codePushCheckForUpdate()
+                    // codePushCheckForUpdate()
+                    openAPPStore(Config.APPSTORE_APPID);
                 }}/>
                 <ListRow title={'模拟通讯录'} onPress={() => {
                     RouteHelper.navigate('NotesPage')

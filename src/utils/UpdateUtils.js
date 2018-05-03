@@ -85,7 +85,6 @@ export const checkNativeUpdate = async () => {
                 onPress: () => {
                     if (Platform.OS === 'ios') {
                         openAPPStore(result.appId)
-                        // upgrade(result.appId, alert);
                     } else {
                         upgrade(result.apkUrl, progress => console.log('下载进度', progress + '%'))
                     }

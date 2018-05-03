@@ -4,7 +4,7 @@
  * @flow
  */
 
-import {StackNavigator} from 'react-navigation'
+import {CardStackStyleInterpolator, StackNavigator, NavigationActions} from 'react-navigation'
 import MainPage from './pages/MainPage'
 import Test2Page from './pages/Test2Page'
 import Test3Page from './pages/Test3Page'
@@ -25,8 +25,25 @@ import WebPage from "./pages/WebPage";
 import CustomNativeUIPage from "./pages/CustomNativeUIPage";
 import PayPage from "./pages/PayPage";
 
+const configStackRouter = function (StackNavigator) {
+    const oldGetStateForAction = StackNavigator.router.getStateForAction;
+    StackNavigator.router.getStateForAction = function (action, state) {
+        console.log('action', action, 'state', state);
+        if (action.type === NavigationActions.NAVIGATE) {
+            console.log('导航事件')
+        }
+        if (action.type === NavigationActions.PUSH) {
+            console.log('导航事件')
+        }
+        if (action.type === NavigationActions.PUSH) {
+            console.log('导航事件')
+        }
+        return oldGetStateForAction(action, state);
+    };
+    return StackNavigator;
+};
 
-export const AppNavigator = StackNavigator(
+export const AppNavigator = configStackRouter(StackNavigator(
     configRoute({
         LaunchPage: {screen: LaunchPage},
         MainPage: {screen: MainPage},
@@ -54,6 +71,17 @@ export const AppNavigator = StackNavigator(
         initialRouteName: 'LaunchPage',
         navigationOptions: {
             header: null
-        }
+        },
+        transitionConfig: () => ({
+            // 修改切换动画。 forVertical  forHorizontal
+            // screenInterpolator: CardStackStyleInterpolator.forHorizontal,
+            screenInterpolator: sceneProps => {
+                // console.log('screenInterpolator', sceneProps);
+                // const {params = {}} = sceneProps.scene.route;
+                // const transition = params.transition || 'forHorizontal';
+                // return CardStackStyleInterpolator[transition](sceneProps);
+            }
+        })
     }
-);
+));
+

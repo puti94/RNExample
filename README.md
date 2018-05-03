@@ -18,19 +18,19 @@
 │   │    └── index.js           // 统一管理
 │   ├── store.js                // 将所有存储状态的文件放此处
 │   ├── utils.js                // 工具类
-│   └── AppNav.js     // 导航配置项
+│   └── AppNav.js               // 路由导航配置项
 
 ```
 
 
 
 ### 主要第三方库
- - 数据管理   [mobx](https://github.com/mobxjs/mobx)
- - 路由导航  [react-navigation](https://github.com/react-navigation/react-navigation)
+ - 数据管理    [mobx](https://github.com/mobxjs/mobx)
+ - 路由导航    [react-navigation](https://github.com/react-navigation/react-navigation)
  - 主要UI框架  [teaset](https://github.com/rilyu/teaset)  [react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
- - 启动页     [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen)
- - 缓存清理   [react-native-http-cache](https://github.com/reactnativecn/react-native-http-cache)
- - 设备信息   [react-native-device-info](https://github.com/rebeccahughes/react-native-device-info)
+ - 启动页      [react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen)
+ - 缓存清理    [react-native-http-cache](https://github.com/reactnativecn/react-native-http-cache)
+ - 设备信息    [react-native-device-info](https://github.com/rebeccahughes/react-native-device-info)
 
 ### 功能集合
 - [x] 启动页
