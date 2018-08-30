@@ -31,7 +31,7 @@ const staging = {
 const release = {
     TEST_TITLE: 'release模式',
     TYPE: 'release',
-    APPSTORE_APPID: '1137124453',
+    APPSTORE_APPID: '414478124',
     CODE_PUSH_KEY: Platform.OS === 'ios' ?
         'gm-Zizg975oJztUDW4sgymi6_jm_06deade4-1f87-4d67-b199-fbf216d3f314' :
         'aSqHmmeAAa9an1VvrRjoA4vXkptm06deade4-1f87-4d67-b199-fbf216d3f314'

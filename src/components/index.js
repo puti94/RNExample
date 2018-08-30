@@ -3,7 +3,7 @@
  * Time: 2018/4/16 下午9:51.
  */
 
-import AutoFlatList from './AutoFlatlist';
+import {AutoFlatList} from './AutoFlatlist';
 import BaseContainer from './BaseContainer';
 import ChooseCityWheel from './ChooseCityWheel';
 import {ErrorView} from './ErrorView';

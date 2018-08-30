@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import {
     View,
     WebView,
-    Platform, TouchableOpacity, Text, BackHandler
+    Platform, TouchableOpacity, Text, BackHandler, TextInput
 } from 'react-native';
 import Spinkit from 'react-native-spinkit';
 import {Theme} from "../store";
@@ -21,7 +21,7 @@ export default class WebPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            source: {uri: this.props.url || 'https://www.baidu.com'},
+            source: {uri: this.props.url || 'http://192.168.1.86/dist'},
         };
     }
 
@@ -136,7 +136,9 @@ export default class WebPage extends Component {
     render() {
         return (
             <BaseContainer>
-                <View style={{flexDirection: 'row', marginTop: 20}}>
+                <View style={{flexDirection: 'row', marginTop: 10}}>
+                    <TextInput onSubmitEditing={() => this.setState({source: {uri: this.url}})} style={{flex: 1}}
+                               placeholder='网址' onChangeText={text => this.url = text}/>
                     <Text onPress={() => {
                         console.log(this.navState);
                         // if (this.navState.canGoBack) {

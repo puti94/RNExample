@@ -24,6 +24,7 @@ import StateImagePage from "./pages/StateImagePage";
 import WebPage from "./pages/WebPage";
 import CustomNativeUIPage from "./pages/CustomNativeUIPage";
 import PayPage from "./pages/PayPage";
+import ListPage from "./pages/ListPage";
 
 const configStackRouter = function (StackNavigator) {
     const oldGetStateForAction = StackNavigator.router.getStateForAction;
@@ -53,6 +54,7 @@ export const AppNavigator = configStackRouter(StackNavigator(
         LoginPage: {screen: LoginPage},
         UtilsPage: {screen: UtilsPage},
         UserPage: {screen: UserPage},
+        ListPage: {screen: ListPage},
         RouteUtilPage: {screen: RouteUtilPage},
         GuidePage: {screen: GuidePage},
         BasePage: {screen: BasePage},

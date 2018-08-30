@@ -35,7 +35,7 @@ export default class PayPage extends Component {
             alert('微信未安装');
             return;
         }
-        const res = await fetch('http://wxpay.wxutil.com/pub_v2/app/app_pay.php');
+        const res = await fetch('https://wxpay.wxutil.com/pub_v2/app/app_pay.php');
         const params = await res.json();
         console.log('支付参数', params);
         const {partnerid, noncestr, timestamp, prepayid, sign} = params;

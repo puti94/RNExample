@@ -13,7 +13,7 @@ import {LoadingView} from "./LoadingView";
 import {ErrorView} from "./ErrorView";
 
 @observer
-export default class AutoFlatList extends Component {
+export  class AutoFlatList extends Component {
     static propTypes = {
         ...FlatList.propTypes,
         fetchData: PropTypes.func.isRequired, //传入页数返回一个Promise
