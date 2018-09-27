@@ -13,6 +13,8 @@
     "run-android-staging": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/ && react-native run-android --variant=staging",
     "build-android-release": "cd android && ./gradlew assembleRelease",
     "build-android-staging": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/ && cd android && ./gradlew assembleStaging",
+    "pgyer-ios": "cd pgyerupload && ./xcodebuild.sh",
+    "pgyer-android": "cd pgyerupload && ./androidbuild.sh",
     "android-bundling": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "code-push-android-k": "code-push deployment ls example-android -k",
     "code-push-ios-k": "code-push deployment ls example-ios -k",

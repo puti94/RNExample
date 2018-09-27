@@ -7,6 +7,7 @@
  */
 import {Platform, NativeModules} from 'react-native'
 import {getBuildNumber, getVersion} from 'react-native-device-info'
+import {NODE_ENV} from '../../build/env'
 //从原生导出常量
 const nativeConstant = NativeModules.nativeConstant;
 //构建类型

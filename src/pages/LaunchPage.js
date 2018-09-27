@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {
     ScrollView,
     AsyncStorage,
-    NativeModules
+    NativeModules, View, Text
 } from 'react-native'
 import {ListRow} from 'teaset'
 import SplashScreen from 'react-native-splash-screen'
@@ -21,6 +21,7 @@ import {codePushCheckForUpdate} from "../utils/UpdateUtils";
 import CustomNativeUIPage from "./CustomNativeUIPage";
 import Config from '../base/Constant'
 import {openAPPStore} from "react-native-app-upgrade";
+import {NODE_ENV} from '../../build/env'
 
 export default class LaunchPage extends Component {
 
@@ -50,7 +51,9 @@ export default class LaunchPage extends Component {
 
 
     render() {
-        return (<BaseContainer store={this.store} hideLeft title={Config.TEST_TITLE}>
+        return (<BaseContainer store={this.store}
+                               hideLeft
+                               title={NODE_ENV}>
             <ScrollView style={{flex: 1}}>
                 <ListRow title={'工具示例'} onPress={() => {
                     RouteHelper.navigate('UtilsPage')
