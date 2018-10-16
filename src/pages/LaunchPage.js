@@ -23,6 +23,16 @@ import Config from '../base/Constant'
 import {openAPPStore} from "react-native-app-upgrade";
 import {NODE_ENV} from '../../build/env'
 
+const wrap = Component.prototype.setState;
+Component.prototype.setState = function (partialState, callback) {
+    return new Promise((resolve) => {
+        wrap.call(this, partialState, () => {
+            callback && callback();
+            resolve();
+        });
+    })
+}
+
 export default class LaunchPage extends Component {
 
 
@@ -34,6 +44,10 @@ export default class LaunchPage extends Component {
             AsyncStorage.setItem('notFirstOpen', 'true');
             RouteHelper.replace('GuidePage')
         }
+    };
+
+    state = {
+        a: '哈哈'
     };
 
     componentDidMount() {
@@ -55,8 +69,12 @@ export default class LaunchPage extends Component {
                                hideLeft
                                title={NODE_ENV}>
             <ScrollView style={{flex: 1}}>
-                <ListRow title={'工具示例'} onPress={() => {
+                <ListRow title={'工具示例'} onPress={async () => {
                     RouteHelper.navigate('UtilsPage')
+                    console.log(wrap);
+                    // wrap.call(this, {a: '呃呃'}, (value) => {
+                    //     console.log('sss', this)
+                    // });
                 }}/>
                 <ListRow title={'code-push检测更新'} onPress={() => {
                     // codePushCheckForUpdate()

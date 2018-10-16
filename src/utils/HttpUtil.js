@@ -69,7 +69,7 @@ export class HttpUtil {
                    method: string = 'GET',
                    type = 'form') {
         let body = null;
-        let header = {};
+        let headers = {};
         if (method === 'GET') {
             if (params) {
                 let paramsArray = [];
@@ -88,14 +88,14 @@ export class HttpUtil {
                         let param = params[key];
                         body.append(key, param);
                     });
-                    header = {
+                    headers = {
                         'Accept': 'application/json',
                         'Content-Type': 'multipart/form-data;charset=utf-8',
                         ...HttpUtil.header
                     }
                 } else if (type === 'json') {
                     body = JSON.stringify(params);
-                    header = {
+                    headers = {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         ...HttpUtil.header
@@ -109,9 +109,9 @@ export class HttpUtil {
         loadingParams.show && LoadingUtils.show(loadingParams.hint);
         return Promise.race([new Promise((resolve, reject) => {
             fetch(url, {
-                method: method,
-                header: header,
-                body: body
+                method,
+                headers,
+                body
             }).then(response => {
                 if (response.ok) {
                     return response.json()

@@ -40,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
         PlatformConfig.setQQZone(BuildConfig.QQ_APPID, BuildConfig.QQ_SECRET);
     }
 
+
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
         @Override
