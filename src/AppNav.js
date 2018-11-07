@@ -3,7 +3,8 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import React from 'react'
+import {Platform} from 'react-native'
 import {CardStackStyleInterpolator, StackNavigator, NavigationActions} from 'react-navigation'
 import MainPage from './pages/MainPage'
 import Test2Page from './pages/Test2Page'
@@ -43,8 +44,8 @@ const configStackRouter = function (StackNavigator) {
     };
     return StackNavigator;
 };
-
-export const AppNavigator = configStackRouter(StackNavigator(
+const prefix = Platform.OS === 'android' ? 'example://example/' : 'example://';
+const Navigator = configStackRouter(StackNavigator(
     configRoute({
         LaunchPage: {screen: LaunchPage},
         MainPage: {screen: MainPage},
@@ -58,10 +59,10 @@ export const AppNavigator = configStackRouter(StackNavigator(
         RouteUtilPage: {screen: RouteUtilPage},
         GuidePage: {screen: GuidePage},
         BasePage: {screen: BasePage},
-        SetPage: {screen: SetPage},
+        SetPage: {screen: SetPage, path: 'set/:name'},
         NotesPage: {screen: NotesPage},
         WebPage: {screen: WebPage},
-        PayPage: {screen: PayPage},
+        PayPage: {screen: PayPage, path: 'pay/:pay'},
         StateImagePage: {screen: StateImagePage},
         CustomNativeUIPage: {screen: CustomNativeUIPage},
         TeasetApp: {
@@ -87,3 +88,4 @@ export const AppNavigator = configStackRouter(StackNavigator(
     }
 ));
 
+export const AppNavigator = () => <Navigator uriPrefix={prefix}/>

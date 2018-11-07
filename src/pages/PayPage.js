@@ -29,6 +29,9 @@ export default class PayPage extends Component {
         XPay.setAlipayScheme('ap2017102209453437')
     }
 
+    componentDidMount() {
+        console.log('参数',this.props)
+    }
 
     wxPay = async () => {
         if (!appStateStore.isWXInstall) {
