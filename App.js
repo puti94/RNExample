@@ -31,15 +31,8 @@ RouteHelper.routeInterceptor = (routeName, params) => {
     return true
 };
 
-@codePush
+@codePush({checkFrequency: codePush.CheckFrequency.MANUAL})
 export default class App extends Component<Props> {
-
-    constructor(props) {
-        super(props);
-        this.state={
-            source:{html:''}
-        }
-    }
 
     componentDidMount() {
         if (Platform.OS === 'android') {
