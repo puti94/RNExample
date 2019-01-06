@@ -6,6 +6,8 @@
 import React from 'react'
 import {Platform} from 'react-native'
 import {CardStackStyleInterpolator, StackNavigator, NavigationActions} from 'react-navigation'
+import CardStackStyleInterpolator from "react-navigation/src/views/CardStack/CardStackStyleInterpolator";
+
 import MainPage from './pages/MainPage'
 import Test2Page from './pages/Test2Page'
 import Test3Page from './pages/Test3Page'
@@ -76,14 +78,14 @@ const Navigator = configStackRouter(StackNavigator(
             header: null
         },
         transitionConfig: () => ({
-            // 修改切换动画。 forVertical  forHorizontal
-            // screenInterpolator: CardStackStyleInterpolator.forHorizontal,
-            screenInterpolator: sceneProps => {
-                // console.log('screenInterpolator', sceneProps);
-                // const {params = {}} = sceneProps.scene.route;
-                // const transition = params.transition || 'forHorizontal';
-                // return CardStackStyleInterpolator[transition](sceneProps);
-            }
+            /**
+             * 修改切换动画。
+             * forVertical
+             * forHorizontal
+             * forFadeFromBottomAndroid
+             * forFade
+             */
+            screenInterpolator: CardStackStyleInterpolator.forHorizontal
         })
     }
 ));
